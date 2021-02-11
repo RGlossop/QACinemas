@@ -1,0 +1,71 @@
+@startuml
+
+skinparam linetype ortho
+
+entity "Films" as films {
+	* **film_id : bigint <<generated>>**
+	--
+	* title : varchar(255)
+    * description: varchar(1000)
+    * opening: char(10)
+    * closing: char(10)
+}
+
+entity "Users" as users {
+	* **user_id : bigint <<generated>>**
+	--
+	* first_name : varchar(255)
+    * last_name : varchar(255)
+	* dob : char(10)
+    * username: varchar(255)
+    * email: varchar(255)
+    * password: binary(256)
+}
+
+entity "Screenings" as screenings {
+    * **screening_id: bigint <<generated>>**
+    * **film_id: bigint <<FK>>**
+    --
+    * screen : int
+    * date : char(10)
+    * time : char(5)
+}
+
+entity "Bookings" as bookings {
+    * **user_id: bigint <<FK>>**
+    * **screening_id: bigint <<FK>>**
+}
+
+entity "Comments" as comments {
+    * **comment_id: bigint <<generated>>**
+    * **user_id: bigint <<FK>>**
+    --
+    * comment_body: varchar(10000)
+}
+
+entity "Payments" as payments {
+    * **payment_id: bigint <<generated>>**
+    * **user_id: bigint <<FK>>**
+    --
+    * cardholder_name: varchar(510)
+    * card_number: bigint
+    * expiry_date: char(10)
+    * cvc: smallint
+}
+
+entity "Places" as places {
+    * **place_id: bigint <<generated>>**
+    --
+    * description: varchar(1000)
+    offers: varchar(1000)
+    image_link: varchar(255)
+    address: varchar(255)
+    telephone: varchar(20)
+}
+
+films ||--o{ screenings
+bookings }o--o| screenings
+users ||--o{ comments
+users ||--o{ bookings
+users ||--o{ payments
+@enduml
