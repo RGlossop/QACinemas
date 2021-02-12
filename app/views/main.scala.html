@@ -4,6 +4,7 @@
 * two arguments, a `String` for the title of the page and an `Html`
 * object to insert into the body of the page.
 *@
+
 @(title: String)(content: Html)
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
         <div id="page">
             <div class="header-container">
                 <header id="header">
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                         <div class="container">
 
                             <a class="navbar-brand" href="#">
@@ -29,14 +30,14 @@
                             <div class="collapse navbar-collapse" id="navbarNavLeft">
                                 <ul class="navbar-nav justify-content-start">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="#"><u>Home</u><span
+                                        <a class="nav-link" href= "/homeRedirect">Home<span
                                         class="sr-only"></span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Page#1</a>
+                                        <a class="nav-link" href="#">New Releases</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Page#2</a>
+                                        <a class="nav-link" href="#">Movie Forum</a>
                                     </li>
                                 </ul>
                             </div>
@@ -54,36 +55,68 @@
                                         <a class="nav-link " href="#"><span class="fas fa-sign-in-alt"></span>
                                             Login</a>
                                     </li>
+
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                            More
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Films</a></li>
+                                            <li><a class="dropdown-item" href="#">Our Screens</a></li>
+                                            <li><a class="dropdown-item" href="#">Places Nearby</a></li>
+                                            <li><a class="dropdown-item" href="#">Classification Information</a></li>
+                                            <li><a class="dropdown-item" href="#">About Us</a></li>
+                                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                                            <li><a class="dropdown-item" href="#">Find Us</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
 
                         </div>
                     </nav>
 
-                    <br />
-                    <br />
-                    <div class="text-center" id="logo">
-                        <div class="container">
-                            <h1 id="indexheader" class="text-center">
-                                Welcome
-                            </h1>
-                            <div class="row">
-                                <div class="col-xl" id="logo">
-                                    <a href="./Index.html" title="QA Coaches">
-                                        <img class="logo img-responsive" src="#"
-                                        alt="Another company logo &copy;QA all rights reserved">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </header>
             </div>
             <br />
+            <br />
+            <div class="text-center" id="logo">
+                <div class="container">
+                    <h1 id="mainfooter" class="text-center">
+                    @title
+                    </h1>
+                    <div class="row">
+                        <div class="col-xl" id="logo">
+                            <img class="logo img-responsive" src="#" alt="Another company logo &copy;QA all rights reserved">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             @content
         </div>
+        <footer>
+            <div class="container">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href= "#">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Find Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
