@@ -1,0 +1,32 @@
+.team{
+    margin: 2em 0;
+    position: relative;
+}
+
+.team h1{
+    color:#1A659E;
+    margin: 1em;
+}
+
+.team .item{
+    position: relative;
+}
+
+.classification{
+    margin: 5px;
+    font-weight: bold;
+    color: #004E89;
+}
+
+.img-fluid {
+    width: 250px;
+    height: 250px;
+}
+
+#classification-title{
+    font-weight: bold;
+}
+
+#contact-title{
+    color:#1A659E;
+}
