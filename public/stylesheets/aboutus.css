@@ -1,11 +1,11 @@
 .team{
-    margin: 4em 0;
+    margin: 2em 0;
     position: relative;
 }
 
 .team h1{
     color:#1A659E;
-    margin: 2em;
+    margin: 1em;
 }
 
 .team .item{
@@ -19,4 +19,17 @@
     border-bottom-left-radius: 50%;
     border-top-right-radius: 50%;
     transition:.3s ease-in-out;
+}
+
+.team .des2{
+    background: #004E89;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    transition:.3s ease-in-out;
+}
+
+#aboutus-title{
+    font-weight: bold;
 }
