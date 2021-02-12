@@ -20,5 +20,5 @@ GET		     /openingtimes				controllers.HomeController.openingTimes
 
 GET        /homeRedirect        controllers.MainController.homeRedirect
 
-      
+GET			/contact			controllers.ContactController.contact
 
