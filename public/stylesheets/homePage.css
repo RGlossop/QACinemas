@@ -1,0 +1,55 @@
+.landing{
+    background-image: url('../images/homepage/CinemaHeader.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+html {
+    background-color: #343a40;
+}
+.overlay{
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(244, 244, 244, 0.79);
+}
+
+.description{
+    /*position: absolute;*/
+    align-content: center;
+    top: 30%;
+    margin: auto;
+    padding: 2em;
+
+}
+h1{
+    color:#F97300 ;
+}
+.description p{
+    color:#000000;
+    font-size: 20px;
+    align-content: center;
+    justify-content: center;
+    line-height: 1.5;
+}
+
+/*boxes */
+#card-deck {
+    align-items: left;
+    justify-content: center;
+    column-count: 3;
+}
+#card {
+    align-content: left;
+}
+
+#moreInfo {
+    background-color: #343a40;
+}
+#moreInfo p {
+    color: white;
+}
+#moreInfo h2 {
+    color: white;
+}
