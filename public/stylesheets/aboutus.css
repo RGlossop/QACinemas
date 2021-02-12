@@ -1,0 +1,39 @@
+.team{
+    margin: 2em 0;
+    position: relative;
+}
+
+.team h1{
+    color:#1A659E;
+    margin: 1em;
+}
+
+.team .item{
+    position: relative;
+}
+
+.team .des{
+    background: #004E89;
+    color: #fff;
+    text-align: center;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition:.3s ease-in-out;
+}
+
+.team .des2{
+    background: #004E89;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    transition:.3s ease-in-out;
+}
+
+#aboutus-title{
+    font-weight: bold;
+}
+
+#contact-title{
+    color:#1A659E;
+}
