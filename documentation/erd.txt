@@ -9,6 +9,7 @@ entity "Films" as films {
     * description: varchar(1000)
     * opening: char(10)
     * closing: char(10)
+    rating: char(2)
 }
 
 entity "Users" as users {
