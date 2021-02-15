@@ -13,10 +13,17 @@
 		</div>
 		<div class="col">
 			<h2>By email</h2>
+			@helper.form(routes.ContactController.sendEmail) {
 			@helper.inputText(form("sender"), '_label -> "Your email")
 			@helper.inputText(form("subject"), '_label -> "Subject")
-			@helper.inputText(form("body"), '_label -> "Your message")
+			@helper.textarea(form("body"), '_label -> "Your message")
 			<button class="btn btn-primary" type="submit">Send</button>
+			}
+		</div>
+		<div class="col">
+			<h2>By phone</h2>
+			<p>09:00 - 17:00, Monday - Friday:</p>
+			<p>+44 (0)345 074 7995</p>
 		</div>
 	</div>
 </div>
