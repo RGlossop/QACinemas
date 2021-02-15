@@ -24,6 +24,13 @@ We started our first sprint and assigned the following task groups:
 * Ryan: Risk assessment and home page
 
 ## Week one
+In our morning meeting we discussed what we were planning to do today. Lukasz indentified a blocker in his about page, that he needed the other team members to send him a brief description. We agreed to do that today.
+
+Ryan started work on the places to go page. He suggested that we don't bother with a database backing the places as it would add unneccessary complication and we agreed. We will need to modify the ERD to reflect the change.
+
+We decided that we would create a css file to manage site-wide formatting and design.
+
+
 
 ### Monday
 
