@@ -16,9 +16,13 @@ GET        /assets/*file        controllers.Assets.versioned(path="/public", fil
 
 GET        /aboutus             controllers.AboutUsController.index
 
-GET		     /openingtimes				controllers.HomeController.openingTimes
+GET		   /openingtimes		controllers.HomeController.openingTimes
 
 GET        /homeRedirect        controllers.MainController.homeRedirect
 
-      
+GET         /screens            controllers.ScreenController.toScreens
+
+GET         /screenType         controllers.ScreenController.changeNum
+
+GET         /screens2           controllers.ScreenController.toScreens2
 
