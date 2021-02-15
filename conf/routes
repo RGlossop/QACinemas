@@ -20,11 +20,16 @@ GET        /openingtimes           controllers.HomeController.openingTimes
 
 GET        /homeRedirect           controllers.MainController.homeRedirect
 
+GET        /screens                controllers.ScreenController.toScreens
+
+GET        /screenType             controllers.ScreenController.changeNum
+
+GET        /screens2               controllers.ScreenController.toScreens2
+
 GET        /classifications        controllers.ClassificationController.index
 
 GET        /findus                 controllers.HomeController.gettingThere
 
+GET			   /contact			           controllers.ContactController.contact
 
-
-GET			/contact			controllers.ContactController.contact
-GET			/sendEmail			controllers.ContactController.sendEmail
+GET			   /sendEmail			         controllers.ContactController.sendEmail
