@@ -22,5 +22,9 @@ GET        /homeRedirect           controllers.MainController.homeRedirect
 
 GET        /classifications        controllers.ClassificationController.index
 
+GET        /findus                 controllers.HomeController.gettingThere
+
+
+
       
 
