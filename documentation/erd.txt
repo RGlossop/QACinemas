@@ -7,8 +7,8 @@ entity "Films" as films {
 	--
 	* title : varchar(255)
     * description: varchar(1000)
-    * opening: char(10)
-    * closing: char(10)
+    * opening: int
+    * closing: int
     rating: char(2)
 }
 
@@ -17,7 +17,7 @@ entity "Users" as users {
 	--
 	* first_name : varchar(255)
     * last_name : varchar(255)
-	* dob : char(10)
+	* dob : int
     * username: varchar(255)
     * email: varchar(255)
     * password: binary(256)
@@ -50,18 +50,8 @@ entity "Payments" as payments {
     --
     * cardholder_name: varchar(510)
     * card_number: bigint
-    * expiry_date: char(10)
+    * expiry_date: int
     * cvc: smallint
-}
-
-entity "Places" as places {
-    * **place_id: bigint <<generated>>**
-    --
-    * description: varchar(1000)
-    offers: varchar(1000)
-    image_link: varchar(255)
-    address: varchar(255)
-    telephone: varchar(20)
 }
 
 films ||--o{ screenings
