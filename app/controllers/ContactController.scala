@@ -34,7 +34,8 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
 		// your account settings, as courier doesn't support 2fa.
 		val mailer = Mailer("smtp.gmail.com", 587)
 			.auth(true)
-			.as("kjhanahoe@googlemail.com", "laabafjjscvatfhz")
+			// removed email
+			.as("example@gmail.com", "password")
 			.startTls(true)()
 
 		mailer(Envelope
