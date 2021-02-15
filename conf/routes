@@ -18,6 +18,8 @@ GET        /aboutus             controllers.AboutUsController.index
 
 GET		     /openingtimes				controllers.HomeController.openingTimes
 
+GET        /findus             controllers.HomeController.gettingThere
+
 GET        /homeRedirect        controllers.MainController.homeRedirect
 
       
