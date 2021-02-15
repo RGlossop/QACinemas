@@ -15,7 +15,7 @@ case class EmailForm(sender: String, subject: String, body: String)
 object EmailForm {
 	val emailForm = Form(
 		mapping(
-			"sender" -> nonEmptyText.verifying(pattern(""".+@.+\..+""".r, error = "Invalid email address")),
+			"sender" -> text.verifying(pattern(""".+@.+\..+""".r, error = "Invalid email address")),
 			"subject" -> nonEmptyText,
 			"body" -> nonEmptyText
 		) (Email.apply)(Email.unapply)
