@@ -1,0 +1,30 @@
+@(form: Form[Email])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@main("Contact us") {
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h2>By post</h2>
+			<p>5th Floor Anchorage 1</p>
+			<p>Anchorage Quay</p>
+			<p>Salford Quays</p>
+			<p>Manchester</p>
+			<p>M50 3YJ </p>
+		</div>
+		<div class="col">
+			<h2>By email</h2>
+			@helper.form(routes.ContactController.sendEmail) {
+			@helper.inputText(form("sender"), '_label -> "Your email", Symbol("_showConstraints") -> false)
+			@helper.inputText(form("subject"), '_label -> "Subject")
+			@helper.textarea(form("body"), '_label -> "Your message")
+			<button class="btn btn-primary" type="submit">Send</button>
+			}
+		</div>
+		<div class="col">
+			<h2>By phone</h2>
+			<p>09:00 - 17:00, Monday - Friday:</p>
+			<p>+44 (0)345 074 7995</p>
+		</div>
+	</div>
+</div>
+}
