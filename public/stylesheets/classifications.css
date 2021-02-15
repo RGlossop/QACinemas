@@ -1,0 +1,43 @@
+.team{
+    position: relative;
+}
+
+.team h1{
+    color:#1A659E;
+}
+
+.team .item{
+    position: relative;
+}
+
+.classification{
+    margin: 5px;
+    font-weight: bold;
+    color: #004E89;
+}
+
+.img-fluid {
+    width: 250px;
+    height: 250px;
+}
+
+.contain {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.card-img-top {
+    width: 300px;
+    height: 300px;
+    align-self: center;
+}
+
+.card-title {
+    font-weight: bolder;
+    color:#1A659E;
+}
+
+#contact-title{
+    color:#1A659E;
+}
