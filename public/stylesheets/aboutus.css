@@ -4,7 +4,7 @@
 }
 
 .team h1{
-    color:#1A659E;
+    color:#004E89;
     margin: 1em;
 }
 
@@ -30,10 +30,11 @@
     transition:.3s ease-in-out;
 }
 
-#aboutus-title{
+.aboutus-titles{
     font-weight: bold;
+    color: #004E89;
 }
 
-#contact-title{
-    color:#1A659E;
+.scrum-subtitle {
+    color: #004E89;
 }
