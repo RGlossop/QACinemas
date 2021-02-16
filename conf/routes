@@ -30,6 +30,10 @@ GET        /classifications        controllers.ClassificationController.index
 
 GET        /findus                 controllers.HomeController.gettingThere
 
-GET			   /contact			           controllers.ContactController.contact
+GET        /contact                controllers.ContactController.contact
 
-GET			   /sendEmail			         controllers.ContactController.sendEmail
+GET        /sendEmail              controllers.ContactController.sendEmail
+
+GET        /newreleases            controllers.NewReleasesController.newReleases
+
+GET        /movieinfo/:id          controllers.MovieInfoController.movieInfo(id: Long)
