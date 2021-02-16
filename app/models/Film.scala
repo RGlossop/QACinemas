@@ -3,7 +3,7 @@ package models
 import slick.jdbc.MySQLProfile.api._
 
 
-case class Film(film_id : Long, film_name : String, age_rating : String, description : String, opening_date : Int, closing_date : Int)
+case class Film(film_id : Long, film_name : String, age_rating : String, description : String, opening_date : String, closing_date : String)
 
 case class Films(tag :Tag) extends Table[Film](tag, "films") {
 
@@ -15,9 +15,9 @@ case class Films(tag :Tag) extends Table[Film](tag, "films") {
 
   def description = column[String]("description")
 
-  def opening_date = column[Int]("opening_date")
+  def opening_date = column[String]("opening_date")
 
-  def closing_date = column[Int]("closing_date")
+  def closing_date = column[String]("closing_date")
 
   def * = (film_id,film_name,age_rating,description,opening_date,closing_date) <> (Film.tupled,Film.unapply)
 }
