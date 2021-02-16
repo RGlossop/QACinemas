@@ -22,5 +22,7 @@ GET        /findus             controllers.HomeController.gettingThere
 
 GET        /homeRedirect        controllers.MainController.homeRedirect
 
+GET         /placesToGo         controllers.HomeController.placesToGo
+
       
 
