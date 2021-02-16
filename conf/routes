@@ -20,6 +20,8 @@ GET        /openingtimes           controllers.HomeController.openingTimes
 
 GET        /homeRedirect           controllers.MainController.homeRedirect
 
+GET        /placesToGo         controllers.HomeController.placesToGo
+
 GET        /screens                controllers.ScreenController.toScreens
 
 GET        /screenType             controllers.ScreenController.changeNum
