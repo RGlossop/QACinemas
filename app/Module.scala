@@ -1,8 +1,11 @@
 import com.google.inject.AbstractModule
+
 import controllers.Startup
 
 import java.time.Clock
+
 import services.{ApplicationTimer, AtomicCounter, Counter}
+
 
 /**
  * This class is a Guice module that tells Guice how to bind several
