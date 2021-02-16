@@ -1,0 +1,15 @@
+.films {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-title {
+    color: #004E89;
+    font-weight: bolder;
+}
+
+.card-img-top {
+    width: 500px;
+    height: 600px;
+    align-self: center;
+}
