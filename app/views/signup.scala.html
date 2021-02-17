@@ -2,14 +2,14 @@
 
 @main("Sign up") {
 <div class="container">
-	@helper.form(routes.SignUpController.signUp) {
-	@helper.inputText(form("user_id"))
+	@helper.form(action = routes.SignUpController.userSignUp) {
+	@helper.inputText(form("user_id"),'_label -> "", Symbol("type") -> "hidden", Symbol("_showConstraints") -> false)
 	@helper.inputText(form("first_name"), '_label -> "First name")
 	@helper.inputText(form("last_name"), '_label -> "Last name")
-	@helper.inputDate(form("date_of_birth"), '_label -> "Date of birth")
+	@helper.inputDate(form("date_of_birth"), '_label -> "Date of birth", Symbol("_showConstraints") -> false)
 	@helper.inputText(form("username"), '_label -> "Username")
 	@helper.inputText(form("sender"), '_label -> "Your email", Symbol("_showConstraints") -> false)
-	@helper.inputText(form("password"), '_label -> "Password")
+	@helper.inputPassword(form("password"), '_label -> "Password")
 	<button class="btn btn-primary" type="submit">Sign up</button>
 	}
 </div>
