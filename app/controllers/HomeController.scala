@@ -31,4 +31,8 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 
 
   }
+
+  def placesToGo = Action {
+    Ok(views.html.placestogo())
+  }
 }
