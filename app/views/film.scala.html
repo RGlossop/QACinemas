@@ -1,0 +1,87 @@
+@(film: Film)
+
+    @main("All Our Films") {
+
+
+        <div class="filmcontainer">
+            <div class="container text-center">
+                <br/>
+                <h1 class = "filmname">@film.film_name</h1>
+                <h3 class = "rating">Rating: @film.age_rating</h3>
+                <div class ="card">
+                    <p>Put trailer here</p>
+                </div>
+                <br/>
+                <section id="more-info">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 text-start">
+                                <h2 class="infotitle">More information:</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <div class="row movie-dates">
+                                    <div class="col">
+                                        <h4 class="openingdate">Release date:</h4>
+                                        <p class="info-descr">@film.opening_date</p>
+                                    </div> <div class="col">
+                                    <h4 class="runtime">Running time:</h4>
+                                    <p class="length">Add Runtime</p>
+                                </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p class="text-content">@film.description</p>
+                                    </div>
+                                </div>
+                                <br/>
+                                <table class="info-tbl">
+                                    <tr class="tbl-row movie-info">
+                                        <td class="tbl-cell-ttl ttl">
+                                            Cast:
+                                        </td>
+                                        <td class="text-center">
+                                            Add Cast
+                                        </td>
+                                    </tr>
+                                    <tr class="tbl-row movie-info text-center">
+                                        <td class="tbl-cell-ttl ttl">
+                                            Director:
+                                        </td>
+                                        <td class="text-center">
+                                            Add Director
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                                <br/>
+                                <div class="row text-center">
+                                    <button type="button" class="btn btn-dark" id="send2booking" onclick="setRoute();">
+                                        Buy Tickets
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                                <div>
+                                    <div class="poster">
+                                        <img width="300px" height="450px" src="@routes.Assets.versioned(film.picture)" alt="@film.film_name" class="img-responsive poster v-lazy-loaded v-lazy-loading">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                </section>
+            </div>
+        </div>
+    <script>
+            setRoute = () => {
+                window.location.replace("@routes.ListingsGalleryController.bookingsRedirect(film.film_id)");
+            }
+    </script>
+
+
+    }

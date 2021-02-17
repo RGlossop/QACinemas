@@ -45,3 +45,11 @@ GET        /newreleases            controllers.NewReleasesController.newReleases
 
 GET        /movieinfo/:id          controllers.MovieInfoController.movieInfo(id: Long)
 
+GET         /listingsgallery        controllers.ListingsGalleryController.toListings
+
+GET         /film/:id               controllers.ListingsGalleryController.showFilm(id : Long)
+
+GET         /bookingsRedirect/:filmid        controllers.ListingsGalleryController.bookingsRedirect(filmid : Long)
+
+GET         /bookings               controllers.BookingController.toBookings
+
