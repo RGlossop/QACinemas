@@ -15,7 +15,9 @@ import scala.util.{Failure, Success}
 @Singleton
 class ContactController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport{
 
+
 	val testEmail = "example@hotmail.co.uk"
+
 
 	def contact = Action { implicit request =>
 		Ok(views.html.contact(EmailForm.emailForm))

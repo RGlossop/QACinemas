@@ -20,7 +20,9 @@ GET        /openingtimes           controllers.HomeController.openingTimes()
 
 GET        /homeRedirect           controllers.MainController.homeRedirect()
 
-GET        /screens                controllers.ScreenController.toScreens()
+GET        /placesToGo         controllers.HomeController.placesToGo
+
+GET        /screens                controllers.ScreenController.toScreens
 
 GET        /screenType             controllers.ScreenController.changeNum()
 
@@ -30,11 +32,16 @@ GET        /classifications        controllers.ClassificationController.index()
 
 GET        /findus                 controllers.HomeController.gettingThere()
 
-GET			/contact				controllers.ContactController.contact()
-
-GET			/sendEmail				controllers.ContactController.sendEmail()
-
 GET			/signup					controllers.SignUpController.signUpPage()
 
 + nocsrf
 POST		/signupsubmit			controllers.SignUpController.userSignUp()
+
+GET        /contact                controllers.ContactController.contact
+
+GET        /sendEmail              controllers.ContactController.sendEmail
+
+GET        /newreleases            controllers.NewReleasesController.newReleases
+
+GET        /movieinfo/:id          controllers.MovieInfoController.movieInfo(id: Long)
+
