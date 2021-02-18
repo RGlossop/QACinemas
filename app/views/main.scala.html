@@ -1,15 +1,10 @@
-@*
-* This template is called from the `index` template. This template
-* handles the rendering of the page header and body tags. It takes
-* two arguments, a `String` for the title of the page and an `Html`
-* object to insert into the body of the page.
-*@
 
 
 
 
 
-@(title: String)(content: Html)
+
+@(title: String)(content: Html)(implicit session : Session)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,12 +51,17 @@
                                             Sign-up</a>
                                     </li>
                                     <li>/</li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link " href="/login"><span class="fas fa-sign-in-alt"></span>
-                                            Login</a>
-                                    </li>
-                                   
-
+                                    @if(session.get("username") == null) {
+                                        <li class="nav-item ">
+                                            <a class="nav-link " href="/login"><span class="fas fa-sign-in-alt"></span>
+                                                Login</a>
+                                        </li>
+                                    }else {
+                                        <li class="nav-item ">
+                                            <a class="nav-link " href="/logout"><span class="fas fa-sign-in-alt"></span>
+                                                Logout</a>
+                                        </li>
+                                    }
 
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">

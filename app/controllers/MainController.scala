@@ -12,6 +12,8 @@ class MainController @Inject()(cc: ControllerComponents) extends AbstractControl
     Redirect(routes.HomeController.index)
   }
 
-
+  def logout = Action {
+    Redirect(routes.HomeController.index).withNewSession
+  }
 
 }

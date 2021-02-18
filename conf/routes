@@ -60,3 +60,5 @@ GET         /bookings               controllers.BookingController.toBookings
 GET         /login                  controllers.LoginController.toLogin
 
 GET         /login/verify                  controllers.LoginController.loginSuccess
+
+GET         /logout                 controllers.MainController.logout
