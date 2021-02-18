@@ -1,6 +1,8 @@
 name := "QACinemas"
  
-version := "1.0" 
+version := "1.0"
+
+fork in run := true
       
 lazy val `qacinemas` = (project in file(".")).enablePlugins(PlayScala)
 
