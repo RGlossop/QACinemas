@@ -20,7 +20,7 @@ GET        /openingtimes           controllers.HomeController.openingTimes
 
 GET        /homeRedirect           controllers.MainController.homeRedirect
 
-GET        /placesToGo         controllers.HomeController.placesToGo
+GET        /placesToGo             controllers.HomeController.placesToGo
 
 GET        /screens                controllers.ScreenController.toScreens
 
@@ -39,3 +39,7 @@ GET        /sendEmail              controllers.ContactController.sendEmail
 GET        /newreleases            controllers.NewReleasesController.newReleases
 
 GET        /movieinfo/:id          controllers.MovieInfoController.movieInfo(id: Long)
+
+GET        /payment                controllers.PaymentController.paymentPage
+
+GET        /paymentcheck           controllers.PaymentController.checkPayment(token)
