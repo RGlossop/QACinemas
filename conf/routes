@@ -64,3 +64,4 @@ GET         /comments               controllers.CommentController.index
 +nocsrf
 POST         /addingcomment          controllers.CommentController.createComment
 
+GET			/search/:searchTerm		controllers.SearchController.search(searchTerm: String)
