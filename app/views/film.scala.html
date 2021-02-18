@@ -8,8 +8,9 @@
                 <br/>
                 <h1 class = "filmname">@film.film_name</h1>
                 <h3 class = "rating">Rating: @film.age_rating</h3>
-                <div class ="card">
-                    <p>Put trailer here</p>
+                <br/>
+                <div class="row">
+                    <iframe width="1280" height="720" src="@film.trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <br/>
                 <section id="more-info">
@@ -27,7 +28,7 @@
                                         <p class="info-descr">@film.opening_date</p>
                                     </div> <div class="col">
                                     <h4 class="runtime">Running time:</h4>
-                                    <p class="length">Add Runtime</p>
+                                    <p class="length">@film.runtime mins</p>
                                 </div>
                                 </div>
                                 <br/>
@@ -38,12 +39,12 @@
                                 </div>
                                 <br/>
                                 <table class="info-tbl">
-                                    <tr class="tbl-row movie-info">
+                                    <tr class="tbl-row movie-info" style ="border-bottom: solid #343a40;">
                                         <td class="tbl-cell-ttl ttl">
                                             Cast:
                                         </td>
                                         <td class="text-center">
-                                            Add Cast
+                                        @film.cast
                                         </td>
                                     </tr>
                                     <tr class="tbl-row movie-info text-center">
@@ -51,7 +52,7 @@
                                             Director:
                                         </td>
                                         <td class="text-center">
-                                            Add Director
+                                        @film.director
                                         </td>
                                     </tr>
                                 </table>
@@ -77,11 +78,11 @@
                 </section>
             </div>
         </div>
-    <script>
-            setRoute = () => {
-                window.location.replace("@routes.ListingsGalleryController.bookingsRedirect(film.film_id)");
-            }
-    </script>
+        <script>
+                setRoute = () => {
+                    window.location.replace("@routes.ListingsGalleryController.bookingsRedirect(film.film_id)");
+                }
+        </script>
 
 
     }
