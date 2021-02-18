@@ -2,6 +2,8 @@ package controllers
 
 import com.google.inject.AbstractModule
 
+import models.DbUsers
+
 import dao.CommentDAO
 import dao.CommentDAO.createComment
 import models.{Comment, Comments, Films,Film}
@@ -22,6 +24,10 @@ class Startup extends AbstractModule {
 
   implicit val DB = Database.forConfig("mySqlDB")
   val filmTable = TableQuery[Films]
+
+  val usersTable = TableQuery[DbUsers]
+  val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists)
+
   val dropSchema = DBIO.seq(filmTable.schema.dropIfExists)
   val initSchema = DBIO.seq(filmTable.schema.createIfNotExists)
 
@@ -35,7 +41,7 @@ class Startup extends AbstractModule {
 
   CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
   CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
+
 
   DB.run(initSchema)
 
