@@ -5,10 +5,16 @@ skinparam linetype ortho
 entity "Films" as films {
 	* **film_id : bigint <<generated>>**
 	--
-	* title : varchar(255)
+	* film_name : varchar(255)
+    * age_rating: char(3)
     * description: varchar(1000)
-    * opening: int
+    * opening: char(10)
     * closing: int
+    * picture: varchar(255)
+    * cast: varchar(255)
+    * director: varchar(255)
+    * runtime: smallint
+    * trailer: varchar(255)
     rating: char(2)
 }
 
@@ -17,10 +23,10 @@ entity "Users" as users {
 	--
 	* first_name : varchar(255)
     * last_name : varchar(255)
-	* dob : int
+	* dob : char(10)
     * username: varchar(255)
     * email: varchar(255)
-    * password: binary(256)
+    * password: binary(512)
 }
 
 entity "Screenings" as screenings {
@@ -48,9 +54,9 @@ entity "Payments" as payments {
     * **payment_id: bigint <<generated>>**
     * **user_id: bigint <<FK>>**
     --
-    * cardholder_name: varchar(510)
+    * cardholder_name: varchar(512)
     * card_number: bigint
-    * expiry_date: int
+    * expiry_date: char(10)
     * cvc: smallint
 }
 
