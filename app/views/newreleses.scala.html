@@ -8,9 +8,10 @@
         <div class="films">
             <div class="row text-center">
             @for(film <- films) {
+
                 <div class="col-lg item">
                     <div class="card">
-                        <a style="text-decoration: none" href="/movieinfo/@film.film_id">
+                        <a style="text-decoration: none" href="@routes.ListingsGalleryController.showFilm(film.film_id)">
                             <img src="@routes.Assets.versioned(film.picture)" class="card-img-top" alt="film-card">
                             <div class="card-body">
                                 <h5 class="card-title">@film.film_name</h5>

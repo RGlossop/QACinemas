@@ -20,7 +20,7 @@ GET        /openingtimes           controllers.HomeController.openingTimes()
 
 GET        /homeRedirect           controllers.MainController.homeRedirect()
 
-GET        /placesToGo         controllers.HomeController.placesToGo
+GET        /placesToGo             controllers.HomeController.placesToGo
 
 GET        /screens                controllers.ScreenController.toScreens
 
@@ -44,4 +44,23 @@ GET        /sendEmail              controllers.ContactController.sendEmail
 GET        /newreleases            controllers.NewReleasesController.newReleases
 
 GET        /movieinfo/:id          controllers.MovieInfoController.movieInfo(id: Long)
+
+GET        /payment                controllers.PaymentController.paymentPage
+
+GET        /paymentcheck           controllers.PaymentController.checkPayment(token)
+
+GET         /listingsgallery        controllers.ListingsGalleryController.toListings
+
+GET         /film/:id               controllers.ListingsGalleryController.showFilm(id : Long)
+
+GET         /bookingsRedirect/:filmid        controllers.ListingsGalleryController.bookingsRedirect(filmid : Long)
+
+GET         /bookings               controllers.BookingController.toBookings
+
+GET			   /sendEmail			         controllers.ContactController.sendEmail
+
+GET         /comments               controllers.CommentController.index
+
++nocsrf
+POST         /addingcomment          controllers.CommentController.createComment
 
