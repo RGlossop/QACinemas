@@ -38,8 +38,10 @@ In our morning meeting we identified as a blocker the need for a user database (
 Kieran decided to start on the user database and log-in page, but we didn't know exactly how long that was likely to take. Lloyd is working on the listings gallery, Ryan is continuing on the places to go page and Lukasz is continuing on the about page.
 
 ### Wednesday
+Lukasz started on the payments page, Ryan started the comments/forum, and the rest of us continued working on our current tasks. By the end of the day Lloyd had finished the listings gallery and Lukasz and Ryan had made progress on their respective tasks. Kieran had run into problems with the user login form, but had got the database created.
 
 ### Thursday
+Piers showed us how to debug a Play application, which allowed Kieran and Ryan to get their tasks working. Lloyd started on the login page. We updated the ERD to reflect the latest changes, in particular that we had decided to switch back to storing dates as strings and then convert them to LocalDate when we needed to use them. We decided that we would start working on testing once all of the basic pages had been created.
 
 ### Friday
 
