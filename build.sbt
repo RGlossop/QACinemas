@@ -1,6 +1,8 @@
 name := "QACinemas"
  
-version := "1.0" 
+version := "1.0"
+
+fork in run := true
       
 lazy val `qacinemas` = (project in file(".")).enablePlugins(PlayScala)
 
@@ -18,9 +20,11 @@ libraryDependencies += "com.github.daddykotex" %% "courier" % "3.0.0-M2a"
 
 
 libraryDependencies ++= Seq(
-  "com.typesafe.slick" %% "slick" % "3.3.3",
-  "org.slf4j" % "slf4j-nop" % "1.6.4",
-  "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
-  "mysql" % "mysql-connector-java" % "8.0.11"
+	"com.typesafe.slick" %% "slick" % "3.3.3",
+	"org.slf4j" % "slf4j-nop" % "1.6.4",
+	"com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
+	"mysql" % "mysql-connector-java" % "8.0.11"
 )
+
+libraryDependencies += "org.bouncycastle" % "bcprov-jdk15on" % "1.68"
 
