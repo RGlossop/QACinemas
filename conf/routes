@@ -35,3 +35,8 @@ GET        /findus                 controllers.HomeController.gettingThere
 GET			   /contact			           controllers.ContactController.contact
 
 GET			   /sendEmail			         controllers.ContactController.sendEmail
+
+GET         /comments               controllers.CommentController.index
+
++nocsrf
+POST         /addingcomment          controllers.CommentController.createComment
