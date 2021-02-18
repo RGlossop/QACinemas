@@ -21,8 +21,8 @@ class Startup extends AbstractModule {
   val initSchema = DBIO.seq(filmTable.schema.createIfNotExists)
 
 
-  Await.ready(DB.run(dropSchema), 1000 millis)
-  Await.ready(DB.run(initSchema), 1000 millis)
+  Await.ready(DB.run(dropSchema), 5000 millis)
+  Await.ready(DB.run(initSchema), 5000 millis)
   println("startup")
 
   var allFilms = ArrayBuffer(

@@ -1,0 +1,37 @@
+@(form : Form[(String,String)])(implicit messages : Messages)
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/login.css")">
+    </head>
+
+@main("Login"){
+    <br />
+    <br />
+    <div id="logincont" class="logincontainer">
+        <div class="container" style="align-content: center">
+            <div id="logincol" class="col">
+                <div class="class-body">
+                    <br />
+                    @helper.form(routes.LoginController.loginSuccess()){
+
+                        @helper.inputText(form("username"), Symbol("_label") -> "Username")
+                        @helper.inputPassword(form("password"), Symbol("_label") -> "Password")
+                        <button type = "submit" class="btn btn-dark" id="login">Login</button>
+                        <button type = "button" onclick="setRoute();" class="btn btn-dark" id="registerRe">Register</button>
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <script>
+            setRoute = () => {
+                window.location.replace("@routes.SignUpController.signUpPage()");
+            }
+    </script>
+
+}

@@ -12,4 +12,6 @@ class MainController @Inject()(cc: ControllerComponents) extends AbstractControl
     Redirect(routes.HomeController.index)
   }
 
+
+
 }
