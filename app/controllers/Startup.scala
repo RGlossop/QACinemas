@@ -1,28 +1,47 @@
 package controllers
 
 import com.google.inject.AbstractModule
-import models.{Film, Films}
+
+import dao.CommentDAO
+import dao.CommentDAO.createComment
+import models.{Comment, Comments, Films,Film}
+
 import slick.jdbc.MySQLProfile.api._
 
+import scala.language.postfixOps
 import javax.inject.Singleton
+
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 
 
-
 @Singleton
 class Startup extends AbstractModule {
 
-  val DB = Database.forConfig("mySqlDB")
+  implicit val DB = Database.forConfig("mySqlDB")
   val filmTable = TableQuery[Films]
   val dropSchema = DBIO.seq(filmTable.schema.dropIfExists)
   val initSchema = DBIO.seq(filmTable.schema.createIfNotExists)
 
+  val commentTable = TableQuery[Comments]
+  val commentsDrop = DBIO.seq(commentTable.schema.dropIfExists)
+  val commentsInit = DBIO.seq(commentTable.schema.createIfNotExists)
+
+
+  Await.ready(DB.run(commentsDrop), 5000 millis)
+  Await.ready(DB.run(commentsInit), 5000 millis)
+
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
+
+  DB.run(initSchema)
 
   Await.ready(DB.run(dropSchema), 1000 millis)
   Await.ready(DB.run(initSchema), 1000 millis)
+
   println("startup")
 
   var allFilms = ArrayBuffer(
