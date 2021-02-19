@@ -1,0 +1,18 @@
+@(searchTerm: String, films: Array[(Long, String)])
+
+@main("Search results") {
+
+<div class="container">
+	@if(films.size == 0){
+		<div>
+			<h4>No results</h4>
+		</div>
+	} else {
+		@for(film <- films) {
+		<div>
+			<h4>@film._2</h4>
+		</div>
+		}
+	}
+</div>
+}
