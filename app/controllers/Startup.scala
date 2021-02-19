@@ -45,8 +45,9 @@ class Startup extends AbstractModule {
 
   DB.run(initSchema)
 
-  Await.ready(DB.run(dropSchema), 1000 millis)
-  Await.ready(DB.run(initSchema), 1000 millis)
+
+  Await.ready(DB.run(dropSchema), 5000 millis)
+  Await.ready(DB.run(initSchema), 5000 millis)
 
   println("startup")
 

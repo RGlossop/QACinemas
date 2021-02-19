@@ -1,15 +1,4 @@
-@*
-* This template is called from the `index` template. This template
-* handles the rendering of the page header and body tags. It takes
-* two arguments, a `String` for the title of the page and an `Html`
-* object to insert into the body of the page.
-*@
-
-
-
-
-
-@(title: String)(content: Html)
+@(title: String)(content: Html)(implicit session: Session)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,26 +38,34 @@
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link"  title="view account" style="cursor: pointer;">My Account</a>
+                                        <a class="nav-link" title="view account" style="cursor: pointer;">My Account</a>
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link" href="/signup"><span class="fas fa-user"></span>
                                             Sign-up</a>
                                     </li>
-                                    <li>/</li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link " href="#"><span class="fas fa-sign-in-alt"></span>
-                                            Login</a>
-                                    </li>
 
+                                    @session.get("username").map { username =>
+                                    <li class="nav-item ">
+                                        <a class="nav-link " href="/logout"><span class="fas fa-sign-in-alt"></span>
+                                            Logout</a>
+                                    </li>
+                                    }.getOrElse {
+                                        <li class="nav-item ">
+                                            <a class="nav-link " href="/login"><span class="fas fa-sign-in-alt"></span>
+                                                Login</a>
+                                        </li>
+                                    }
 
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                                             More
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="@routes.ListingsGalleryController.toListings()">All Films</a></li>
-                                            <li><a class="dropdown-item" href="@routes.ScreenController.toScreens()">Our Screens</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ListingsGalleryController.toListings()">
+                                                All Films</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ScreenController.toScreens()">
+                                                Our Screens</a></li>
                                             <li><a class="dropdown-item" href="#">Places Nearby</a></li>
                                             <li><a class="dropdown-item" href="#">Classification Information</a></li>
                                             <li><a class="dropdown-item" href="#">About Us</a></li>
@@ -104,21 +101,21 @@
             @content
         </div>
         <footer>
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark bottom">
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href= "#">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/contact">Contact Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Find Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark bottom">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href= "#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Find Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
