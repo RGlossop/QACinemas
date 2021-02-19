@@ -1,18 +1,11 @@
 package controllers
 
 import com.google.inject.AbstractModule
-
-import models.DbUsers
-
 import dao.CommentDAO
-import dao.CommentDAO.createComment
-import models.{Comment, Comments, Films,Film}
-
+import models._
 import slick.jdbc.MySQLProfile.api._
 
-import scala.language.postfixOps
 import javax.inject.Singleton
-
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
@@ -23,33 +16,23 @@ import scala.language.postfixOps
 class Startup extends AbstractModule {
 
   implicit val DB = Database.forConfig("mySqlDB")
+
   val filmTable = TableQuery[Films]
-
-  val usersTable = TableQuery[DbUsers]
-  val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists)
-
-  val dropSchema = DBIO.seq(filmTable.schema.dropIfExists)
-  val initSchema = DBIO.seq(filmTable.schema.createIfNotExists)
-
   val commentTable = TableQuery[Comments]
-  val commentsDrop = DBIO.seq(commentTable.schema.dropIfExists)
-  val commentsInit = DBIO.seq(commentTable.schema.createIfNotExists)
+  val usersTable = TableQuery[DbUsers]
 
+  val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists,commentTable.schema.createIfNotExists)
+  val dropSchema = DBIO.seq(filmTable.schema.dropIfExists, usersTable.schema.dropIfExists,commentTable.schema.dropIfExists)
 
-  Await.ready(DB.run(commentsDrop), 5000 millis)
-  Await.ready(DB.run(commentsInit), 5000 millis)
-
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-
-
-  DB.run(initSchema)
 
 
   Await.ready(DB.run(dropSchema), 5000 millis)
   Await.ready(DB.run(initSchema), 5000 millis)
 
   println("startup")
+
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
 
   var allFilms = ArrayBuffer(
 
