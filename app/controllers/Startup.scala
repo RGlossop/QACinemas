@@ -33,10 +33,6 @@ class Startup extends AbstractModule {
   Await.ready(DB.run(commentsDrop), 5000 millis)
   Await.ready(DB.run(commentsInit), 5000 millis)
 
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-
   DB.run(initSchema)
 
   Await.ready(DB.run(dropSchema), 1000 millis)
