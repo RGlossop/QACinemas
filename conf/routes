@@ -34,7 +34,7 @@ GET        /findus                 controllers.HomeController.gettingThere()
 
 GET			/signup					controllers.SignUpController.signUpPage()
 
-+ nocsrf
++nocsrf
 POST		/signupsubmit			controllers.SignUpController.userSignUp()
 
 GET        /contact                controllers.ContactController.contact
@@ -59,6 +59,10 @@ GET         /bookings               controllers.BookingController.toBookings
 
 
 GET         /login                  controllers.LoginController.toLogin
+
+GET         /login1                  controllers.LoginController.toLoginFromDiscussion
+
+GET         /login2                  controllers.LoginController.toLoginFromBooking
 
 GET			   /sendEmail			         controllers.ContactController.sendEmail
 

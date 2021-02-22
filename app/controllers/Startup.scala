@@ -22,7 +22,7 @@ class Startup extends AbstractModule {
   val usersTable = TableQuery[DbUsers]
 
   val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists,commentTable.schema.createIfNotExists)
-  val dropSchema = DBIO.seq(filmTable.schema.dropIfExists, usersTable.schema.dropIfExists,commentTable.schema.dropIfExists)
+  val dropSchema = DBIO.seq(filmTable.schema.dropIfExists,commentTable.schema.dropIfExists)
 
 
 

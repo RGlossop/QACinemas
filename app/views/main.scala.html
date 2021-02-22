@@ -30,27 +30,32 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="/newreleases">New Releases</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Movie Forum</a>
-                                    </li>
+                                    @session.get("userid").map { username =>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
+                                        </li>
+                                    }.getOrElse {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">Movie Forum</a>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
                                 <ul class="navbar-nav">
+                                    @session.get("userid").map { username =>
                                     <li class="nav-item">
                                         <a class="nav-link" title="view account" style="cursor: pointer;">My Account</a>
                                     </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href="/signup"><span class="fas fa-user"></span>
-                                            Sign-up</a>
-                                    </li>
-
-                                    @session.get("username").map { username =>
                                     <li class="nav-item ">
                                         <a class="nav-link " href="/logout"><span class="fas fa-sign-in-alt"></span>
                                             Logout</a>
                                     </li>
                                     }.getOrElse {
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="/signup"><span class="fas fa-user"></span>
+                                                Sign-up</a>
+                                        </li>
                                         <li class="nav-item ">
                                             <a class="nav-link " href="/login"><span class="fas fa-sign-in-alt"></span>
                                                 Login</a>
