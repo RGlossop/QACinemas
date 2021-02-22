@@ -47,13 +47,18 @@ object UserMethods {
 
 	def fromUser(user: User): DbUser = {
 		val dob = user.getDob.toString
-		val digestSHA3 = new SHA3.Digest512()
-		val pwd = digestSHA3.digest(user.getPassword.getBytes())
+		val pwd = encryptPass(user.getPassword)
 		DbUser(user.getId, user.getFName, user.getLName, dob, user.getUsername, user.getEmail, pwd)
 	}
 
 	private def stringToDate(dateString: String) = {
 		val ymd = dateString.split('-')
 		LocalDate.of(Integer.parseInt(ymd(0)), Integer.parseInt(ymd(1)), Integer.parseInt(ymd(2)))
+	}
+
+	def encryptPass(pass: String) : Array[Byte] ={
+		val digestSHA3 = new SHA3.Digest512()
+		val pwd = digestSHA3.digest(pass.getBytes())
+		pwd
 	}
 }
