@@ -23,8 +23,10 @@ class Startup extends AbstractModule {
   val bookingTable = TableQuery[Bookings]
   val screeningsTable = TableQuery[Screenings]
 
+
   val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists,commentTable.schema.createIfNotExists,bookingTable.schema.createIfNotExists,screeningsTable.schema.createIfNotExists)
   val dropSchema = DBIO.seq(filmTable.schema.dropIfExists, usersTable.schema.dropIfExists,commentTable.schema.dropIfExists,bookingTable.schema.dropIfExists,screeningsTable.schema.dropIfExists)
+
 
 
   Await.ready(DB.run(dropSchema), 5000 millis)

@@ -37,7 +37,6 @@ GET         /signup                          controllers.SignUpController.signUp
 +nocsrf
 POST		/signupsubmit			                   controllers.SignUpController.userSignUp()
 
-
 GET         /contact                         controllers.ContactController.contact
 
 GET         /sendEmail                       controllers.ContactController.sendEmail
@@ -59,18 +58,16 @@ GET         /bookingsRedirect/:filmid        controllers.ListingsGalleryControll
 
 GET         /bookings                        controllers.BookingController.toBookings
 
-
-GET         /sendEmail                       controllers.ContactController.sendEmail
-
-
 GET         /login                  controllers.LoginController.toLogin
 
+GET         /login1                  controllers.LoginController.toLoginFromDiscussion
+
+GET         /login2                  controllers.LoginController.toLoginFromBooking
 
 GET         /comments                        controllers.CommentController.index
 
 +nocsrf
 POST        /addingcomment                   controllers.CommentController.createComment
-
 
 GET         /login/verify                  controllers.LoginController.loginSuccess
 
