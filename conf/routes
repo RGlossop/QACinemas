@@ -35,7 +35,8 @@ GET         /findus                          controllers.HomeController.gettingT
 GET         /signup                          controllers.SignUpController.signUpPage()
 
 +nocsrf
-POST        /signupsubmit                    controllers.SignUpController.userSignUp()
+POST		/signupsubmit			                   controllers.SignUpController.userSignUp()
+
 
 GET         /contact                         controllers.ContactController.contact
 

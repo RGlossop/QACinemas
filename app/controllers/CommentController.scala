@@ -42,6 +42,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
           BadRequest(views.html.index())
       } else {
         create(widget)
+        Thread.sleep(2000)
         Redirect("/comments")
       }
     })

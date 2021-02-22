@@ -27,8 +27,6 @@ class Startup extends AbstractModule {
   val dropSchema = DBIO.seq(filmTable.schema.dropIfExists, usersTable.schema.dropIfExists,commentTable.schema.dropIfExists,bookingTable.schema.dropIfExists,screeningsTable.schema.dropIfExists)
 
 
-
-
   Await.ready(DB.run(dropSchema), 5000 millis)
   Await.ready(DB.run(initSchema), 5000 millis)
 
