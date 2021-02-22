@@ -1,0 +1,29 @@
+@(film: Film)(implicit session : Session)
+
+@main(film.film_name) {
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/movieinfo.css")">
+    </head>
+    <div class="container">
+        <div class="films">
+            <div class="row i-center">
+                <div class="col-md item"></div>
+                <div class="col-lg item"><img src="@routes.Assets.versioned(film.picture)" class="card-img-top" alt="film-card"></div>
+                <div class="col-lg item">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@film.film_name</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>Description: </b>@film.description</li>
+                            <li class="list-group-item"><b>Age Rating: </b>@film.age_rating</li>
+                            <li class="list-group-item"><b>Opening Date: </b>@film.opening_date</li>
+                            <li class="list-group-item"><b>Closing Date: </b>@film.closing_date</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md item"></div>
+            </div>
+        </div>
+    </div>
+}

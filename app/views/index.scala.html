@@ -1,20 +1,82 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
+@()(implicit session : Session)
 
 @*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
-
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @welcome(message, style = "scala")
-
+* This template takes a single argument, a String containing a
+* message to display.
+*@
+<head>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/homepage.css")">
+</head>
+@*
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("QACinemas") {
+    <div class="landing">
+        <div class="overlay">
+            <div class="container">
+                <div class="description">
+                    <p class="justify-object-center">
+                        QACinemas endeavour to bring you the latest movies in the best possible quality.
+                    </p>
+                    <br>
+                    <p class="justify-object-center">
+                        Our top of the range screens are supercharged with an aim to provide the best
+                        entertainment experience that recreates one’s luxurious lifestyle at home.
+                    </p>
+                    <br>
+                    <p class="justify-object-center">
+                        Together with an accessory recommendation ranging from interior materials,
+                        fittings, accessories, acoustics, to flooring and wall treatments we have worked to ensure
+                        every detail of our theatres are specified to the highest standards
+                    </p>
+                    <br>
+                    <p class="justify-object-center">
+                        Some other features that we are extremly proud of are;
+                    </p>
+                </div>
+            </div>
+            <section id="boxes">
+                <div class="card-group">
+                    <div class="card col-sm-6" style="width: 18rem;">
+                        <img class="card-img-top" src="@routes.Assets.versioned("images/homepage/socialDistance.jpg")" alt="Social Distacing">
+                        <div class="card-body">
+                            <h5 class="card-title">Social Distancing</h5>
+                            <p class="card-text">We know Covid-19 has made life that little bit worse, but think,
+                                with our new social distancing measures theres less people per room,
+                                meaning less people to talk while your trying to watch the film!!</p>
+                        </div>
+                    </div>
+                    <div class="card col-sm-6" style="width: 18rem;">
+                        <img class="card-img-top" src="@routes.Assets.versioned("images/homepage/avengers.jpg")" alt="Avengers Image">
+                        <div class="card-body">
+                            <h5 class="card-title">The Latest Films</h5>
+                            <p class="card-text">
+                                Come and watch the latest films, high quality audio/video, amazing reclining seats</p>
+                        </div>
+                    </div>
+                    <div class="card col-sm-6" style="width: 18rem;">
+                        <img class="card-img-top" src="@routes.Assets.versioned("images/homepage/food.jpg")" alt="Food Image">
+                        <div class="card-body">
+                            <h5 class="card-title">The Best Food!</h5>
+                            <p class="card-text">Hungry? We got you covered, the price really doesn't reflect the high
+                                quality food we offer and out ice blast machines are working 24/7!!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <section id="moreInfo">
+        <div class="container">
+            <h2>Ready for the new year?</h2>
+            <p>
+                This last year has been a pain for the cinema industry, but we are happy to announce our return, and the best bit is, NEW FILMS!!
+            </p>
+            <p>
+                (Note due to Covid-19, Cinema times and listing may vary)
+            </p>
+        </div>
+    </section>
 }

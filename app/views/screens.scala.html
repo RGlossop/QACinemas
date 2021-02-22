@@ -1,0 +1,97 @@
+@(num: Int)(implicit session : Session)
+
+
+@main("Our Screens") {
+    <br/>
+    <br/>
+    <div class = "dropdowncontainer">
+        <div class="container">
+            <div class="row">
+            @{
+                if(num % 2 == 0) {
+                        <select class="form-select" id="screenselector" onchange="setRoute();">
+                        <option value="1">Standard Screen</option>
+                        <option value="2" selected="selected">Premium Screen</option>
+                        </select>
+
+
+                }
+                else {
+                        <select class="form-select" id="screenselector" onchange="setRoute();">
+                        <option value="1" selected="selected">Standard Screen</option>
+                        <option value="2">Premium Screen</option>
+                        </select>
+
+                }
+            }
+
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class = "resultcontainer">
+        <div class = "container">
+
+        @if(num % 2 == 0) {
+            <h2 class="text-center">Our Premium Screens</h2>
+            <br/>
+            <p class="text-center">
+                Our Premium screens are some of the best places in the world to watch your favourite new release
+                films in, with state-of-the-art projection technology allowing for the highest viewing quality currently available.
+                It's like being on set with our.
+                <br/>
+                Perfect for a red-carpet premiere or QA members film club, watch our social medias for news on whats coming to our premium screens!
+            </p>
+            <br/>
+            <br/>
+
+            <div class = "text-center">
+                <div class = "card" >
+                    <a href="#">
+                        <img class = "card-img-top" src="@routes.Assets.versioned("images/premseats.jpg")" onmouseover="this.src = '@routes.Assets.versioned("images/PREM-PLAN.jpg")'" onmouseout="this.src = '@routes.Assets.versioned("images/premseats.jpg")'" />
+                    </a>
+                    <div class="card-body text-white rgba-black-light p-2 text-start" style = "z-index: 2;  position: absolute;  right: 0;  bottom: 0;  left: 0;">
+                            A look inside our premium screen/The seating layout for a premium screen.
+
+                    </div>
+                </div>
+            </div>
+
+
+        } else {
+            <h2 class="text-center">Our Standard Screens</h2>
+            <br/>
+            <p class ="text-center">
+                Our Standard screens are the mainstay of QA Cinemas, beloved by partners and patrons alike for their
+                crisp image and sound quality, thanks to our amazing audio and visual teams,
+                or the comfy seating.
+
+                Check out our new releases page to see whats on in our screens!!
+            </p>
+            <br/>
+            <br/>
+            <div class = "text-center">
+                <div class = "card" >
+                    <a href="#">
+                        <img class = "card-img-top" src="@routes.Assets.versioned("images/cine.jpg")" onmouseover="this.src = '@routes.Assets.versioned("images/STAN-PLAN.png")'" onmouseout="this.src = '@routes.Assets.versioned("images/cine.jpg")'" />
+                    </a>
+                    <div class="card-body text-white rgba-black-light p-2 text-start" style = "z-index: 2; position: absolute;  right: 0;  bottom: 0;  left: 0;">
+                            A look inside our standard screen/The seating layout for a standard screen.
+
+                    </div>
+                </div>
+            </div>
+
+        }
+        </div>
+    </div>
+    <br/>
+
+
+    <script>
+            setRoute = () => {
+                window.location.replace("@routes.ScreenController.changeNum()");
+            }
+    </script>
+}
