@@ -10,12 +10,6 @@ object CommentDAO {
   lazy val db: Database = Database.forConfig("mySqlDB")
   lazy val table: TableQuery[Comments] = TableQuery[Comments]
 
-  def createHistory = {
-    createComment(new Comment(0, "Dave", "my Message"))
-    createComment(new Comment(0, "Dave", "my Message"))
-    createComment(new Comment(0, "Dave", "my Message"))
-  }
-
   def readAll: Future[Seq[Comment]] = {
     db.run(table.result)
   }

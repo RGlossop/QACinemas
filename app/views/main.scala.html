@@ -30,6 +30,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="/newreleases">New Releases</a>
                                     </li>
+
                                     @session.get("userid").map { username =>
                                         <li class="nav-item">
                                             <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
@@ -39,6 +40,7 @@
                                             <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">Movie Forum</a>
                                         </li>
                                     }
+
                                 </ul>
                             </div>
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
@@ -67,15 +69,15 @@
                                             More
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="@routes.ListingsGalleryController.toListings()">
-                                                All Films</a></li>
-                                            <li><a class="dropdown-item" href="@routes.ScreenController.toScreens()">
-                                                Our Screens</a></li>
-                                            <li><a class="dropdown-item" href="#">Places Nearby</a></li>
-                                            <li><a class="dropdown-item" href="#">Classification Information</a></li>
-                                            <li><a class="dropdown-item" href="#">About Us</a></li>
-                                            <li><a class="dropdown-item" href="/contact">Contact Us</a></li>
-                                            <li><a class="dropdown-item" href="#">Find Us</a></li>
+
+                                            <li><a class="dropdown-item" href="@routes.ListingsGalleryController.toListings()">All Films</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ScreenController.toScreens()">Our Screens</a></li>
+                                            <li><a class="dropdown-item" href="@routes.HomeController.placesToGo()">Places Nearby</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ClassificationController.index()">Classification Information</a></li>
+                                            <li><a class="dropdown-item" href="@routes.AboutUsController.index()">About Us</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ContactController.contact()">Contact Us</a></li>
+                                            <li><a class="dropdown-item" href="@routes.HomeController.gettingThere()">Find Us</a></li>
+
                                         </ul>
                                     </li>
                                 </ul>
@@ -90,7 +92,7 @@
             <br />
             <div class="text-center" id="logo">
                 <div class="container">
-                    <h1 id="mainfooter" class="text-center">
+                    <h1 id="mainheader" class="text-center">
                     @title
                     </h1>
                     <div class="row">
