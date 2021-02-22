@@ -11,8 +11,10 @@ import scala.concurrent.ExecutionContext.Implicits.global
 @Singleton
 class BookingController @Inject()(cc: ControllerComponents, pc: PaymentController) extends AbstractController(cc) with I18nSupport {
 
+
   val screenDAO = new ScreeningDAO
   val bookingDAO = new BookingDAO
+
 
   def toBookings = Action.async { implicit request =>
     screenDAO.readAll.map { list =>

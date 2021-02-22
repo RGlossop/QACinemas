@@ -16,38 +16,26 @@ import scala.language.postfixOps
 class Startup extends AbstractModule {
 
   implicit val DB = Database.forConfig("mySqlDB")
+
   val filmTable = TableQuery[Films]
-  val dropSchema = DBIO.seq(filmTable.schema.dropIfExists)
-  val initSchema = DBIO.seq(filmTable.schema.createIfNotExists)
-
   val commentTable = TableQuery[Comments]
-  val commentsDrop = DBIO.seq(commentTable.schema.dropIfExists)
-  val commentsInit = DBIO.seq(commentTable.schema.createIfNotExists)
-
-  val screeningsTable = TableQuery[Screenings]
-  val screeningsDrop = DBIO.seq(screeningsTable.schema.dropIfExists)
-  val screeningsInit = DBIO.seq(screeningsTable.schema.createIfNotExists)
-
+  val usersTable = TableQuery[DbUsers]
   val bookingTable = TableQuery[Bookings]
-  val bookingDrop = DBIO.seq(bookingTable.schema.dropIfExists)
-  val bookingInit = DBIO.seq(bookingTable.schema.createIfNotExists)
+  val screeningsTable = TableQuery[Screenings]
 
-  Await.ready(DB.run(bookingDrop), 5000 millis)
-  Await.ready(DB.run(bookingInit), 5000 millis)
+  val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists,commentTable.schema.createIfNotExists,bookingTable.schema.createIfNotExists,screeningsTable.schema.createIfNotExists)
+  val dropSchema = DBIO.seq(filmTable.schema.dropIfExists, usersTable.schema.dropIfExists,commentTable.schema.dropIfExists,bookingTable.schema.dropIfExists,screeningsTable.schema.dropIfExists)
 
-  Await.ready(DB.run(commentsDrop), 5000 millis)
-  Await.ready(DB.run(commentsInit), 5000 millis)
 
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
 
-  DB.run(initSchema)
 
-  Await.ready(DB.run(dropSchema), 1000 millis)
-  Await.ready(DB.run(initSchema), 1000 millis)
+  Await.ready(DB.run(dropSchema), 5000 millis)
+  Await.ready(DB.run(initSchema), 5000 millis)
 
   println("startup")
+
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
+  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
 
   var allFilms = ArrayBuffer(
 

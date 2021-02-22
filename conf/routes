@@ -58,10 +58,19 @@ GET         /bookingsRedirect/:filmid        controllers.ListingsGalleryControll
 
 GET         /bookings                        controllers.BookingController.toBookings
 
+
 GET         /sendEmail                       controllers.ContactController.sendEmail
+
+
+GET         /login                  controllers.LoginController.toLogin
+
 
 GET         /comments                        controllers.CommentController.index
 
 +nocsrf
 POST        /addingcomment                   controllers.CommentController.createComment
 
+
+GET         /login/verify                  controllers.LoginController.loginSuccess
+
+GET         /logout                 controllers.MainController.logout

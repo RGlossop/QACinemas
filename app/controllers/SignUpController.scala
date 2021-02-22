@@ -22,7 +22,7 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
 			BadRequest(views.html.signup(formWithErrors))
 		}, { widget =>
 			signUp(widget)
-			sendConfirmationEmail(widget.getFName, widget.getUsername)
+			sendConfirmationEmail(widget.getFName, widget.getUsername, widget.getEmail)
 			Redirect("/")
 		}
 		)
@@ -37,9 +37,9 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
 		}
 	}
 
-	def sendConfirmationEmail(name: String, username: String): Unit = {
+	def sendConfirmationEmail(name: String, username: String, email:String): Unit = {
 		val subject = "Thanks for signing up with QA Cinemas!"
 		val body = s"Hi $name!\n\nThanks for signing up with QA Cinemas. Your username is $username.\n\nRegards\n\nThe QA Cinemas team"
-		EmailUtils.sendEmail(subject, body)
+		EmailUtils.sendEmail(subject, body)(address = email)
 	}
 }

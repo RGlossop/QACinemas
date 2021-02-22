@@ -11,7 +11,7 @@ class ScreenController @Inject()(cc: ControllerComponents) extends AbstractContr
   var num = 0
 
 
-  def toScreens = Action {
+  def toScreens = Action { implicit request =>
     num = 1
     Ok(views.html.screens(num))
   }

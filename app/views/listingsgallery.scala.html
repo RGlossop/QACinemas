@@ -1,4 +1,4 @@
-@(films: Seq[Film])
+@(films: Seq[Film])(implicit session : Session)
 
 <head>
     <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/films.css")">
