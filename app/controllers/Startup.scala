@@ -1,16 +1,11 @@
 package controllers
 
 import com.google.inject.AbstractModule
-
 import dao.CommentDAO
-import dao.CommentDAO.createComment
-import models.{Comment, Comments, Films,Film}
-
+import models._
 import slick.jdbc.MySQLProfile.api._
 
-import scala.language.postfixOps
 import javax.inject.Singleton
-
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
@@ -29,6 +24,16 @@ class Startup extends AbstractModule {
   val commentsDrop = DBIO.seq(commentTable.schema.dropIfExists)
   val commentsInit = DBIO.seq(commentTable.schema.createIfNotExists)
 
+  val screeningsTable = TableQuery[Screenings]
+  val screeningsDrop = DBIO.seq(screeningsTable.schema.dropIfExists)
+  val screeningsInit = DBIO.seq(screeningsTable.schema.createIfNotExists)
+
+  val bookingTable = TableQuery[Bookings]
+  val bookingDrop = DBIO.seq(bookingTable.schema.dropIfExists)
+  val bookingInit = DBIO.seq(bookingTable.schema.createIfNotExists)
+
+  Await.ready(DB.run(bookingDrop), 5000 millis)
+  Await.ready(DB.run(bookingInit), 5000 millis)
 
   Await.ready(DB.run(commentsDrop), 5000 millis)
   Await.ready(DB.run(commentsInit), 5000 millis)
@@ -90,5 +95,23 @@ class Startup extends AbstractModule {
   )
   for (film <- allFilms) {
     DB.run(filmTable += film)
+  }
+
+  Await.ready(DB.run(screeningsDrop), 1000 millis)
+  Await.ready(DB.run(screeningsInit), 1000 millis)
+
+  var allScreenings = ArrayBuffer(
+    Screening(0L, 1L, 1, "2020-04-10", "08:00"), Screening(0L, 1L, 1, "2020-04-11", "12:30"), Screening(0L, 1L, 1, "2020-04-11", "20:00"), Screening(0L, 1L, 1, "2020-04-11", "22:00"),
+    Screening(0L, 2L, 1, "2020-04-14", "08:00"), Screening(0L, 2L, 1, "2020-04-14", "12:30"), Screening(0L, 2L, 1, "2020-04-18", "20:00"), Screening(0L, 2L, 1, "2020-04-17", "22:00"),
+    Screening(0L, 3L, 1, "2020-04-14", "08:00"), Screening(0L, 3L, 1, "2020-04-14", "12:30"), Screening(0L, 3L, 1, "2020-04-14", "20:00"), Screening(0L, 3L, 1, "2020-04-14", "22:00"),
+    Screening(0L, 4L, 1, "2020-04-22", "08:00"), Screening(0L, 4L, 1, "2020-04-22", "12:30"), Screening(0L, 4L, 1, "2020-04-21", "20:00"), Screening(0L, 4L, 1, "2020-04-22", "22:00"),
+    Screening(0L, 5L, 1, "2020-04-10", "08:00"), Screening(0L, 5L, 1, "2020-04-21", "12:30"), Screening(0L, 5L, 1, "2020-04-22", "20:00"), Screening(0L, 5L, 1, "2020-04-23", "22:00"),
+    Screening(0L, 6L, 1, "2020-04-22", "08:00"), Screening(0L, 6L, 1, "2020-04-29", "12:30"), Screening(0L, 6L, 1, "2020-04-26", "20:00"), Screening(0L, 6L, 1, "2020-04-22", "22:00"),
+    Screening(0L, 7L, 1, "2020-04-16", "08:00"), Screening(0L, 7L, 1, "2020-04-03", "12:30"), Screening(0L, 7L, 1, "2020-04-21", "20:00"), Screening(0L, 7L, 1, "2020-04-19", "22:00"),
+    Screening(0L, 8L, 1, "2020-04-18", "08:00"), Screening(0L, 8L, 1, "2020-04-04", "12:30"), Screening(0L, 8L, 1, "2020-04-11", "20:00"), Screening(0L, 8L, 1, "2020-04-05", "22:00"),
+  )
+
+  for (screen <- allScreenings) {
+    DB.run(screeningsTable += screen)
   }
 }

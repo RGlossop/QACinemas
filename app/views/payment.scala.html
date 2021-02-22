@@ -1,9 +1,51 @@
-@(url: String)
+@(url: String, booking: Booking)(implicit flash: Flash)
 
 @main("Payment") {
-
+@*    //userid*@
     <div class="container">
-        <h1>Testing</h1>
-        <a class="btn btn-success" href="@url" target="_blank"></a>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-lg-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Adult Tickets</th>
+                            <td>@booking.adult_tickets</td>
+                            <td>£12.50 Per Ticket</td>
+                            <td>£@(booking.adult_tickets*12.50)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Child Tickets</th>
+                            <td>@booking.children_tickets</td>
+                            <td>£8.50 Per Ticket</td>
+                            <td>£@(booking.children_tickets*8.50)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Concession Tickets</th>
+                            <td>@booking.concession_tickets</td>
+                            <td>£5.00 Per Ticket</td>
+                            <td>£@(booking.concession_tickets*5.0)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total</th>
+                            <td>@(booking.adult_tickets+booking.children_tickets+booking.concession_tickets)</td>
+                            <td></td>
+                            <td>£@{(booking.adult_tickets*12.50)+(booking.children_tickets*8.50)+(booking.concession_tickets*5)}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="@url">Proceed To PayPal</a>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <br>
     </div>
 }
