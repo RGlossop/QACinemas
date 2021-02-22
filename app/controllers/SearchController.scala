@@ -25,6 +25,12 @@ class SearchController @Inject()(cc: ControllerComponents) extends AbstractContr
 		Ok(views.html.searchresults(searchTerm, results))
 	}
 
+	// Gets the search term from the GET URI
+	def getSearchTermFromURI(getString: String): String = {
+		val searchTerm = getString.drop(12).dropRight(14)
+		searchTerm
+	}
+
 	// Reads all films from database
 	def getFilms: Seq[Film] = {
 		var futureResult = Seq.empty[Film]
@@ -94,13 +100,15 @@ class SearchController @Inject()(cc: ControllerComponents) extends AbstractContr
 	def orderByMatches(resultMap: ArrayBuffer[(Long, String, Int, Int)]): Array[(Long, String)] = {
 		val result = ArrayBuffer.empty[(Long, String)]
 		val resultMapNoZero = resultMap.filter(entry => entry._3 != 0)
-		var i = resultMapNoZero.head._3
-		while(i > 0){
-			val resultForGivenMatches = resultMapNoZero.filter(entry => entry._3 == i).sortBy(entry => entry._4)
-			for(entry <- resultForGivenMatches){
-				result += ((entry._1, entry._2))
+		if(resultMapNoZero.size != 0) {
+			var i = resultMapNoZero.head._3
+			while (i > 0) {
+				val resultForGivenMatches = resultMapNoZero.filter(entry => entry._3 == i).sortBy(entry => entry._4)
+				for (entry <- resultForGivenMatches) {
+					result += ((entry._1, entry._2))
+				}
+				i -= 1
 			}
-			i -= 1
 		}
 		result.toArray.reverse
 	}
