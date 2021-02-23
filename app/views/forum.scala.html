@@ -18,7 +18,9 @@
             <tbody>
             @for(film <- filmList) {
                 <tr>
-                    <th scope="row"><a href="/forum/@film.film_id" style="text-decoration: none; color: teal">@film.film_name</a></th>
+                    <th scope="row"><a href="/forum/@film.film_id" style="text-decoration: none;
+                        color: teal">@film.film_name</a>
+                    </th>
                     <td>@film.age_rating</td>
                     <td>@film.opening_date</td>
                     <td>@film.closing_date</td>

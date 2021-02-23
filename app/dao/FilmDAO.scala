@@ -14,7 +14,7 @@ object FilmDAO {
     DB.run(filmTable.result)
   }
 
-  def readFilm(id:Long): Future[Option[Film]] = {
+  def readFilm(id: Long): Future[Option[Film]] = {
     DB.run(filmTable.filter(_.film_id === id).result.headOption)
   }
 }
