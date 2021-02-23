@@ -1,13 +1,11 @@
 package dao
 
-import com.sun.tools.javac.jvm.Items
 import models.{DbUser, DbUsers, User, UserMethods}
-
-import scala.concurrent.Future
-import slick.jdbc.MySQLProfile.backend.Database
 import slick.jdbc.MySQLProfile.api._
+import slick.jdbc.MySQLProfile.backend.Database
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 object UserDAO {
 
@@ -23,4 +21,13 @@ object UserDAO {
 	def deleteUser(user_id: Long): Future[Int] = {
 		db.run(table.filter(_.user_id === user_id).delete)
 	}
+
+	def readAllUsers() : Future[Seq[DbUser]] = {
+		db.run(table.result)
+	}
+
+	def readUserByUsername(Username : String) :Future[Option[DbUser]] ={
+		db.run(table.filter(_.username === Username).result.headOption)
+	}
+
 }

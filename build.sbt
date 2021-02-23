@@ -18,7 +18,6 @@ unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/
 
 libraryDependencies += "com.github.daddykotex" %% "courier" % "3.0.0-M2a"
 
-
 libraryDependencies ++= Seq(
 	"com.typesafe.slick" %% "slick" % "3.3.3",
 	"org.slf4j" % "slf4j-nop" % "1.6.4",
@@ -27,4 +26,9 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.bouncycastle" % "bcprov-jdk15on" % "1.68"
+
+
+libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "3.141.59"
+libraryDependencies += "org.scalatestplus" %% "selenium-3-141" % "3.2.2.0" % "test"
+libraryDependencies += "com.google.guava" % "guava" % "25.0-jre"
 

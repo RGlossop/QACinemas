@@ -3,7 +3,7 @@
 @import akka.http.scaladsl.model.StatusCodes.InternalServerError
 @import models.{Comment, CommentForm}
 @import scala.collection.mutable.ArrayBuffer
-@(commentList: Seq[Comment], form: Form[Comment])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@(commentList: Seq[Comment], form: Form[Comment])(implicit request: RequestHeader, messagesProvider: MessagesProvider,session:Session)
 
 <head>
     <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/comments.css")">
