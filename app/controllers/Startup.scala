@@ -81,12 +81,13 @@ class Startup extends AbstractModule {
       "Carrie Fisher, Mark Hamill, Adam Driver, Daisy Ridley, John Boyega, Oscar Isaac, Anthony Daniels, Naomi Ackie, Domhnall Gleeson, Richard E. Grant, " +
         "Lupita Nyong'o, Keri Russell, Joonas Suotamo, Kelly Marie Tran, Ian McDiarmid, Billy Dee Williams","J.J. Abrams",142,"https://www.youtube.com/embed/8Qn_spdM5Zg")
   )
+
+
+
   for (film <- allFilms) {
-    DB.run(filmTable += film)
+    Await.ready(DB.run(filmTable += film),200 millis)
   }
 
-  Await.ready(DB.run(screeningsDrop), 1000 millis)
-  Await.ready(DB.run(screeningsInit), 1000 millis)
 
   var allScreenings = ArrayBuffer(
     Screening(0L, 1L, 1, "2020-04-10", "08:00"), Screening(0L, 1L, 1, "2020-04-11", "12:30"), Screening(0L, 1L, 1, "2020-04-11", "20:00"), Screening(0L, 1L, 1, "2020-04-11", "22:00"),
@@ -100,6 +101,6 @@ class Startup extends AbstractModule {
   )
 
   for (screen <- allScreenings) {
-    DB.run(screeningsTable += screen)
+    Await.ready(DB.run(screeningsTable += screen), 200 millis)
   }
 }
