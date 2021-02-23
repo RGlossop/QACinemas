@@ -8,7 +8,7 @@ import javax.inject.Inject
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class MovieInfoController @Inject()(cc: ControllerComponents) extends AbstractController(cc){
+class MovieInfoController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   lazy val db = Database.forConfig("mySqlDB")
   lazy val table = TableQuery[Films]

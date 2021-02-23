@@ -1,22 +1,22 @@
 @(searchTerm: String, films: Array[(Long, String)])(implicit session: Session)
 
-@main("Search results") {
+    @main("Search results") {
 
-<div class="container">
-	@if(films.size == 0){
-		<div>
-			<h4>No results</h4>
-		</div>
-	} else {
-		@for(film <- films) {
-		<div id="searchresults">
-			<div class="row">
-				<a href="@routes.ListingsGalleryController.showFilm(film._1)">
-					<h3>@film._2</h3>
-				</a>
-			</div>
-		</div>
-		}
-	}
-</div>
-}
+        <div class="container">
+        @if(films.size == 0) {
+            <div>
+                <h4>No results</h4>
+            </div>
+        } else {
+            @for(film <- films) {
+                <div id="searchresults">
+                    <div class="row">
+                        <a href="@routes.ListingsGalleryController.showFilm(film._1)">
+                            <h3>@film._2</h3>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        </div>
+    }

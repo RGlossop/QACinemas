@@ -14,7 +14,7 @@ import scala.sys.process._
 @Singleton
 class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
-  val bookingDAO = new BookingDAO
+  val bookingDAO = BookingDAO
 
   def getAccessToken(): String = {
     val res: String = "curl -v https://api-m.sandbox.paypal.com/v1/oauth2/token -H \"Accept: application/json\" -H \"Accept-Language: en_US\" -u \"#:#\" -d \"grant_type=client_credentials\"" !!
