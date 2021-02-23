@@ -5,7 +5,7 @@ import slick.jdbc.MySQLProfile.api._
 
 import scala.concurrent.Future
 
-class FilmDAO() {
+object FilmDAO {
 
   lazy val DB = Database.forConfig("mySqlDB")
   lazy val filmTable = TableQuery[Films]
@@ -17,5 +17,4 @@ class FilmDAO() {
   def readFilm(id:Long): Future[Option[Film]] = {
     DB.run(filmTable.filter(_.film_id === id).result.headOption)
   }
-
 }

@@ -13,7 +13,7 @@ import scala.util.{Failure, Success}
 @Singleton
 class CommentController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
-  val filmDAO = new FilmDAO()
+  val filmDAO = FilmDAO
 
   def index = Action.async { implicit request =>
     filmDAO.readAll().map { list =>

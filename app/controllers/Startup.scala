@@ -22,9 +22,9 @@ class Startup extends AbstractModule {
   val bookingTable = TableQuery[Bookings]
   val screeningsTable = TableQuery[Screenings]
 
+
   val initSchema = DBIO.seq(filmTable.schema.createIfNotExists, usersTable.schema.createIfNotExists,commentTable.schema.createIfNotExists,bookingTable.schema.createIfNotExists,screeningsTable.schema.createIfNotExists)
   val dropSchema = DBIO.seq(filmTable.schema.dropIfExists, usersTable.schema.dropIfExists,commentTable.schema.dropIfExists,bookingTable.schema.dropIfExists,screeningsTable.schema.dropIfExists)
-
 
 
 
@@ -77,8 +77,11 @@ class Startup extends AbstractModule {
       "Carrie Fisher, Mark Hamill, Adam Driver, Daisy Ridley, John Boyega, Oscar Isaac, Anthony Daniels, Naomi Ackie, Domhnall Gleeson, Richard E. Grant, " +
         "Lupita Nyong'o, Keri Russell, Joonas Suotamo, Kelly Marie Tran, Ian McDiarmid, Billy Dee Williams","J.J. Abrams",142,"https://www.youtube.com/embed/8Qn_spdM5Zg")
   )
+
+
+
   for (film <- allFilms) {
-    DB.run(filmTable += film)
+    Await.ready(DB.run(filmTable += film),200 millis)
   }
 
   var allScreenings = ArrayBuffer(
@@ -93,6 +96,6 @@ class Startup extends AbstractModule {
   )
 
   for (screen <- allScreenings) {
-    DB.run(screeningsTable += screen)
+    Await.ready(DB.run(screeningsTable += screen), 200 millis)
   }
 }

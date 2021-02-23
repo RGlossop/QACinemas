@@ -58,21 +58,30 @@ GET         /bookingsRedirect/:filmid        controllers.ListingsGalleryControll
 
 GET         /bookings                        controllers.BookingController.toBookings
 
-
 GET         /sendEmail                       controllers.ContactController.sendEmail
 
 
 GET         /login                           controllers.LoginController.toLogin
 
+GET         /login                           controllers.LoginController.toLogin
 
-GET         /forum                        controllers.CommentController.index
+GET         /login1                          controllers.LoginController.toLoginFromDiscussion
 
-GET         /forum/:filmid                controllers.CommentController.thread(filmid: Int)
+GET         /login2                          controllers.LoginController.toLoginFromBooking
+
+GET         /forum                           controllers.CommentController.index
+
+GET         /forum/:filmid                   controllers.CommentController.thread(filmid: Int)
 
 +nocsrf
-POST        /addingcomment/:filmid                   controllers.CommentController.createComment(filmid: Int)
-
+POST        /addingcomment/:filmid           controllers.CommentController.createComment(filmid: Int)
 
 GET         /login/verify                    controllers.LoginController.loginSuccess
+
+GET         /logout                          controllers.MainController.logout
+
+GET         /login/verify                    controllers.LoginController.loginSuccess
+
+GET         /search/                         controllers.SearchController.search(text)
 
 GET         /logout                          controllers.MainController.logout
