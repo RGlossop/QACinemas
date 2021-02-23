@@ -5,7 +5,7 @@ import slick.jdbc.MySQLProfile.api._
 
 import scala.concurrent.Future
 
-object FilmDAO {
+class FilmDAO {
 
   lazy val DB = Database.forConfig("mySqlDB")
   lazy val filmTable = TableQuery[Films]

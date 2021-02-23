@@ -13,6 +13,8 @@ import scala.util.{Failure, Success}
 @Singleton
 class SignUpController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
+  val userDAO = new UserDAO
+
   def signUpPage() = Action { implicit request =>
     Ok(views.html.signup(SignUpForm.signUpForm))
   }
@@ -29,7 +31,7 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
   }
 
   def signUp(user: User): Unit = {
-    UserDAO.createUser(user) onComplete {
+    userDAO.createUser(user) onComplete {
       case Success(value) =>
         println(value)
       case Failure(exception) =>
