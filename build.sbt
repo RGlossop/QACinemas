@@ -32,7 +32,7 @@ libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "3.141.59"
 libraryDependencies += "org.scalatestplus" %% "selenium-3-141" % "3.2.2.0" % "test"
 libraryDependencies += "com.google.guava" % "guava" % "25.0-jre"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.2" % "test"
+
 libraryDependencies += "org.scalatest" %% "scalatest-flatspec" % "3.2.2" % "test"
 libraryDependencies += "org.scalatestplus" %% "mockito-3-4" % "3.2.2.0" % "test"
 
