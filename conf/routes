@@ -71,4 +71,8 @@ POST        /addingcomment                   controllers.CommentController.creat
 
 GET         /login/verify                  controllers.LoginController.loginSuccess
 
+
+GET			/search/		controllers.SearchController.search(text)
+
 GET         /logout                 controllers.MainController.logout
+
