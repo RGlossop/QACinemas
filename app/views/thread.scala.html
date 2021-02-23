@@ -1,0 +1,31 @@
+@(comments: Seq[Comment], form: Form[Comment], filmid: Int)(implicit messagesProvider: MessagesProvider, session: Session)
+
+@main("Thread") {
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(comment <- comments) {
+                <tr>
+                    <th scope="row">@comment.username</th>
+                    <td>@comment.comment_body</td>
+                    <td>@{
+                        "★" * comment.rating
+                    }</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        @helper.form(routes.CommentController.createComment(filmid)) {
+            @helper.select(form("rating"), (1 to 5).map(f => s"$f" -> "★" * f), Symbol("_label") -> "Rating", Symbol("_showConstraints") -> false)
+            @helper.textarea(form("comment_body"), Symbol("_label") -> "Comment", Symbol("_showConstraints") -> false)
+            <button class="btn btn-primary" type="submit">Send</button>
+        }
+    </div>
+}

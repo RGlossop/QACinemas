@@ -1,12 +1,12 @@
 package dao
 
 import models.{Screening, Screenings}
-import slick.jdbc.MySQLProfile.backend.Database
 import slick.jdbc.MySQLProfile.api._
+import slick.jdbc.MySQLProfile.backend.Database
 
 import scala.concurrent.Future
 
-class ScreeningDAO {
+object ScreeningDAO {
 
   lazy val db = Database.forConfig("mySqlDB")
   lazy val table = TableQuery[Screenings]

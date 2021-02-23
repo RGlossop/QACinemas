@@ -18,19 +18,21 @@ object LoginForm {
       "username" -> nonEmptyText,
       "password" -> nonEmptyText
     ) verifying("Invalid username or password", result => result match {
-      case (username,password) => check(LoginForm(username,password))
+      case (username, password) => check(LoginForm(username, password))
     }
-  )
+    )
   )
 
 
-  def check(log : LoginForm): Boolean = {
+  def check(log: LoginForm): Boolean = {
     val usernameCheck = UserDAO.readUserByUsername(log.username)
-    val dummy = DbUser(0,"f","g","h","j","k",Array(0))
+    val dummy = DbUser(0, "f", "g", "h", "j", "k", Array(0))
     usernameCheck onComplete {
-      case Success(value) => if (util.Arrays.equals(value.getOrElse(dummy).getPassword, UserMethods.encryptPass(log.password))){
+      case Success(value) => if (util.Arrays.equals(value.getOrElse(dummy).getPassword, UserMethods.encryptPass(log.password))) {
         true
-      }else{false}
+      } else {
+        false
+      }
 
       case Failure(error) => error.printStackTrace
         false
@@ -38,7 +40,6 @@ object LoginForm {
     false
 
   }
-
 
 
 }
