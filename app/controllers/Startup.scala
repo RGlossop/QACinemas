@@ -37,8 +37,6 @@ class Startup extends AbstractModule {
   CommentDAO.createComment(Comment(0,1,5, "Sam", "my Message"))
   CommentDAO.createComment(Comment(0,1,1, "Sam", "my Message"))
 
-  DB.run(usersTable += DbUser(0L, "Sam", "Smith", "10-10-2020", "SammyBoi20", "Sam@sam.com", "test".getBytes))
-
   var allFilms = Seq(
 
     Film(1,"The Dark Knight","12","After Gordon, Dent and Batman begin an assault on Gotham's organised crime," +
