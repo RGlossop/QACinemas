@@ -11,38 +11,37 @@
     <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/main.css")">
 	<title>@title</title>
 </head>
-<body style="background-color: lightgray;">
-        <div id="page">
-            <div class="header-container">
-                <header id="header">
-                    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                        <div class="container">
-                            <a class="navbar-brand" href="#">
-                                <img class="logo img-responsive" src="#"
-                                alt="Company Logo. &copy;QA all rights reserved">
-                            </a>
-                            <div class="collapse navbar-collapse" id="navbarNavLeft">
-                                <ul class="navbar-nav justify-content-start">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href= "/homeRedirect">Home<span
-                                        class="sr-only"></span> </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/newreleases">New Releases</a>
-                                    </li>
+<body>
 
-                                    @session.get("userid").map { username =>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
-                                    </li>
-                                    }.getOrElse {
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">
-                                                Movie Forum</a>
-                                        </li>
-                                    }
-                                  
-                                </ul>
+<div id="page">
+	<div class="header-container">
+		<header id="header">
+			<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+				<div class="container">
+          <a class="navbar-brand" href="/homeRedirect">
+              <img class="logo img-responsive" src="@routes.Assets.versioned("images/logo_narrow.png")"
+			  style="height:50px;" alt="Company Logo. &copy;QA all rights reserved">
+          </a>
+          <div class="collapse navbar-collapse" id="navbarNavLeft">
+              <ul class="navbar-nav justify-content-start">
+                  <li class="nav-item active">
+                      <a class="nav-link" href= "/homeRedirect">Home<span
+                      class="sr-only"></span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/newreleases">New Releases</a>
+                  </li>
+
+                  @session.get("userid").map { username =>
+                      <li class="nav-item">
+                          <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
+                      </li>
+                  }.getOrElse {
+                      <li class="nav-item">
+                          <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">Movie Forum</a>
+                      </li>
+                  }    
+                       </ul>
                             </div>
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
                                 <ul class="navbar-nav">
@@ -86,24 +85,25 @@
                         </div>
                     </nav>
 
-                </header>
-            </div>
-            <br />
-            <br />
-            <div class="text-center" id="logo">
-                <div class="container">
-                    <h1 id="mainheader" class="text-center">
-                    @title
-                    </h1>
-                    <div class="row">
-                        <div class="col-xl" id="logo">
-                            <img class="logo img-responsive" src="#" alt="Another company logo &copy;QA all rights reserved">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </header>
+    </div>
+    <br />
+    <br />
+    <div class="text-center" id="logo">
+        <div class="container">
+			<div class="row">
+				<div class="col-xl" id="logo">
+					<img class="logo img-responsive" src="@routes.Assets.versioned("images/logo_wide.png")"
+					style="height:100px;" alt="Another company logo &copy;QA all rights reserved">
 
+				</div>
+			</div>
+            <h1 id="mainheader" class="text-center">
+            @title
+            </h1>
+        </div>
+    </div>
             @content
         </div>
         <footer>
