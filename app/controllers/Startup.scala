@@ -1,7 +1,6 @@
 package controllers
 
 import com.google.inject.AbstractModule
-import dao.CommentDAO
 import models._
 import slick.jdbc.MySQLProfile.api._
 
@@ -34,10 +33,7 @@ class Startup extends AbstractModule {
 
   println("startup")
 
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-  CommentDAO.createComment(new Comment(0, "Dave", "my Message"))
-
-  var allFilms = ArrayBuffer(
+  var allFilms = Seq(
 
     Film(1L,"The Dark Knight","12","After Gordon, Dent and Batman begin an assault on Gotham's organised crime," +
       " the mobs hire the Joker, a psychopathic criminal mastermind who offers to kill Batman and bring the city to its knees.",
@@ -85,9 +81,6 @@ class Startup extends AbstractModule {
     DB.run(filmTable += film)
   }
 
-  Await.ready(DB.run(screeningsDrop), 1000 millis)
-  Await.ready(DB.run(screeningsInit), 1000 millis)
-
   var allScreenings = ArrayBuffer(
     Screening(0L, 1L, 1, "2020-04-10", "08:00"), Screening(0L, 1L, 1, "2020-04-11", "12:30"), Screening(0L, 1L, 1, "2020-04-11", "20:00"), Screening(0L, 1L, 1, "2020-04-11", "22:00"),
     Screening(0L, 2L, 1, "2020-04-14", "08:00"), Screening(0L, 2L, 1, "2020-04-14", "12:30"), Screening(0L, 2L, 1, "2020-04-18", "20:00"), Screening(0L, 2L, 1, "2020-04-17", "22:00"),
@@ -96,7 +89,7 @@ class Startup extends AbstractModule {
     Screening(0L, 5L, 1, "2020-04-10", "08:00"), Screening(0L, 5L, 1, "2020-04-21", "12:30"), Screening(0L, 5L, 1, "2020-04-22", "20:00"), Screening(0L, 5L, 1, "2020-04-23", "22:00"),
     Screening(0L, 6L, 1, "2020-04-22", "08:00"), Screening(0L, 6L, 1, "2020-04-29", "12:30"), Screening(0L, 6L, 1, "2020-04-26", "20:00"), Screening(0L, 6L, 1, "2020-04-22", "22:00"),
     Screening(0L, 7L, 1, "2020-04-16", "08:00"), Screening(0L, 7L, 1, "2020-04-03", "12:30"), Screening(0L, 7L, 1, "2020-04-21", "20:00"), Screening(0L, 7L, 1, "2020-04-19", "22:00"),
-    Screening(0L, 8L, 1, "2020-04-18", "08:00"), Screening(0L, 8L, 1, "2020-04-04", "12:30"), Screening(0L, 8L, 1, "2020-04-11", "20:00"), Screening(0L, 8L, 1, "2020-04-05", "22:00"),
+    Screening(0L, 8L, 1, "2020-04-18", "08:00"), Screening(0L, 8L, 1, "2020-04-04", "12:30"), Screening(0L, 8L, 1, "2020-04-11", "20:00"), Screening(0L, 8L, 1, "2020-04-05", "22:0"),
   )
 
   for (screen <- allScreenings) {

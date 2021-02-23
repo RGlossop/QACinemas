@@ -45,10 +45,10 @@ GET         /newreleases                     controllers.NewReleasesController.n
 
 GET         /movieinfo/:id                   controllers.MovieInfoController.movieInfo(id: Long)
 
-GET         /bookingstatus                    controllers.PaymentController.checkPayment(token)
+GET         /bookingstatus                   controllers.PaymentController.checkPayment(token)
 
 +nocsrf
-POST         /payment                         controllers.BookingController.toPayment
+POST        /payment                         controllers.BookingController.toPayment
 
 GET         /listingsgallery                 controllers.ListingsGalleryController.toListings
 
@@ -62,15 +62,17 @@ GET         /bookings                        controllers.BookingController.toBoo
 GET         /sendEmail                       controllers.ContactController.sendEmail
 
 
-GET         /login                  controllers.LoginController.toLogin
+GET         /login                           controllers.LoginController.toLogin
 
 
-GET         /comments                        controllers.CommentController.index
+GET         /forum                        controllers.CommentController.index
+
+GET         /forum/:filmid                controllers.CommentController.thread(filmid: Int)
 
 +nocsrf
-POST        /addingcomment                   controllers.CommentController.createComment
+POST        /addingcomment/:filmid                   controllers.CommentController.createComment(filmid: Int)
 
 
-GET         /login/verify                  controllers.LoginController.loginSuccess
+GET         /login/verify                    controllers.LoginController.loginSuccess
 
-GET         /logout                 controllers.MainController.logout
+GET         /logout                          controllers.MainController.logout
