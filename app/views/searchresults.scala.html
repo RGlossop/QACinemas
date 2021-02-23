@@ -1,4 +1,4 @@
-@(searchTerm: String, films: Array[(Long, String)])
+@(searchTerm: String, films: Array[(Long, String)])(implicit request: RequestHeader, messagesProvider: MessagesProvider, session:Session)
 
 @main("Search results") {
 

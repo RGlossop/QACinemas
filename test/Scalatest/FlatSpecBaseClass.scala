@@ -6,5 +6,5 @@ import org.scalatest.{BeforeAndAfter, Inside, Inspectors, OptionValues}
 
 import org.scalatestplus.mockito.MockitoSugar
 
-abstract class FlatSpecBaseClass  extends AnyFlatSpec with Matchers
+abstract class FlatSpecBaseClass extends AnyFlatSpec with Matchers
   with OptionValues with Inside with Inspectors with MockitoSugar with BeforeAndAfter
