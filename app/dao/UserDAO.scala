@@ -30,4 +30,8 @@ object UserDAO {
 		db.run(table.filter(_.username === username ).result.headOption)
 	}
 
+	def readUserById(id : Long) :Future[Option[DbUser]] ={
+		db.run(table.filter(_.user_id === id ).result.headOption)
+	}
+
 }
