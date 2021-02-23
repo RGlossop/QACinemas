@@ -6,7 +6,7 @@ import play.api.mvc.{AbstractController, ControllerComponents}
 import javax.inject.{Inject, Singleton}
 
 @Singleton
-class ScreenController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport{
+class ScreenController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
   var num = 0
 

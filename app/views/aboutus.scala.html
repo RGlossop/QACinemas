@@ -1,77 +1,77 @@
-@()(implicit session : Session)
+@()(implicit session: Session)
 
-@main("About Us") {
-    <head>
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/aboutus.css")">
-    </head>
-    <div class="team">
-        <div class="container">
-            <h1 class="text-center aboutus-titles"><u>QA Cinema Team</u></h1>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12 item">
-                    <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
-                    <div class="des">
-                        Lukasz
-                    </div>
-                    <span class="text-muted">Scala Developer</span>
-                    </br>
-                    <span class="text">
-                        I am a Junior Scala Developer. I enjoy programming in many languages and traveling around the world!</span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 item">
-                    <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
-                    <div class="des2">
-                        Ryan
-                    </div>
-                    <span class="text-muted">Scala Developer</span>
-                    </br>
-                    <span class="text">
-                        I'm Ryan and I enjoy practicing unreal engine and playing online games in my spare time.</span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 item">
-                    <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
-                    <div class="des">
-                        Lloyd
-                    </div>
-                    <span class="text-muted">Product Owner | Scala Developer</span>
-                    </br>
-                    <span class="text">
-                        I am a junior Scala developer and have been for the last two weeks, I look forward to using the knowledge I gain from creating this website to power my future development.</span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 item">
-                    <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
-                    <div class="des2">
-                        Kieran
-                    </div>
-                    <span class="text-muted">Scrum Master | Scala Developer</span>
-                    </br>
-                    <span class="text">
-                        I am a trainee consultant at QA Academy, and I acted as scrum master for this project as well as contributing to development.</span>
-                </div>
-            </div>
-            <br>
+    @main("About Us") {
+        <head>
+            <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/aboutus.css")">
+        </head>
+        <div class="team">
             <div class="container">
-                <a class="text-center" id="contact-title" style="text-decoration: none" href="/contact">
-                    <h4 class="text-center" id="contact-title"><u>Contact Us</u></h4>
-                </a>
-            </div>
-            <h1 class="text-center scrum-title"><u>SCRUM Information</u></h1>
-            <div class="row text-center">
-                <div class="col-lg">
-                    <h4 class="scrum-subtitle"><u>What is Scrum?</u></h4>
-                    <p>Scrum is a framework that helps teams work together! Scrum is like a rugby team, this is where the name scrum comes from. Scrum encourages teams to learn through experiences, self-organize while working on problems and reflecting on the wins and losses.</p>
-                    <p>While Scrum is used frequently by a lot of software development teams, its principles and lessons can be applied to all kinds of teamwork. This is one of the reasons Scrum is so popular around the industry. Scrum describes a set of meetings, tools and roles that work in conjunction with each other, allowing teams to structure and manage the work. </p>
-                    <p><a href="https://www.scrum.org/" style="text-decoration: none">Official Website</a></p>
+                <h1 class="text-center aboutus-titles"><u>QA Cinema Team</u></h1>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12 item">
+                        <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
+                        <div class="des">
+                            Lukasz
+                        </div>
+                        <span class="text-muted">Scala Developer</span>
+                        </br>
+                        <span class="text">
+                            I am a Junior Scala Developer. I enjoy programming in many languages and traveling around the world!</span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 item">
+                        <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
+                        <div class="des2">
+                            Ryan
+                        </div>
+                        <span class="text-muted">Scala Developer</span>
+                        </br>
+                        <span class="text">
+                            I'm Ryan and I enjoy practicing unreal engine and playing online games in my spare time.</span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 item">
+                        <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
+                        <div class="des">
+                            Lloyd
+                        </div>
+                        <span class="text-muted">Product Owner | Scala Developer</span>
+                        </br>
+                        <span class="text">
+                            I am a junior Scala developer and have been for the last two weeks, I look forward to using the knowledge I gain from creating this website to power my future development.</span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 item">
+                        <img src="@routes.Assets.versioned("images/aboutus/person-placeholder.png")" class="img-fluid" alt="team">
+                        <div class="des2">
+                            Kieran
+                        </div>
+                        <span class="text-muted">Scrum Master | Scala Developer</span>
+                        </br>
+                        <span class="text">
+                            I am a trainee consultant at QA Academy, and I acted as scrum master for this project as well as contributing to development.</span>
+                    </div>
                 </div>
-                <div class="col-lg">
-                    <h4 class="scrum-subtitle"><u>How we used Scrum</u></h4>
-                    <p>The team has used Scrum methodology to create the QA Cinema Application. The project started with reading the specification and breaking it down into tasks, which were then placed in the backlog on our Jira Board. After all of the items were in the backlog we used Plan-It Poker to plan out our sprint and assign tasks to each team member.</p>
-                    <p>Following the Scrum Methodology and Agile, we had daily stand-ups, where we would speak about what we have done, what we were going to do and if we had any blockers, this allowed us to identify blockers earlier on, and ensured a cohesive teamwork throughout the project. </p>
-                    <p>At the end of each Sprint, we had a review and retrospect, to look at things we have done, how well we have completed each item, and what we could have improved on. </p>
-                    <img src="@routes.Assets.versioned("images/aboutus/scrum.png")" class="img-fluid">
+                <br>
+                <div class="container">
+                    <a class="text-center" id="contact-title" style="text-decoration: none" href="/contact">
+                        <h4 class="text-center" id="contact-title"><u>Contact Us</u></h4>
+                    </a>
                 </div>
+                <h1 class="text-center scrum-title"><u>SCRUM Information</u></h1>
+                <div class="row text-center">
+                    <div class="col-lg">
+                        <h4 class="scrum-subtitle"><u>What is Scrum?</u></h4>
+                        <p>Scrum is a framework that helps teams work together! Scrum is like a rugby team, this is where the name scrum comes from. Scrum encourages teams to learn through experiences, self-organize while working on problems and reflecting on the wins and losses.</p>
+                        <p>While Scrum is used frequently by a lot of software development teams, its principles and lessons can be applied to all kinds of teamwork. This is one of the reasons Scrum is so popular around the industry. Scrum describes a set of meetings, tools and roles that work in conjunction with each other, allowing teams to structure and manage the work. </p>
+                        <p><a href="https://www.scrum.org/" style="text-decoration: none">Official Website</a></p>
+                    </div>
+                    <div class="col-lg">
+                        <h4 class="scrum-subtitle"><u>How we used Scrum</u></h4>
+                        <p>The team has used Scrum methodology to create the QA Cinema Application. The project started with reading the specification and breaking it down into tasks, which were then placed in the backlog on our Jira Board. After all of the items were in the backlog we used Plan-It Poker to plan out our sprint and assign tasks to each team member.</p>
+                        <p>Following the Scrum Methodology and Agile, we had daily stand-ups, where we would speak about what we have done, what we were going to do and if we had any blockers, this allowed us to identify blockers earlier on, and ensured a cohesive teamwork throughout the project. </p>
+                        <p>At the end of each Sprint, we had a review and retrospect, to look at things we have done, how well we have completed each item, and what we could have improved on. </p>
+                        <img src="@routes.Assets.versioned("images/aboutus/scrum.png")" class="img-fluid">
+                    </div>
+                </div>
+                <br> <br> <br>
             </div>
-            <br> <br> <br>
         </div>
-    </div>
-}
+    }

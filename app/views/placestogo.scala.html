@@ -1,166 +1,170 @@
-@()(implicit session : Session)
+@()(implicit session: Session)
 
 <head>
     <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/placestogo.css")">
 </head>
 
-@main("Places To Go") {
-    <section>
-        <div class="card-group">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/theLowry.jpg")" alt="Quayside MediaCityUK">
-                <div class="card-body">
-                    <h5 class="card-title">The Lowry</h5>
-                    <p class="card-text">
-                        The lowry outlet is a popular discount shopping attraction, The centre attracts visitors from up and down the country with its daily
-                        offers of up to 70 per cent off well-known fashion and homeware brands.<br>
-                        Inside, shoppers will find stores including Next, Marks and Spencer, Gap, The Body Shop,Holland & Barrett and Cadbury's Factory.</p>
+    @main("Places To Go") {
+        <section>
+            <div class="card-group">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/theLowry.jpg")" alt="Quayside MediaCityUK">
+                    <div class="card-body">
+                        <h5 class="card-title">The Lowry</h5>
+                        <p class="card-text">
+                            The lowry outlet is a popular discount shopping attraction, The centre attracts visitors from up and down the country with its daily
+                            offers of up to 70 per cent off well-known fashion and homeware brands.<br>
+                            Inside, shoppers will find stores including Next, Marks and Spencer, Gap, The Body Shop,Holland & Barrett and Cadbury's Factory.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">30% off your tickets in certain stores T&C may vary.</li>
+                        <li class="list-group-item">Contact Them: 0161 848 1850</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://www.quaysidemediacityuk.co.uk/" class="btn btn-primary">More Info</a>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">30% off your tickets in certain stores T&C may vary.</li>
-                    <li class="list-group-item">Contact Them: 0161 848 1850</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://www.quaysidemediacityuk.co.uk/" class="btn btn-primary">More Info</a>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/alchemist.jpg")" alt="The Alchemist">
+                    <div class="card-body">
+                        <h5 class="card-title">The Alchemist</h5>
+                        <p class="card-text">
+                            A guest once described an Alchemist cocktail as;<br>
+                            “like observing a magic show, theatre in a glass” so we took this idea & ran with it,
+                            past the bar, into the kitchen & throughout our entire copper-cased wonderland.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">No offers at this time.</li>
+                        <li class="list-group-item">Contact Them: 01625 322488</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://thealchemist.uk.com/venues/mediacity-uk-manchester/" class="btn btn-primary">
+                            More Info</a>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/alchemist.jpg")" alt="The Alchemist">
-                <div class="card-body">
-                    <h5 class="card-title">The Alchemist</h5>
-                    <p class="card-text">
-                        A guest once described an Alchemist cocktail as;<br>
-                        “like observing a magic show, theatre in a glass” so we took this idea & ran with it,
-                        past the bar, into the kitchen & throughout our entire copper-cased wonderland.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">No offers at this time.</li>
-                    <li class="list-group-item">Contact Them: 01625 322488</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://thealchemist.uk.com/venues/mediacity-uk-manchester/" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/dockyard.jpg")" alt="The Dockyard">
-                <div class="card-body">
-                    <h5 class="card-title">The Dockyard</h5>
-                    <p class="card-text">
-                        The Dockyard is a pub in Media City that offers a wide range of craft ales, beers and ciders from all over the world.<br>
-                        "The Dockyard Bar at Media City is so nice. Good food, good drinks, nice staff and also relaxing."
-                    </p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Date Nights - 2 For 1 tickets for you and your special someone when you order a meal together.</li>
-                    <li class="list-group-item">Contact Them: 0161 713 3810</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://dockyard.pub/media-city/" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-        </div>
-        <!--SECOND ROW-->
-        <div class="card-group">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/lime.jpg")" alt="Lime">
-                <div class="card-body">
-                    <h5 class="card-title">Lime</h5>
-                    <p class="card-text">
-                        Restaurant and bar serving an eclectic menu based on local produce, handy for Lowry theatre-goers.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">No offers at this time</li>
-                    <li class="list-group-item">Contact Them: 0161 869 0440</li>
-                </ul>
-                <div class="card-body">
-                    <a href="http://limeuk.com/" class="btn btn-primary">More Info</a>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/dockyard.jpg")" alt="The Dockyard">
+                    <div class="card-body">
+                        <h5 class="card-title">The Dockyard</h5>
+                        <p class="card-text">
+                            The Dockyard is a pub in Media City that offers a wide range of craft ales, beers and ciders from all over the world.<br>
+                            "The Dockyard Bar at Media City is so nice. Good food, good drinks, nice staff and also relaxing."
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Date Nights - 2 For 1 tickets for you and your special someone when you order a meal together.</li>
+                        <li class="list-group-item">Contact Them: 0161 713 3810</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://dockyard.pub/media-city/" class="btn btn-primary">More Info</a>
+                    </div>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/subway.jpg")" alt="Subway">
-                <div class="card-body">
-                    <h5 class="card-title">Subway</h5>
-                    <p class="card-text">
-                        Everyone's favourite sandwich shop, this company operates in more than 100 countries, So if you've never heard of them, now's a good time to try!</p>
+                <!--SECOND ROW-->
+            <div class="card-group">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/lime.jpg")" alt="Lime">
+                    <div class="card-body">
+                        <h5 class="card-title">Lime</h5>
+                        <p class="card-text">
+                            Restaurant and bar serving an eclectic menu based on local produce, handy for Lowry theatre-goers.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">No offers at this time</li>
+                        <li class="list-group-item">Contact Them: 0161 869 0440</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="http://limeuk.com/" class="btn btn-primary">More Info</a>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Free Iceblast at the cinema for every sub ordered. (1per person)</li>
-                    <li class="list-group-item">Contact Them: 0161 872 7202</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://www.subway.com/en-GB" class="btn btn-primary">More Info</a>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/subway.jpg")" alt="Subway">
+                    <div class="card-body">
+                        <h5 class="card-title">Subway</h5>
+                        <p class="card-text">
+                            Everyone's favourite sandwich shop, this company operates in more than 100 countries, So if you've never heard of them, now's a good time to try!</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Free Iceblast at the cinema for every sub ordered. (1per person)</li>
+                        <li class="list-group-item">Contact Them: 0161 872 7202</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://www.subway.com/en-GB" class="btn btn-primary">More Info</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/hellyhansen.jpg")" alt="Helly Hansen Watersports">
+                    <div class="card-body">
+                        <h5 class="card-title">Helly Hansen Watersports</h5>
+                        <p class="card-text">
+                            Helly Hansen offer experiences such as sailing, powerboating, open water swimming, kayaking and indoor climbing.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">No offers at this time</li>
+                        <li class="list-group-item">Contact Them: 0161 778 0109</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://salfordcommunityleisure.co.uk/location/watersports-centre/" class="btn btn-primary">
+                            More Info</a>
+                    </div>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/hellyhansen.jpg")" alt="Helly Hansen Watersports">
-                <div class="card-body">
-                    <h5 class="card-title">Helly Hansen Watersports</h5>
-                    <p class="card-text">
-                      Helly Hansen offer experiences such as sailing, powerboating, open water swimming, kayaking and indoor climbing.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">No offers at this time</li>
-                    <li class="list-group-item">Contact Them: 0161 778 0109</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://salfordcommunityleisure.co.uk/location/watersports-centre/" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-        </div>
-        <!--Third Row-->
-        <div class="card-group">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/teamsport.jpg")" alt="Teamsport indoor karting">
-                <div class="card-body">
-                    <h5 class="card-title">Teamsport Indoor Karting</h5>
-                    <p class="card-text">
-                        For fast, furious and fully adrenalised four-wheeled thrills, no one does it better than TeamSport Indoor Go Karting.<br>
+                <!--Third Row-->
+            <div class="card-group">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/teamsport.jpg")" alt="Teamsport indoor karting">
+                    <div class="card-body">
+                        <h5 class="card-title">Teamsport Indoor Karting</h5>
+                        <p class="card-text">
+                            For fast, furious and fully adrenalised four-wheeled thrills, no one does it better than TeamSport Indoor Go Karting.<br>
                             Perfect for a family day out, stag do, hen do, kids go karting birthday party and more,</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Get Free Avengers: Endgame tickets when you book a party here</li>
+                        <li class="list-group-item">Contact Them: 01252 732300</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://www.team-sport.co.uk/go-karting-manchester-trafford/" class="btn btn-primary">
+                            More Info</a>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Get Free Avengers: Endgame tickets when you book a party here</li>
-                    <li class="list-group-item">Contact Them: 01252 732300</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://www.team-sport.co.uk/go-karting-manchester-trafford/" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/totalninja.jpg")" alt="Total Ninja">
-                <div class="card-body">
-                    <h5 class="card-title">Total Ninja</h5>
-                    <p class="card-text">
-                        Total Ninja is an obstacle course similar to the Ultimate Ninja Warrior TV Show.<br>
-                        Come Challenge your friends and see who can reach the finish line first.
-                    </p>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/totalninja.jpg")" alt="Total Ninja">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Ninja</h5>
+                        <p class="card-text">
+                            Total Ninja is an obstacle course similar to the Ultimate Ninja Warrior TV Show.<br>
+                            Come Challenge your friends and see who can reach the finish line first.
+                        </p>
 
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">No offers at this time</li>
+                        <li class="list-group-item">Contact Them: 0330 088 2722</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="http://www.totalninja.co.uk/" class="btn btn-primary">More Info</a>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">No offers at this time</li>
-                    <li class="list-group-item">Contact Them: 0330 088 2722</li>
-                </ul>
-                <div class="card-body">
-                    <a href="http://www.totalninja.co.uk/" class="btn btn-primary">More Info</a>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/crystalmaze.jpg")" alt="Crystal Maze">
+                    <div class="card-body">
+                        <h5 class="card-title">Crystal Maze Experience</h5>
+                        <p class="card-text">
+                            Ever watched The Crystal Maze and thought you could do better?, Now you can test that theory!<br>
+                            The Crystal Maze is the ultimate team challenge,
+                            in which you and your friends face challenges testing your skill, mental and physical ability across four adventure time zones.
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Free collectable Crystal Maze Golden Token</li>
+                        <li class="list-group-item">Contact Them: 0161 791 0727</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="https://the-crystal-maze.com/manchester/" class="btn btn-primary">More Info</a>
+                    </div>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@routes.Assets.versioned("images/placestogo/crystalmaze.jpg")" alt="Crystal Maze">
-                <div class="card-body">
-                    <h5 class="card-title">Crystal Maze Experience</h5>
-                    <p class="card-text">
-                        Ever watched The Crystal Maze and thought you could do better?, Now you can test that theory!<br>
-                        The Crystal Maze is the ultimate team challenge,
-                        in which you and your friends face challenges testing your skill, mental and physical ability across four adventure time zones.
-                    </p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Free collectable Crystal Maze Golden Token</li>
-                    <li class="list-group-item">Contact Them: 0161 791 0727</li>
-                </ul>
-                <div class="card-body">
-                    <a href="https://the-crystal-maze.com/manchester/" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-        </div>
-    </section>
-}
+        </section>
+    }

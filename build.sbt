@@ -26,7 +26,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.bouncycastle" % "bcprov-jdk15on" % "1.68"
-
+libraryDependencies += "org.sonarsource.sonarqube" % "sonarqube" % "7.0"
 
 libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "3.141.59"
 libraryDependencies += "org.scalatestplus" %% "selenium-3-141" % "3.2.2.0" % "test"
