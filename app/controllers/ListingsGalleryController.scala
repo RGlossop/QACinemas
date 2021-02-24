@@ -9,8 +9,10 @@ import scala.concurrent.ExecutionContext.Implicits.global
 @Singleton
 class ListingsGalleryController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
+  val filmDAO = new FilmDAO
+
   def toListings = Action.async { implicit request => {
-    FilmDAO.readAll().map { list =>
+    filmDAO.readAll().map { list =>
       Ok(views.html.listingsgallery(list.sortBy(_.film_id)))
     } recover {
       case exception: Exception => exception.printStackTrace(); InternalServerError("Database Failed")
@@ -20,7 +22,7 @@ class ListingsGalleryController @Inject()(cc: ControllerComponents) extends Abst
 
 
   def showFilm(id: Long) = Action.async { implicit request => {
-    FilmDAO.readFilm(id).map { film => Ok(views.html.film(film.get))
+    filmDAO.readFilm(id).map { film => Ok(views.html.film(film.get))
     }
   }
   }

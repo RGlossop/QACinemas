@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 
 public class ClassificationsTests {
@@ -25,6 +27,7 @@ public class ClassificationsTests {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         website = PageFactory.initElements(driver, Homepage.class);
     }
     @Test
@@ -33,10 +36,9 @@ public class ClassificationsTests {
         assertTrue(website.classifications.getFirstCardTitle().getText().contains("U"));
     }
     @Test
-    public void testExternalLink() throws InterruptedException {
+    public void testExternalLink() {
         website.navClassifications();
         website.classifications.clickFirstCard();
-        Thread.sleep(1000);
         WebElement externalTitle = driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[2]/div[1]/div/div/h2"));
         assertTrue(externalTitle.getText().contains("U"));
     }

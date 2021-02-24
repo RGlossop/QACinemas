@@ -43,8 +43,6 @@ GET         /sendEmail                       controllers.ContactController.sendE
 
 GET         /newreleases                     controllers.NewReleasesController.newReleases
 
-GET         /movieinfo/:id                   controllers.MovieInfoController.movieInfo(id: Long)
-
 GET         /bookingstatus                   controllers.PaymentController.checkPayment(token)
 
 +nocsrf

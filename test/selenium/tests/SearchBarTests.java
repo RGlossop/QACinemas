@@ -4,7 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
@@ -13,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
-public class ScreensTests {
+public class SearchBarTests {
     private static WebDriver driver;
     private static Homepage website;
 
@@ -28,11 +31,12 @@ public class ScreensTests {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         website = PageFactory.initElements(driver, Homepage.class);
     }
+
     @Test
-    public void testScreensSelector() {
-        website.navOurScreens();
-        website.screens.selectPremium();
-        assertTrue(website.screens.checkType().getText().contains("Premium"));
+    public void testSearch() throws InterruptedException {
+        website.search.search("Spectre", driver);
+
+        assertTrue(website.search.getSearchResult().getText().contains("Spectre"));
     }
     @After
     public void cleanUp() {

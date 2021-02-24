@@ -13,7 +13,8 @@ import scala.util.{Failure, Success}
 @Singleton
 class CommentController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
-  val filmDAO = FilmDAO
+  val filmDAO = new FilmDAO
+  val commentDAO = new CommentDAO
 
   def index = Action.async { implicit request =>
     filmDAO.readAll().map { list =>
@@ -22,7 +23,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
   }
 
   def thread(filmid: Int) = Action.async { implicit request =>
-    CommentDAO.readAll.map { list =>
+    commentDAO.readAll.map { list =>
       Ok(views.html.thread(list.filter(_.film_id == filmid), CommentForm.commentForm, filmid))
     }
   }
@@ -42,7 +43,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
   }
 
   def create(comment: Comment): Unit = {
-    CommentDAO createComment (comment) onComplete {
+    commentDAO createComment (comment) onComplete {
       case Success(value) =>
         println("Added Comment")
       case Failure(exception) =>

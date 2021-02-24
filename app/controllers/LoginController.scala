@@ -14,13 +14,8 @@ import scala.language.postfixOps
 @Singleton
 class LoginController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
+  val userDAO = new UserDAO
 
-  /**
-   * Create an Action to render an HTML page with a welcome message.
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
   def toLogin = Action { implicit request =>
     Ok(views.html.login())
   }
@@ -40,7 +35,7 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
     val p = request.cookies.get("passcheck").mkString.split(",")
     val pp = p(1)
     println(pp)
-    val usernameCheck = Await.result(UserDAO.readUserByUsername(uu), 5000 millis).getOrElse(DbUser(0L, "", "", "", "", "", Array())) // I know this is bad but onComplete means that this fails to return and the method defaults to BadRequest("Failure")
+    val usernameCheck = Await.result(userDAO.readUserByUsername(uu), 5000 millis).getOrElse(DbUser(0L, "", "", "", "", "", Array())) // I know this is bad but onComplete means that this fails to return and the method defaults to BadRequest("Failure")
     usernameCheck match {
       case DbUser(usernameCheck.user_id, usernameCheck.first_name, usernameCheck.last_name, usernameCheck.date_of_birth, usernameCheck.username, usernameCheck.email, usernameCheck.password) => if (
         util.Arrays.equals(usernameCheck.password, UserMethods.encryptPass(pp))) {
