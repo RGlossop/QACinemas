@@ -17,7 +17,7 @@ class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extend
   val bookingDAO = new BookingDAO
 
   def getAccessToken(): String = {
-    val res: String = "curl -v https://api-m.sandbox.paypal.com/v1/oauth2/token -H \"Accept: application/json\" -H \"Accept-Language: en_US\" -u \"AW86O0E6m_fWPL1ZZ_OoDMm8k4Fy8UvvRxE4ehJ088xGbBlhAPvwDXPbi97apCmERHFI6LGQLjv2RHRa:EO317hRHjmNVeDjcWIkWRjL1Pumsm7xmgLAgKwknrAcu4z63wvR8B14-r8T2ImnoErxwJ8RUDCQ1AcBz\" -d \"grant_type=client_credentials\"" !!
+    val res: String = "curl -v https://api-m.sandbox.paypal.com/v1/oauth2/token -H \"Accept: application/json\" -H \"Accept-Language: en_US\" -u \"UwU\" -d \"grant_type=client_credentials\"" !!
     val json: JsValue = Json.parse(res)
     val access: String = (json \ "access_token").as[String]
     access
