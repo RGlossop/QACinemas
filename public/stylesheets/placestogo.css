@@ -1,3 +1,11 @@
 .card > img {
     height: 20em;
 }
+
+.card-body {
+	background-color: lightgrey;
+}
+
+.card > ul > li {
+	background-color: lightgrey;
+}
