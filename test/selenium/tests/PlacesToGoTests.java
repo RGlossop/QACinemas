@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 
 public class PlacesToGoTests {
@@ -23,6 +25,7 @@ public class PlacesToGoTests {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         website = PageFactory.initElements(driver, Homepage.class);
     }
     @Test

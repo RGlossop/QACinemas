@@ -1,13 +1,15 @@
 package controllers
 
 import com.google.inject.AbstractModule
+import dao.UserDAO
 import models._
 import slick.jdbc.MySQLProfile.api._
 
+import java.time.LocalDate
 import javax.inject.Singleton
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.Await
-import scala.concurrent.duration.DurationInt
+import scala.concurrent.duration.{Duration, DurationInt}
 import scala.language.postfixOps
 
 
@@ -29,6 +31,11 @@ class Startup extends AbstractModule {
 
   Await.ready(DB.run(dropSchema), 5000 millis)
   Await.ready(DB.run(initSchema), 5000 millis)
+
+  val dateString = "1993-06-06"
+  val ymd = dateString.split('-')
+  val dob = LocalDate.of(Integer.parseInt(ymd(0)), Integer.parseInt(ymd(1)), Integer.parseInt(ymd(2)))
+  Await.ready(UserDAO.createUser(User(0L, "John", "Smith", dob, "Admin123", "Admin@gmail.com", "Password123")), Duration.Inf)
 
   println("startup")
 
@@ -79,7 +86,7 @@ class Startup extends AbstractModule {
 
 
   for (film <- allFilms) {
-    Await.ready(DB.run(filmTable += film), 200 millis)
+    Await.ready(DB.run(filmTable += film), Duration.Inf)
   }
 
   var allScreenings = ArrayBuffer(
@@ -94,6 +101,6 @@ class Startup extends AbstractModule {
   )
 
   for (screen <- allScreenings) {
-    Await.ready(DB.run(screeningsTable += screen), 200 millis)
+    Await.ready(DB.run(screeningsTable += screen), Duration.Inf)
   }
 }
