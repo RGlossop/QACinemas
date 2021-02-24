@@ -17,7 +17,7 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
   val userDAO = new UserDAO
 
   def toLogin = Action { implicit request =>
-    Ok(views.html.login())
+    Ok(views.html.login()).removingFromSession("clickwithoutlogin")
   }
 
   def toLoginFromDiscussion = Action { implicit request =>
@@ -34,8 +34,8 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
     val uu = u(1)
     val p = request.cookies.get("passcheck").mkString.split(",")
     val pp = p(1)
-    println(pp)
     val usernameCheck = Await.result(userDAO.readUserByUsername(uu), 5000 millis).getOrElse(DbUser(0L, "", "", "", "", "", Array())) // I know this is bad but onComplete means that this fails to return and the method defaults to BadRequest("Failure")
+    
     usernameCheck match {
       case DbUser(usernameCheck.user_id, usernameCheck.first_name, usernameCheck.last_name, usernameCheck.date_of_birth, usernameCheck.username, usernameCheck.email, usernameCheck.password) => if (
         util.Arrays.equals(usernameCheck.password, UserMethods.encryptPass(pp))) {
