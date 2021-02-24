@@ -6,7 +6,7 @@ import slick.jdbc.MySQLProfile.backend.Database
 
 import scala.concurrent.Future
 
-object CommentDAO {
+class CommentDAO {
 
   lazy val db: Database = Database.forConfig("mySqlDB")
   lazy val table: TableQuery[Comments] = TableQuery[Comments]
