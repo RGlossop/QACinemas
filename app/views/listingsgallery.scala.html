@@ -4,7 +4,7 @@
 
     @main("All Our Films") {
     <head>
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/listingsgallery.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/listingsgallery.css")"><title>Currently Showing</title>
     </head>
 
 
@@ -22,7 +22,7 @@
                         <div class = "card mb-4 border-0" id="filmcard">
                             <div class="content">
                                 <a href = "/film/@film.film_id">
-                                    <img class = "card-img-top image" src = "@routes.Assets.versioned(film.picture)">
+                                    <img class = "card-img-top image" src = "@routes.Assets.versioned(film.picture)" alt="@film.film_name poster">
                                     <div class="overlay">
                                         <h3>Click for more details</h3>
                                     </div>
