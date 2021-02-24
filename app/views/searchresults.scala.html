@@ -2,10 +2,15 @@
 @(searchTerm: String, films: Array[(Long, String)])(implicit request: RequestHeader, messagesProvider: MessagesProvider, session:Session)
 
 
-    @main("Search results") {
+    @main("Films Containing The Keywords You Entered") {
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/searchresults.css")"><title>Search Results</title>
+    </head>
 
+    <hr/>
+    <br/>
         <div class="container">
-        @if(films.size == 0) {
+        @if(films.length == 0) {
             <div>
                 <h4>No results</h4>
             </div>
@@ -13,11 +18,12 @@
             @for(film <- films) {
                 <div id="searchresults">
                     <div class="row">
-                        <a href="@routes.ListingsGalleryController.showFilm(film._1)">
-                            <h3>@film._2</h3>
+                        <a href="@routes.ListingsGalleryController.showFilm(film._1)" id="resultfilm">
+                            <h3 id="resultname">@film._2</h3>
                         </a>
                     </div>
                 </div>
+                <br/>
             }
         }
         </div>

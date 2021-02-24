@@ -22,9 +22,9 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
     }
   }
 
-  def thread(filmid: Int) = Action.async { implicit request =>
+  def thread(filmid: Int,filmname: String) = Action.async { implicit request =>
     commentDAO.readAll.map { list =>
-      Ok(views.html.thread(list.filter(_.film_id == filmid), CommentForm.commentForm, filmid))
+      Ok(views.html.thread(list.filter(_.film_id == filmid), CommentForm.commentForm, filmid,filmname))
     }
   }
 

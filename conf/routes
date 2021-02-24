@@ -69,7 +69,7 @@ GET         /login2                          controllers.LoginController.toLogin
 
 GET         /forum                           controllers.CommentController.index
 
-GET         /forum/:filmid                   controllers.CommentController.thread(filmid: Int)
+GET         /forum/:filmid                   controllers.CommentController.thread(filmid: Int,filmname: String)
 
 +nocsrf
 POST        /addingcomment/:filmid           controllers.CommentController.createComment(filmid: Int)
