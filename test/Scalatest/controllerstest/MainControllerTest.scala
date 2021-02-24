@@ -14,12 +14,12 @@ class MainControllerTest extends FlatSpecBaseClass {
   "MainController" should "display the Home Page" in {
     val controller = new MainController(Helpers.stubControllerComponents())
     val res: Future[Result] = controller.homeRedirect.apply(FakeRequest())
-    contentType(res).mustBe(Some("text/html"))
+    contentType(res).mustBe(None)
   }
 
-  "MainController" should "display the Home Page" in {
+  "MainController" should "display the Home Logout Page" in {
     val controller = new MainController(Helpers.stubControllerComponents())
     val res: Future[Result] = controller.logout.apply(FakeRequest())
-    contentType(res).mustBe(Some("text/html"))
+    contentType(res).mustBe(None)
   }
 }
