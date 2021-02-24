@@ -28,6 +28,7 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
     Ok(views.html.login()).addingToSession("clickwithoutlogin" -> "booking")
   }
 
+  // $COVERAGE-OFF$
   def loginSuccess() = Action { implicit request =>
 
     val u = request.cookies.get("usercheck").mkString.split(",")
@@ -35,7 +36,7 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
     val p = request.cookies.get("passcheck").mkString.split(",")
     val pp = p(1)
     val usernameCheck = Await.result(userDAO.readUserByUsername(uu), 5000 millis).getOrElse(DbUser(0L, "", "", "", "", "", Array())) // I know this is bad but onComplete means that this fails to return and the method defaults to BadRequest("Failure")
-    
+
     usernameCheck match {
       case DbUser(usernameCheck.user_id, usernameCheck.first_name, usernameCheck.last_name, usernameCheck.date_of_birth, usernameCheck.username, usernameCheck.email, usernameCheck.password) => if (
         util.Arrays.equals(usernameCheck.password, UserMethods.encryptPass(pp))) {
@@ -70,7 +71,7 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
       case _ => BadRequest("Case error, should never end up here.").discardingCookies(DiscardingCookie("usercheck")).discardingCookies(DiscardingCookie("passcheck"))
         Redirect(routes.LoginController.toLogin()).discardingCookies(DiscardingCookie("usercheck")).discardingCookies(DiscardingCookie("passcheck"))
     }
-
   }
+  // $COVERAGE-ON$
 
 }

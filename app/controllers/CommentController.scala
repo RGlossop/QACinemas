@@ -28,6 +28,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
     }
   }
 
+  // $COVERAGE-OFF$
   def createComment(filmid: Int) = Action { implicit request =>
     CommentForm.commentForm.bindFromRequest.fold({ _ =>
       BadRequest(views.html.index())
@@ -50,6 +51,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
         exception.printStackTrace()
     }
   }
+  // $COVERAGE-ON$
 
   def checkComment(comment: String): Boolean = {
     var isBad = false

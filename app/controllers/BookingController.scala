@@ -22,6 +22,7 @@ class BookingController @Inject()(cc: ControllerComponents, pc: PaymentControlle
     }
   }
 
+  // $COVERAGE-OFF$
   def toPayment() = Action { implicit request =>
     BookingForm.bookingForm.bindFromRequest.fold({ _ =>
       BadRequest(views.html.index())
@@ -39,4 +40,5 @@ class BookingController @Inject()(cc: ControllerComponents, pc: PaymentControlle
       }
     })
   }
+  // $COVERAGE-ON$
 }
