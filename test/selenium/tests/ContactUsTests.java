@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 
 public class ContactUsTests {
@@ -23,22 +25,24 @@ public class ContactUsTests {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         website = PageFactory.initElements(driver, Homepage.class);
     }
     @Test
-    public void testSendEmail() throws InterruptedException {
+    public void testBContactUs() throws InterruptedException {
+        website.bNavContactUs(driver);
+        assertTrue(website.getTitle().getText().contains("Contact"));
+    }
+    @Test
+    public void testSendEmail() {
         website.navContactUs();
-        Thread.sleep(1000);
         website.contactUs.writeEmail("emailSender@Gmail.com", "I like your site", "Hey this site is great!");
-        Thread.sleep(2000);
         assertTrue(website.getTitle().getText().contains("QACinemas"));
     }
     @Test
-    public void testSendEmailFail() throws InterruptedException {
+    public void testSendEmailFail() {
         website.navContactUs();
-        Thread.sleep(1000);
         website.contactUs.writeEmail("This is not an email address", "I like your site", "Hey this site is great!");
-        Thread.sleep(2000);
         assertTrue(website.getTitle().getText().contains("Contact"));
     }
 
