@@ -19,7 +19,9 @@ class ListGalleryController extends FlatSpecBaseClass {
   "ListGalleryController" should "display the Listing Gallery Page" in {
     val controller = new ListingsGalleryController(Helpers.stubControllerComponents())
     val list = Seq[Film](Film(0L, "Film", "12A", "Desc", "20-20-2020", "20-20-2020", "N/A", "James", "James", 1, "N/A"))
-    when(filmDAO.readAll()).thenReturn(Future { list })
+    when(filmDAO.readAll()).thenReturn(Future {
+      list
+    })
     val res = controller.toListings.apply(FakeRequest())
     contentType(res).mustBe(Some("text/html"))
   }
@@ -27,7 +29,9 @@ class ListGalleryController extends FlatSpecBaseClass {
   "ListGalleryController" should "display the Film Page" in {
     val controller = new ListingsGalleryController(Helpers.stubControllerComponents())
     val film = Film(0L, "Film", "12A", "Desc", "20-20-2020", "20-20-2020", "N/A", "James", "James", 1, "N/A")
-    when(filmDAO.readFilm(1)).thenReturn(Future{ Some(film) })
+    when(filmDAO.readFilm(1)).thenReturn(Future {
+      Some(film)
+    })
     val res = controller.showFilm(1).apply(FakeRequest())
     contentType(res).mustBe(Some("text/html"))
   }

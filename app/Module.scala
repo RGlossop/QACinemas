@@ -17,6 +17,7 @@ import java.time.Clock
  */
 class Module extends AbstractModule {
 
+  // $COVERAGE-OFF$
   override def configure() = {
     // Use the system clock as the default implementation of Clock
     bind(classOf[Clock]).toInstance(Clock.systemDefaultZone)
@@ -27,5 +28,6 @@ class Module extends AbstractModule {
     bind(classOf[Counter]).to(classOf[AtomicCounter])
     bind(classOf[Startup]).asEagerSingleton()
   }
+  // $COVERAGE-ON$
 
 }
