@@ -1,10 +1,10 @@
 @(filmList: Seq[Film])(implicit request: RequestHeader, messagesProvider: MessagesProvider, session: Session)
 
-<head>
-    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/comments.css")">
-</head>
 
 @main("Comments") {
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/comments.css")">
+    </head>
     <div class="container">
         <table class="table">
             <thead>
