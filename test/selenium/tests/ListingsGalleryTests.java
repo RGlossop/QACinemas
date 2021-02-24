@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -24,12 +26,12 @@ public class ListingsGalleryTests {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         website = PageFactory.initElements(driver, Homepage.class);
     }
     @Test
-    public void testListingsAreShown() throws InterruptedException {
+    public void testListingsAreShown() {
         website.navAllFilms();
-        Thread.sleep(1000);
         assertTrue(website.listingsGallery.getListing1().getAttribute("class").contains("content"));
     }
 
@@ -38,7 +40,6 @@ public class ListingsGalleryTests {
         website.navAllFilms();
         Thread.sleep(2000);
         website.listingsGallery.clickFilm();
-        Thread.sleep(2000);
         assertFalse(website.film.getDescription().getText().isEmpty());
     }
 
