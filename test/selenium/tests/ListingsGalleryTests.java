@@ -32,7 +32,7 @@ public class ListingsGalleryTests {
     @Test
     public void testListingsAreShown() {
         website.navAllFilms();
-        assertTrue(website.listingsGallery.getListing1().getAttribute("class").contains("content"));
+        assertTrue(website.listingsGallery.getListing1().getAttribute("class").contains("item"));
     }
 
     @Test

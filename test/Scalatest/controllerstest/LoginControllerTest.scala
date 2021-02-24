@@ -37,13 +37,13 @@ class LoginControllerTest extends FlatSpecBaseClass {
     contentType(res).mustBe(None)
   }
 
-//  "LoginController" should "process the login and valid" in {
-//    val userDAO = mock[UserDAO]
-//    val controller = new LoginController(Helpers.stubControllerComponents())
-//    when(util.Arrays.equals(Array[String](_), Array[String](_))).thenReturn(true)
-//    when(util.Arrays.equals())
-//    val res = controller.loginSuccess().apply(req.withCookies(Cookie.builder("usercheck", "sam").build().asScala(), Cookie.builder("passcheck", "pass").build().asScala()))
-//    contentType(res).mustBe(None)
-//  }
+  //  "LoginController" should "process the login and valid" in {
+  //    val userDAO = mock[UserDAO]
+  //    val controller = new LoginController(Helpers.stubControllerComponents())
+  //    when(util.Arrays.equals(Array[String](_), Array[String](_))).thenReturn(true)
+  //    when(util.Arrays.equals())
+  //    val res = controller.loginSuccess().apply(req.withCookies(Cookie.builder("usercheck", "sam").build().asScala(), Cookie.builder("passcheck", "pass").build().asScala()))
+  //    contentType(res).mustBe(None)
+  //  }
 
 }

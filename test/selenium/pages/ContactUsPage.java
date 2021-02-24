@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ContactUsPage {
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div[2]/h2")
-    private WebElement emailHeader;
 
     @FindBy(xpath="//*[@id=\"sender\"]")
     private WebElement emailText;
@@ -14,14 +12,12 @@ public class ContactUsPage {
     private WebElement subjectText;
     @FindBy(xpath="//*[@id=\"body\"]")
     private WebElement messageText;
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div[2]/form/button")
+    @FindBy(xpath="//*[@id=\"greybackgroundform\"]/button")
     private WebElement bSendEmail;
 
     public ContactUsPage(WebDriver driver) {
 
     }
-
-    public WebElement getEmailHeader() { return emailHeader; }
 
     public void writeEmail(String email, String subject, String message) {
         emailText.sendKeys(email);

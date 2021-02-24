@@ -19,7 +19,7 @@ public class SignUpPage {
     private WebElement emailText;
     @FindBy(id="password")
     private WebElement passwordText;
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/form/button")
+    @FindBy(xpath="//*[@id=\"greybackgroundform\"]/button")
     private WebElement bSignUp;
 
     public SignUpPage(WebDriver driver) {
