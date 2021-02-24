@@ -36,8 +36,9 @@ public class ClassificationsTests {
         assertTrue(website.classifications.getFirstCardTitle().getText().contains("U"));
     }
     @Test
-    public void testExternalLink() {
+    public void testExternalLink() throws InterruptedException {
         website.navClassifications();
+        Thread.sleep(2000);
         website.classifications.clickFirstCard();
         WebElement externalTitle = driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[2]/div[1]/div/div/h2"));
         assertTrue(externalTitle.getText().contains("U"));
