@@ -15,7 +15,7 @@ public class SignUpPage {
     private WebElement dobText;
     @FindBy(id="username")
     private WebElement usernameText;
-    @FindBy(id="sender")
+    @FindBy(id="email")
     private WebElement emailText;
     @FindBy(id="password")
     private WebElement passwordText;

@@ -1,5 +1,6 @@
 package selenium.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,25 +14,33 @@ public class Homepage {
     private WebElement navNewReleases;
     @FindBy(xpath= "//*[@id=\"navbarNavLeft\"]/ul/li[3]/a")
     private WebElement navMovieForum;
-    @FindBy(xpath="//*[@id=\"navbarNavRight\"]/ul/li[2]/a")
+    @FindBy(xpath="//*[@id=\"navbarNavRight\"]/ul/li[1]/a")
     private WebElement navSignUp;
-    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[5]/a")
+    @FindBy(xpath="//*[@id=\"navbarNavRight\"]/ul/li[2]/a")
+    private WebElement navLogin;
+    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[3]/a")
     private WebElement navExpandButton;
-    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[1]/a")
+    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[1]/a")
     private WebElement navAllFilms;
-    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[2]/a")
+    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[2]/a")
     private WebElement navOurScreens;
-    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[3]/a")
+    @FindBy(xpath= "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[3]/a")
     private WebElement navPlacesToGo;
-    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[4]/a")
+    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[4]/a")
     private WebElement navClassifications;
-    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[5]/a")
+    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[5]/a")
     private WebElement navAboutUs;
-    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[6]/a")
+    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[6]/a")
     private WebElement navContactUs;
-    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[5]/ul/li[7]/a")
+    @FindBy(xpath = "//*[@id=\"navbarNavRight\"]/ul/li[3]/ul/li[7]/a")
     private WebElement navFindUs;
-
+    //Bottom nav
+    @FindBy(xpath="//*[@id=\"navbarNavCenter\"]/div[1]/ul/li[1]/a")
+    private WebElement bNavAboutUs;
+    @FindBy(xpath="//*[@id=\"navbarNavCenter\"]/div[1]/ul/li[2]/a")
+    private WebElement bNavContactUs;
+    @FindBy(xpath="//*[@id=\"navbarNavCenter\"]/div[1]/ul/li[3]/a")
+    private WebElement bNavFindUs;
     //Pages
     public NewReleasesPage newReleases;
     public MovieForumPage movieForum;
@@ -44,6 +53,10 @@ public class Homepage {
     public ContactUsPage contactUs;
     public FindUsPage findUs;
     public SignUpPage signUp;
+    public LoginPage login;
+    public BookingPage bookingPage;
+    public PaymentPage payment;
+    public SearchPage search;
     //elements
     @FindBy(xpath="//*[@id=\"mainheader\"]")
     private WebElement title;
@@ -61,6 +74,10 @@ public class Homepage {
         contactUs = PageFactory.initElements(driver, ContactUsPage.class);
         findUs = PageFactory.initElements(driver, FindUsPage.class);
         signUp = PageFactory.initElements(driver, SignUpPage.class);
+        login = PageFactory.initElements(driver, LoginPage.class);
+        bookingPage = PageFactory.initElements(driver, BookingPage.class);
+        payment = PageFactory.initElements(driver, PaymentPage.class);
+        search = PageFactory.initElements(driver, SearchPage.class);
     }
     //NavStuff
     public void navNewReleases() {
@@ -101,8 +118,34 @@ public class Homepage {
         navExpand();
         navFindUs.click();
     }
+    public void navLogin() {
+        navLogin.click();
+    }
+    //Bottom nav
+    public void bNavAboutUs(WebDriver driver) throws InterruptedException {
+        JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+        jse2.executeScript("arguments[0].scrollIntoView()", bNavAboutUs);
+        Thread.sleep(1000);
+        bNavAboutUs.click();
+    }
+    public void bNavContactUs(WebDriver driver) throws InterruptedException {
+        JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+        jse2.executeScript("arguments[0].scrollIntoView()", bNavContactUs);
+        Thread.sleep(1000);
+        bNavContactUs.click();
+    }
+    public void bFindUs(WebDriver driver) throws InterruptedException {
+        JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+        jse2.executeScript("arguments[0].scrollIntoView()", bNavFindUs);
+        Thread.sleep(1000);
+        bNavFindUs.click();
+    }
     // elements
     public WebElement getTitle() {
         return title;
     }
+
+    public WebElement getNavLogin() {return navLogin;}
+
+
 }

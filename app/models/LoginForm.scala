@@ -12,6 +12,7 @@ case class LoginForm(username: String, password: String)
 
 object LoginForm {
 
+  val userDAO = new UserDAO
 
   val createLoginForm = Form(
     tuple(
@@ -25,7 +26,7 @@ object LoginForm {
 
 
   def check(log: LoginForm): Boolean = {
-    val usernameCheck = UserDAO.readUserByUsername(log.username)
+    val usernameCheck = userDAO.readUserByUsername(log.username)
     val dummy = DbUser(0, "f", "g", "h", "j", "k", Array(0))
     usernameCheck onComplete {
       case Success(value) => if (util.Arrays.equals(value.getOrElse(dummy).getPassword, UserMethods.encryptPass(log.password))) {
