@@ -23,9 +23,7 @@ html {
     padding: 2em;
 
 }
-h1{
-    color:#F97300 ;
-}
+
 .description p{
     color:#000000;
     font-size: 20px;
@@ -36,20 +34,17 @@ h1{
 
 /*boxes */
 #card-deck {
-    align-items: left;
+    align-items: start;
     justify-content: center;
     column-count: 3;
 }
 #card {
-    align-content: left;
+    align-content: start;
 }
 
-#moreInfo {
-    background-color: #343a40;
-}
 #moreInfo p {
-    color: white;
+    color: black;
 }
 #moreInfo h2 {
-    color: white;
+    color: black;
 }

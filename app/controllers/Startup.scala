@@ -16,6 +16,7 @@ import scala.language.postfixOps
 @Singleton
 class Startup extends AbstractModule {
 
+  // $COVERAGE-OFF$
   implicit val DB = Database.forConfig("mySqlDB")
 
   val filmTable = TableQuery[Films]
@@ -37,6 +38,7 @@ class Startup extends AbstractModule {
   val dob = LocalDate.of(Integer.parseInt(ymd(0)), Integer.parseInt(ymd(1)), Integer.parseInt(ymd(2)))
   val userDAO = new UserDAO
   Await.ready(userDAO.createUser(User(0L, "John", "Smith", dob, "Admin123", "Admin@gmail.com", "Password123")), Duration.Inf)
+
 
   println("startup")
 
@@ -104,4 +106,5 @@ class Startup extends AbstractModule {
   for (screen <- allScreenings) {
     Await.ready(DB.run(screeningsTable += screen), Duration.Inf)
   }
+  // $COVERAGE-ON$
 }

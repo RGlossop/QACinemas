@@ -9,7 +9,7 @@ public class ClassificationsPage {
     @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div[1]/div[1]/div/div/h5")
     private WebElement firstCardTitle;
 
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div[1]/div[1]/div/a/img")
+    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div[1]/div[1]/div/a")
     private WebElement firstCardImage;
 
     public ClassificationsPage(WebDriver driver) {

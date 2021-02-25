@@ -1,3 +1,11 @@
 #page{
     background-color: lightgray;
 }
+
+.card{
+    background-color: lightgray;
+}
+
+.dropdown-item{
+    color:lightgray;
+}

@@ -60,6 +60,8 @@ public class Homepage {
     //elements
     @FindBy(xpath="//*[@id=\"mainheader\"]")
     private WebElement title;
+    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div[1]/div/p[1]")
+    private WebElement firstLine;
 
     public Homepage(WebDriver driver) {
         driver.get(URL);
@@ -145,6 +147,9 @@ public class Homepage {
         return title;
     }
 
+    public WebElement getFirstLine() {
+        return firstLine;
+    }
     public WebElement getNavLogin() {return navLogin;}
 
 

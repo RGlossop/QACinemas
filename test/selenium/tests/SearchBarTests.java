@@ -4,10 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
@@ -22,7 +19,7 @@ public class SearchBarTests {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Ryan/Desktop/QACinemas/test/resources/drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "test/resources/drivers/chrome/chromedriver.exe");
     }
     @Before
     public void setup() {

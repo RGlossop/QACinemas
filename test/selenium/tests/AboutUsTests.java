@@ -9,13 +9,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import selenium.pages.Homepage;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class AboutUsTests {
@@ -24,7 +22,7 @@ public class AboutUsTests {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Ryan/Desktop/QACinemas/test/resources/drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "test/resources/drivers/chrome/chromedriver.exe");
     }
     @Before
     public void setup() {
@@ -46,8 +44,9 @@ public class AboutUsTests {
     @Test
     public void testContactLink() throws InterruptedException {
         website.navAboutUs();
+        Thread.sleep(2000);
         website.aboutUs.contactUsLink();
-        assertTrue(website.contactUs.getEmailHeader().getText().contains("email"));
+        assertTrue(website.getTitle().getText().contains("Contact"));
     }
     @Test
     public void testExternalLink() throws InterruptedException {
@@ -55,7 +54,7 @@ public class AboutUsTests {
         WebElement myElement = driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div/div[3]/div[1]/p[3]/a"));
         JavascriptExecutor jse2 = (JavascriptExecutor)driver;
         jse2.executeScript("arguments[0].scrollIntoView()", myElement);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         website.aboutUs.clickExternalLink();
         WebElement externalTitle = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/main/div[2]/div/div[1]/section/h2"));
         assertTrue(externalTitle.getText().contains("SCRUM"));

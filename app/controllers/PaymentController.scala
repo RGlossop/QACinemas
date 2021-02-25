@@ -14,6 +14,7 @@ import scala.sys.process._
 @Singleton
 class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
+  // $COVERAGE-OFF$
   val bookingDAO = new BookingDAO
 
   def getAccessToken(): String = {
@@ -67,4 +68,5 @@ class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extend
       case exception: Exception => false
     }
   }
+  // $COVERAGE-ON$
 }

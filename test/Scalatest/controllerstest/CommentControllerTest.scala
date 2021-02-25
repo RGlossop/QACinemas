@@ -21,7 +21,9 @@ class CommentControllerTest extends FlatSpecBaseClass {
   "CommentController" should "display the Forum Page" in {
     val controller = new CommentController(Helpers.stubControllerComponents())
     val list = Seq[Film](Film(0L, "Film", "12A", "Desc", "20-20-2020", "20-20-2020", "N/A", "James", "James", 1, "N/A"))
-    when(filmDAO.readAll()).thenReturn(Future { list })
+    when(filmDAO.readAll()).thenReturn(Future {
+      list
+    })
     val res: Future[Result] = controller.index.apply(FakeRequest())
     contentType(res).mustBe(Some("text/html"))
   }
@@ -29,8 +31,10 @@ class CommentControllerTest extends FlatSpecBaseClass {
   "CommentController" should "display the Thread Page" in {
     val controller = new CommentController(Helpers.stubControllerComponents())
     val list = Seq[Comment](Comment(0L, 0L, 0, "Jim", "This is a Comment!"))
-    when(commentDAO.readAll).thenReturn(Future { list })
-    val res: Future[Result] = controller.thread(1).apply(FakeRequest())
+    when(commentDAO.readAll).thenReturn(Future {
+      list
+    })
+    val res: Future[Result] = controller.thread(1,"The Dark Knight").apply(FakeRequest())
     contentType(res).mustBe(Some("text/html"))
   }
 

@@ -19,7 +19,7 @@ public class MovieForumTests {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Ryan/Desktop/QACinemas/test/resources/drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "test/resources/drivers/chrome/chromedriver.exe");
     }
     @Before
     public void setup() {
@@ -36,6 +36,7 @@ public class MovieForumTests {
         website.navMovieForum();
         Thread.sleep(2000);
         website.movieForum.selectFilm();
+        Thread.sleep(2000);
         website.movieForum.addComment("This film was great, RIP heath ledger");
         Thread.sleep(2000);
         website.movieForum.selectFilm();
@@ -52,7 +53,7 @@ public class MovieForumTests {
         website.movieForum.selectFilm();
         Thread.sleep(2000);
         website.movieForum.addComment("this site fucking sucks");
-        assertTrue(website.getTitle().getText().contains("QACinemas"));
+        assertTrue(website.getFirstLine().getText().contains("QACinemas"));
     }
     @After
     public void cleanUp() {

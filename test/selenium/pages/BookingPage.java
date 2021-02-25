@@ -12,7 +12,7 @@ public class BookingPage {
     private WebElement childrenTickets;
     @FindBy(xpath="//*[@id=\"concession_tickets\"]")
     private WebElement concessionTickets;
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div/div[2]/form/button")
+    @FindBy(xpath="//*[@id=\"bookingform\"]/button")
     private WebElement bSubmitOrder;
 
     public BookingPage(WebDriver driver) {

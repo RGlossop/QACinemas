@@ -25,6 +25,7 @@ import scala.concurrent.{ExecutionContext, Future, Promise}
 @Singleton
 class AsyncController @Inject()(cc: ControllerComponents, actorSystem: ActorSystem)(implicit exec: ExecutionContext) extends AbstractController(cc) {
 
+  // $COVERAGE-OFF$
   /**
    * Creates an Action that returns a plain text message after a delay
    * of 1 second.
@@ -44,5 +45,6 @@ class AsyncController @Inject()(cc: ControllerComponents, actorSystem: ActorSyst
     }(actorSystem.dispatcher) // run scheduled tasks using the actor system's dispatcher
     promise.future
   }
+  // $COVERAGE-ON$
 
 }

@@ -1,13 +1,14 @@
 @(films: Seq[Film])(implicit session: Session)
 
-<head>
-    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/films.css")">
-</head>
 
 
     @main("All Our Films") {
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/listingsgallery.css")"><title>Currently Showing</title>
+    </head>
 
-        <br/>
+
+    <br/>
         <br/>
         <div class = "listingscontainer">
             <div class = "container text-center" >
@@ -18,17 +19,11 @@
                         <br/>
                     }
                     <div class = "col-xl item text-center" >
-                        <div class = "card" style ="width: 475px;
-                            height: 713px;
-                            display: block;
-                            margin-left: auto;
-                            margin-right: auto;">
-                            <div class="" content>
+                        <div class = "card mb-4 border-0" id="filmcard">
+                            <div class="content">
                                 <a href = "/film/@film.film_id">
-                                    <div class="content-overlay"></div>
-                                    <img class = "card-img-top content-image" style ="width: 475px;
-                                        height: 713px;" src = "@routes.Assets.versioned(film.picture)">
-                                    <div class="content-details fadeIn-top">
+                                    <img class = "card-img-top image" src = "@routes.Assets.versioned(film.picture)" alt="@film.film_name poster">
+                                    <div class="overlay">
                                         <h3>Click for more details</h3>
                                     </div>
                                 </a>

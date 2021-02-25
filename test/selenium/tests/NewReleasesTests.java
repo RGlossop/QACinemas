@@ -20,7 +20,7 @@ public class NewReleasesTests {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Ryan/Desktop/QACinemas/test/resources/drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "test/resources/drivers/chrome/chromedriver.exe");
     }
     @Before
     public void setup() {
@@ -32,11 +32,12 @@ public class NewReleasesTests {
     @Test
     public void testNewReleases() {
         website.navNewReleases();
-        assertTrue(website.newReleases.getFirstFilmName().getText().contains("Spectre"));
+        assertTrue(website.getTitle().getText().contains("Releases"));
     }
     @Test
-    public void testFilmClick() {
+    public void testFilmClick() throws InterruptedException {
         website.navNewReleases();
+        Thread.sleep(2000);
         website.newReleases.clickFilm();
         assertFalse(website.film.getDescription().getText().isEmpty());
     }

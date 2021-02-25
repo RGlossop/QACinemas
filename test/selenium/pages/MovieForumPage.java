@@ -14,7 +14,7 @@ public class MovieForumPage {
     private WebElement ratingChoice;
     @FindBy(xpath="//*[@id=\"comment_body\"]")
     private WebElement comment;
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/form/button")
+    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div/div/form/button")
     private WebElement commentSubmit;
 
     @FindBy(xpath="//*[@id=\"page\"]/div[3]/table/tbody/tr[1]/th")
@@ -28,6 +28,7 @@ public class MovieForumPage {
         this.comment.sendKeys(comment);
         ratingBox.click();
         ratingChoice.click();
+        ratingBox.click();
         commentSubmit.click();
     }
 

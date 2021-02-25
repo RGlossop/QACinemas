@@ -1,16 +1,17 @@
 @(film: Film)(implicit session: Session)
 
-    @main("All Our Films") {
 
+    @main(film.film_name) {
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/films.css")"><title>@film.film_name</title>
+    </head>
 
         <div class="filmcontainer">
             <div class="container text-center">
-                <br/>
-                <h1 class = "filmname">@film.film_name</h1>
                 <h3 class = "rating">Rating: @film.age_rating</h3>
                 <br/>
                 <div class="row">
-                    <iframe width="1280" height="720" src="@film.trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="1280" height="720" src="@film.trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <br/>
                 <section id="more-info">
@@ -28,7 +29,7 @@
                                         <p class="info-descr">@film.opening_date</p>
                                     </div> <div class="col">
                                     <h4 class="runtime">Running time:</h4>
-                                    <p class="length">@film.runtime mins</p>
+                                    <p class="length">@film.runtime minutes</p>
                                 </div>
                                 </div>
                                 <br/>
@@ -37,13 +38,13 @@
                                         <p class="text-content">@film.description</p>
                                     </div>
                                 </div>
-                                <br/>
+                                <hr/>
                                 <table class="info-tbl">
-                                    <tr class="tbl-row movie-info" style ="border-bottom: solid #343a40;">
+                                    <tr class="tbl-row movie-info" style="border-bottom: solid #343a40 1px;">
                                         <td class="tbl-cell-ttl ttl">
                                             Cast:
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-start tabb">
                                         @film.cast
                                         </td>
                                     </tr>
@@ -51,7 +52,7 @@
                                         <td class="tbl-cell-ttl ttl">
                                             Director:
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-start tabb">
                                         @film.director
                                         </td>
                                     </tr>

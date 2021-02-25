@@ -9,7 +9,7 @@ import play.api.test.{FakeRequest, Helpers}
 
 import scala.concurrent.Future
 
-class ScreenControllerTest  extends FlatSpecBaseClass {
+class ScreenControllerTest extends FlatSpecBaseClass {
 
   "ScreenController" should "display the toScreen Page" in {
     val controller = new ScreenController(Helpers.stubControllerComponents())

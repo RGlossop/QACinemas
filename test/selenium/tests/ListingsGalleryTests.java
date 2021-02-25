@@ -20,7 +20,7 @@ public class ListingsGalleryTests {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Ryan/Desktop/QACinemas/test/resources/drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "test/resources/drivers/chrome/chromedriver.exe");
     }
     @Before
     public void setup() {
@@ -32,7 +32,7 @@ public class ListingsGalleryTests {
     @Test
     public void testListingsAreShown() {
         website.navAllFilms();
-        assertTrue(website.listingsGallery.getListing1().getAttribute("class").contains("content"));
+        assertTrue(website.listingsGallery.getListing1().getAttribute("class").contains("item"));
     }
 
     @Test
