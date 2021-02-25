@@ -57,7 +57,7 @@ class LoginController @Inject()(cc: ControllerComponents) extends AbstractContro
           }
 
         }.getOrElse {
-          Redirect(routes.HomeController.index).addingToSession("userid" -> usernameCheck.user_id.toString).addingToSession("username" -> usernameCheck.username).discardingCookies(DiscardingCookie("usercheck")).discardingCookies(DiscardingCookie("passcheck"))
+          Redirect(routes.HomeController.index()).addingToSession("userid" -> usernameCheck.user_id.toString).addingToSession("username" -> usernameCheck.username).discardingCookies(DiscardingCookie("usercheck")).discardingCookies(DiscardingCookie("passcheck"))
           //Redirect case for when a user directly clicks on the Login button
         }
 

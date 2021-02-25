@@ -24,7 +24,7 @@ class BookingController @Inject()(cc: ControllerComponents, pc: PaymentControlle
 
   // $COVERAGE-OFF$
   def toPayment() = Action { implicit request =>
-    BookingForm.bookingForm.bindFromRequest.fold({ _ =>
+    BookingForm.bookingForm.bindFromRequest().fold({ _ =>
       BadRequest(views.html.index())
     }, widget => {
       val total: Double = (widget.adult_tickets * 12.50) + (widget.children_tickets * 8.50) + (widget.concession_tickets * 5)

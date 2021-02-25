@@ -30,7 +30,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
 
   // $COVERAGE-OFF$
   def createComment(filmid: Int) = Action { implicit request =>
-    CommentForm.commentForm.bindFromRequest.fold({ _ =>
+    CommentForm.commentForm.bindFromRequest().fold({ _ =>
       BadRequest(views.html.index())
     }, { widget =>
       val containsSwear = checkComment(widget.comment_body)
