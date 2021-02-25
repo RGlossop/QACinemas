@@ -34,7 +34,7 @@ class CommentControllerTest extends FlatSpecBaseClass {
     when(commentDAO.readAll).thenReturn(Future {
       list
     })
-    val res: Future[Result] = controller.thread(1).apply(FakeRequest())
+    val res: Future[Result] = controller.thread(1,"The Dark Knight").apply(FakeRequest())
     contentType(res).mustBe(Some("text/html"))
   }
 

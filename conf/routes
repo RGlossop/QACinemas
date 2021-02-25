@@ -20,9 +20,9 @@ GET         /openingtimes                    controllers.HomeController.openingT
 
 GET         /homeRedirect                    controllers.MainController.homeRedirect()
 
-GET         /placesToGo                      controllers.HomeController.placesToGo
+GET         /placesToGo                      controllers.HomeController.placesToGo()
 
-GET         /screens                         controllers.ScreenController.toScreens
+GET         /screens                         controllers.ScreenController.toScreens()
 
 GET         /screenType                      controllers.ScreenController.changeNum()
 
@@ -37,49 +37,41 @@ GET         /signup                          controllers.SignUpController.signUp
 +nocsrf
 POST        /signupsubmit                    controllers.SignUpController.userSignUp()
 
-GET         /contact                         controllers.ContactController.contact
+GET         /contact                         controllers.ContactController.contact()
 
-GET         /sendEmail                       controllers.ContactController.sendEmail
+GET         /sendEmail                       controllers.ContactController.sendEmail()
 
-GET         /newreleases                     controllers.NewReleasesController.newReleases
+GET         /newreleases                     controllers.NewReleasesController.newReleases()
 
 GET         /bookingstatus                   controllers.PaymentController.checkPayment(token)
 
 +nocsrf
-POST        /payment                         controllers.BookingController.toPayment
+POST        /payment                         controllers.BookingController.toPayment()
 
-GET         /listingsgallery                 controllers.ListingsGalleryController.toListings
+GET         /listingsgallery                 controllers.ListingsGalleryController.toListings()
 
 GET         /film/:id                        controllers.ListingsGalleryController.showFilm(id : Long)
 
 GET         /bookingsRedirect/:filmid        controllers.ListingsGalleryController.bookingsRedirect(filmid : Long)
 
-GET         /bookings                        controllers.BookingController.toBookings
+GET         /bookings                        controllers.BookingController.toBookings()
 
-GET         /sendEmail                       controllers.ContactController.sendEmail
+GET         /login                           controllers.LoginController.toLogin()
 
+GET         /login1                          controllers.LoginController.toLoginFromDiscussion()
 
-GET         /login                           controllers.LoginController.toLogin
+GET         /login2                          controllers.LoginController.toLoginFromBooking()
 
-GET         /login                           controllers.LoginController.toLogin
+GET         /forum                           controllers.CommentController.index()
 
-GET         /login1                          controllers.LoginController.toLoginFromDiscussion
-
-GET         /login2                          controllers.LoginController.toLoginFromBooking
-
-GET         /forum                           controllers.CommentController.index
-
-GET         /forum/:filmid                   controllers.CommentController.thread(filmid: Int)
+GET         /forum/:filmid                   controllers.CommentController.thread(filmid: Int,filmname: String)
 
 +nocsrf
 POST        /addingcomment/:filmid           controllers.CommentController.createComment(filmid: Int)
 
-GET         /login/verify                    controllers.LoginController.loginSuccess
+GET         /login/verify                    controllers.LoginController.loginSuccess()
 
-GET         /logout                          controllers.MainController.logout
-
-GET         /login/verify                    controllers.LoginController.loginSuccess
+GET         /logout                          controllers.MainController.logout()
 
 GET         /search/                         controllers.SearchController.search(text)
 
-GET         /logout                          controllers.MainController.logout

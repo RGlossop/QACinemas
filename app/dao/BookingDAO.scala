@@ -6,9 +6,9 @@ import slick.jdbc.MySQLProfile.api._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class BookingDAO {
+class BookingDAO(databaseName: String = "mySqlDB") {
 
-  lazy val DB = Database.forConfig("mySqlDB")
+  lazy val DB = Database.forConfig(databaseName)
   lazy val bookingTable = TableQuery[Bookings]
 
   def addBooking(booking: Booking) = {

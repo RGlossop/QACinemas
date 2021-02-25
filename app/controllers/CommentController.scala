@@ -22,14 +22,15 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
     }
   }
 
-  def thread(filmid: Int) = Action.async { implicit request =>
+  def thread(filmid: Int,filmname: String) = Action.async { implicit request =>
     commentDAO.readAll.map { list =>
-      Ok(views.html.thread(list.filter(_.film_id == filmid), CommentForm.commentForm, filmid))
+      Ok(views.html.thread(list.filter(_.film_id == filmid), CommentForm.commentForm, filmid,filmname))
     }
   }
 
+  // $COVERAGE-OFF$
   def createComment(filmid: Int) = Action { implicit request =>
-    CommentForm.commentForm.bindFromRequest.fold({ _ =>
+    CommentForm.commentForm.bindFromRequest().fold({ _ =>
       BadRequest(views.html.index())
     }, { widget =>
       val containsSwear = checkComment(widget.comment_body)
@@ -50,6 +51,7 @@ class CommentController @Inject()(cc: ControllerComponents) extends AbstractCont
         exception.printStackTrace()
     }
   }
+  // $COVERAGE-ON$
 
   def checkComment(comment: String): Boolean = {
     var isBad = false

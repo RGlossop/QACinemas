@@ -1,7 +1,7 @@
 @(form: Form[Email])(implicit request: RequestHeader, messagesProvider: MessagesProvider, session: Session)
 
 <head>
-    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/login.css")">
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/login.css")"><title>Contact Us</title>
 </head>
 
 @main("Contact us") {
@@ -19,9 +19,9 @@
             <div id="logincol" class="col">
                 <h2>By email</h2>
                 @helper.form(routes.ContactController.sendEmail(), Symbol("class") -> "form-control", Symbol("id") -> "greybackgroundform") {
-                    @helper.inputText(form("sender"), Symbol("class") -> "form-control", '_label -> "Your email", Symbol("_showConstraints") -> false)
-                    @helper.inputText(form("subject"), Symbol("class") -> "form-control", '_label -> "Subject", Symbol("_showConstraints") -> false)
-                    @helper.textarea(form("body"), Symbol("class") -> "form-control", '_label -> "Your message",Symbol("_showConstraints") -> false)
+                    @helper.inputText(form("sender"), Symbol("class") -> "form-control", Symbol("_label") -> "Your email", Symbol("_showConstraints") -> false)
+                    @helper.inputText(form("subject"), Symbol("class") -> "form-control", Symbol("_label") -> "Subject", Symbol("_showConstraints") -> false)
+                    @helper.textarea(form("body"), Symbol("class") -> "form-control", Symbol("_label") -> "Your message",Symbol("_showConstraints") -> false)
                     <button class="btn btn-dark" type="submit">Send</button>
                 }
             </div>

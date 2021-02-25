@@ -3,20 +3,24 @@
 
 
     @main("Bookings") {
-
+        <head>
+            <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/booking.css")"><title>Bookings</title>
+        </head>
         <div>
             <div class="container">
                 <div class="row">
                     <div class="col-sm"></div>
                     <div class="col-lg container">
                     @helper.form(action = routes.BookingController.toPayment()) {
-                        @helper.inputText(form("booking_id"), '_label -> "", Symbol("type") -> "hidden", Symbol("_showConstraints") -> false)
-                        @helper.inputText(form("user_id"), '_label -> "", Symbol("type") -> "hidden", Symbol("_showConstraints") -> false)
-                        @helper.select(form("screening_id"), screenings.map(screening => screening.screening_id.toString() -> ScreeningUtil.formatScreening(screening)), '_label -> "Screening", Symbol("_showConstraints") -> false, Symbol("class") -> "form-select")
-                        @helper.inputText(form("adult_tickets"), '_label -> "Adult Tickets", 'type -> "number", Symbol("_showConstraints") -> false, Symbol("class") -> "form-control")
-                        @helper.inputText(form("children_tickets"), '_label -> "Children Tickets", 'type -> "number", Symbol("_showConstraints") -> false, Symbol("class") -> "form-control")
-                        @helper.inputText(form("concession_tickets"), '_label -> "Under 16 | Over 65 Tickets", 'type -> "number", Symbol("_showConstraints") -> false, Symbol("class") -> "form-control")
-                        <button class="btn btn-success" type="submit" onclick="show()">Proceed To Payment</button>
+                        @helper.inputText(form("booking_id"), Symbol("_label") -> "", Symbol("type") -> "hidden", Symbol("_showConstraints") -> false)
+                        @helper.inputText(form("user_id"), Symbol("_label") -> "", Symbol("type") -> "hidden", Symbol("_showConstraints") -> false)
+                        <div id="bookingform">
+                        @helper.select(form("screening_id"), screenings.map(screening => screening.screening_id.toString -> ScreeningUtil.formatScreening(screening)), Symbol("_label") -> "Screening", Symbol("_showConstraints") -> false, Symbol("class") -> "form-select")
+                        @helper.inputText(form("adult_tickets"), Symbol("_label") -> "Adult Tickets", Symbol("type") -> "number", Symbol("_showConstraints") -> false, Symbol("class") -> "form-control")
+                        @helper.inputText(form("children_tickets"), Symbol("_label") -> "Children Tickets", Symbol("type") -> "number", Symbol("_showConstraints") -> false, Symbol("class") -> "form-control")
+                        @helper.inputText(form("concession_tickets"), Symbol("_label") -> "Under 16 | Over 65 Tickets", Symbol("type") -> "number", Symbol("_showConstraints") -> false, Symbol("class") -> "form-control")
+                        <button class="btn btn-success" type="submit" >Proceed To Payment</button>
+                        </div>
                     }
                     </div>
                     <div class="col-sm"></div>
