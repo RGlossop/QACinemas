@@ -1,36 +1,43 @@
-<h3 align="center">Player Data Manager</h3>
+<h3 align="center">QACinema Website</h3>
 
 ---
 
-<p align="center">Website allowing you to interact with a backend API for modifying Player Data
+<p align="center">TODO DESC
     <br> 
 </p>
 
 ## 🧐 About
-This is a Project, that allows you to look at, modify, add or remove player data from a System. This system also uses a basic Login system. 
+TODO ABOUT
 
 ## 🎈 Usage
-To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Luk14/player-data-manager.git
-   ```
-   
-2. Compile the War File
-   ```sh
-   mvn clean package
+   git clone https://github.com/RGlossop/QACinemas.git
    ```
 
 ## 🚀 Deployment
     
-    Onee the file has been created, it can be deployed to a Server. 
+1.  Run the following command to compile the project
+   ```sh
+   COMMAND
+   ```
     
 ## ⛏️ Testing
 
-1. Run all the Tests
+1. To run all the tests with coverage, execute the following commnad
    ```sh
-   mvn test
+   sbt clean coverage test
+   ```
+   
+2. To show the test coverage on a website, run the following command
+   ```sh
+   sbt coverageReport
+   ```
+   
+3. To access the report, after the website is compiled, navigate to the output directory
+   ```sh
+   target/scala-2.13/scoverage-report/index.html
    ```
     
 ## ⛏️ Built Using
