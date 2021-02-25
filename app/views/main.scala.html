@@ -18,133 +18,141 @@
                 <header id="header">
                     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                         <div class="container">
-                            <a class="navbar-brand" href="/homeRedirect">
+                            <a class="navbar-brand" href="@routes.MainController.homeRedirect()">
                                 <img class="logo img-responsive" src="@routes.Assets.versioned("images/logo_narrow.png")"
-                                style="height:50px;" alt="Company Logo. &copy;QA all rights reserved">
-                                </a>
-                                <div class="collapse navbar-collapse" id="navbarNavLeft">
+                                style="height: 50px;" alt="Company Logo. &copy;QA all rights reserved"/>
+                            </a>
+                            <div class="collapse navbar-collapse" id="navbarNavLeft">
                                 <ul class="navbar-nav justify-content-start">
-                                <li class="nav-item active">
-                                <a class="nav-link" href= "/homeRedirect">Home<span
-                                class="sr-only"></span></a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="/newreleases">New Releases</a>
-                                </li>
-
-                                @session.get("userid").map { username =>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
-                                </li>
-                                }.getOrElse {
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href= "@routes.MainController.homeRedirect()">Home<span
+                                        class="sr-only"></span></a>
+                                    </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">Movie Forum</a>
+                                        <a class="nav-link" href="@routes.NewReleasesController.newReleases()">New Releases</a>
                                     </li>
-                                }
+
+                                    @session.get("userid").map { username =>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
+                                    </li>
+                                    }.getOrElse {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">
+                                                Movie Forum</a>
+                                        </li>
+                                    }
                                 </ul>
-                        </div>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
-                            <ul class="navbar-nav">
-                                @session.get("userid").map { username =>
-                                <li class="nav-item">
-                                    <a class="nav-link" title="view account" style="cursor: pointer;">My Account</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link " href="/logout"><span class="fas fa-sign-in-alt"></span>
-                                        Logout</a>
-                                </li>
-                                }.getOrElse {
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href="/signup"><span class="fas fa-user"></span>
-                                            Sign-up</a>
+                            </div>
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
+                                <ul class="navbar-nav">
+                                    @session.get("userid").map { username =>
+                                    <li class="nav-item">
+                                        <a class="nav-link" title="view account" style="cursor: pointer;">My Account</a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="/login"><span class="fas fa-sign-in-alt"></span>
-                                            Login</a>
+                                        <a class="nav-link " href="@routes.MainController.logout()"><span class="fas fa-sign-in-alt"></span>
+                                            Logout</a>
                                     </li>
-                                }
+                                    }.getOrElse {
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="@routes.SignUpController.signUpPage()"><span class="fas fa-user"></span>
+                                                Sign-up</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="@routes.LoginController.toLogin()"><span class="fas fa-sign-in-alt"></span>
+                                                Login</a>
+                                        </li>
+                                    }
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                        More
-                                    </a>
-                                    <ul class="dropdown-menu bg-dark">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                            More
+                                        </a>
+                                        <ul class="dropdown-menu bg-dark">
 
-                                        <li><a class="dropdown-item" href="@routes.ListingsGalleryController.toListings()">All Films</a></li>
-                                        <li><a class="dropdown-item" href="@routes.ScreenController.toScreens()">Our Screens</a></li>
-                                        <li><a class="dropdown-item" href="@routes.HomeController.placesToGo()">Places Nearby</a></li>
-                                        <li><a class="dropdown-item" href="@routes.ClassificationController.index()">Classification Information</a></li>
-                                        <li><a class="dropdown-item" href="@routes.AboutUsController.index()">About Us</a></li>
-                                        <li><a class="dropdown-item" href="@routes.ContactController.contact()">Contact Us</a></li>
-                                        <li><a class="dropdown-item" href="@routes.HomeController.gettingThere()">Find Us</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                            <li><a class="dropdown-item" href="@routes.ListingsGalleryController.toListings()">
+                                                All Films</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ScreenController.toScreens()">
+                                                Our Screens</a></li>
+                                            <li><a class="dropdown-item" href="@routes.HomeController.placesToGo()">
+                                                Places Nearby</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ClassificationController.index()">
+                                                Classification Information</a></li>
+                                            <li><a class="dropdown-item" href="@routes.AboutUsController.index()">
+                                                About Us</a></li>
+                                            <li><a class="dropdown-item" href="@routes.ContactController.contact()">
+                                                Contact Us</a></li>
+                                            <li><a class="dropdown-item" href="@routes.HomeController.gettingThere()">
+                                                Find Us</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+            </div>
+            <br />
+            <br />
+            <div class="text-center" id="logo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl" id="logo">
+                            <img class="logo img-responsive" src="@routes.Assets.versioned("images/logo_wide.png")"
+                            style="height: 100px;" alt="Another company logo &copy;QA all rights reserved"/>
+
                         </div>
                     </div>
-                </nav>
-            </header>
-        </div>
-        <br />
-        <br />
-        <div class="text-center" id="logo">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl" id="logo">
-                        <img class="logo img-responsive" src="@routes.Assets.versioned("images/logo_wide.png")"
-                        style="height:100px;" alt="Another company logo &copy;QA all rights reserved">
-
-                    </div>
-                 </div>
-                 <h1 id="mainheader" class="text-center">
+                    <h1 id="mainheader" class="text-center" >
                     @title
-                 </h1>
-              </div>
-           </div>
-                @content
-          <br/>
-      </div>
-            <footer>
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark bottom">
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
-                        <div>
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@routes.AboutUsController.index()">About Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@routes.ContactController.contact()">Contact Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@routes.HomeController.gettingThere()">Find Us</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="justify-content-end">
-                            <form class="form-inline" action="/search/" method="GET">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" id="searchText" name="text" class="form-control me-2"
-                                        placeholder="Search term">
-                                    </div>
-                                    <div class="col">
-                                        <input type="submit" name="submit" class="btn btn-outline-secondary"
-                                        value="Search" onclick="setSearch();">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    </h1>
+                </div>
+            </div>
+            @content
+            <br/>
+        </div>
+        <footer>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark bottom">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="@routes.AboutUsController.index()">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@routes.ContactController.contact()">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@routes.HomeController.gettingThere()">Find Us</a>
+                            </li>
+                        </ul>
                     </div>
-                </nav>
-            </footer>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-            crossorigin="anonymous"></script>
-            <script>
-                    let setSearch = () => {
-                        const searchText = document.querySelector("#searchText");
-                        window.location.replace("localhost:9000/search/" + String(searchText.value));
-                    }
-            </script>
+                    <div class="justify-content-end">
+                        <form class="form-inline" action="/search/" method="GET">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" id="searchText" name="text" class="form-control me-2"
+                                    placeholder="Search term">
+                                </div>
+                                <div class="col">
+                                    <input type="submit" name="submit" class="btn btn-outline-secondary"
+                                    value="Search" onclick="setSearch();">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+        <script>
+                let setSearch = () => {
+                    const searchText = document.querySelector("#searchText");
+                    window.location.replace("localhost:9000/search/" + String(searchText.value));
+                }
+        </script>
     </body>
 </html>

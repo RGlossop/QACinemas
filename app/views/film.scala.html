@@ -3,7 +3,7 @@
 
     @main(film.film_name) {
     <head>
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/films.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/films.css")"><title>@film.film_name</title>
     </head>
 
         <div class="filmcontainer">
@@ -11,7 +11,7 @@
                 <h3 class = "rating">Rating: @film.age_rating</h3>
                 <br/>
                 <div class="row">
-                    <iframe width="1280" height="720" src="@film.trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="1280" height="720" src="@film.trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <br/>
                 <section id="more-info">

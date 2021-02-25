@@ -21,31 +21,33 @@
                             <th scope="row">Adult Tickets</th>
                             <td>@booking.adult_tickets</td>
                             <td>£12.50 Per Ticket</td>
-                            <td>£@(booking.adult_tickets * 12.50)</td>
+                            <td>£@("%.2f".format(booking.adult_tickets * 12.50))</td>
                         </tr>
                         <tr>
                             <th scope="row">Child Tickets</th>
                             <td>@booking.children_tickets</td>
                             <td>£8.50 Per Ticket</td>
-                            <td>£@(booking.children_tickets * 8.50)</td>
+                            <td>£@("%.2f".format(booking.children_tickets * 8.50))</td>
                         </tr>
                         <tr>
                             <th scope="row">Concession Tickets</th>
                             <td>@booking.concession_tickets</td>
                             <td>£5.00 Per Ticket</td>
-                            <td>£@(booking.concession_tickets * 5.0)</td>
+                            <td>£@("%.2f".format(booking.concession_tickets * 5.00))</td>
                         </tr>
                         <tr>
                             <th scope="row">Total</th>
                             <td>@(booking.adult_tickets + booking.children_tickets + booking.concession_tickets)</td>
                             <td></td>
                             <td>£@{
-                                (booking.adult_tickets * 12.50) + (booking.children_tickets * 8.50) + (booking.concession_tickets * 5)
+                                "%.2f".format((booking.adult_tickets * 12.50) + (booking.children_tickets * 8.50) + (booking.concession_tickets * 5))
                             }</td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="text-end">
                 <a class="btn btn-success" href="@url">Proceed To PayPal</a>
+                </div>
             </div>
             <div class="col-sm"></div>
         </div>

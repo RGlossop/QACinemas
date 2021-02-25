@@ -34,6 +34,7 @@
 }
 
 .card-text {
+
 	font-weight: bold;
 	text-align: justify;
     text-justify: inter-word;
@@ -50,4 +51,6 @@
 
 .card {
 	width: 25pc;
+    background-color: white;
 }
+
