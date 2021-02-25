@@ -34,11 +34,11 @@
 
                                     @session.get("userid").map { username =>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="@routes.CommentController.index">Movie Forum</a>
+                                        <a class="nav-link" href="@routes.CommentController.index()">Movie Forum</a>
                                     </li>
                                     }.getOrElse {
                                         <li class="nav-item">
-                                            <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion">
+                                            <a class="nav-link" href="@routes.LoginController.toLoginFromDiscussion()">
                                                 Movie Forum</a>
                                         </li>
                                     }
