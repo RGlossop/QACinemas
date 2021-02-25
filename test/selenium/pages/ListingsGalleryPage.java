@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ListingsGalleryPage {
 
-    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div/div[1]/div/div/a/div[1]")
+    @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div/div[1]")
     private WebElement listing1;
 
     @FindBy(xpath="//*[@id=\"page\"]/div[3]/div/div/div[1]/div/div/a/img")

@@ -39,6 +39,7 @@ class Startup extends AbstractModule {
   val userDAO = new UserDAO
   Await.ready(userDAO.createUser(User(0L, "John", "Smith", dob, "Admin123", "Admin@gmail.com", "Password123")), Duration.Inf)
 
+
   println("startup")
 
   var allFilms = Seq(

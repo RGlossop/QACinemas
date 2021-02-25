@@ -34,10 +34,12 @@ public class ContactUsTests {
         assertTrue(website.getTitle().getText().contains("Contact"));
     }
     @Test
-    public void testSendEmail() {
+    public void testSendEmail() throws InterruptedException {
         website.navContactUs();
+        Thread.sleep(1000);
         website.contactUs.writeEmail("emailSender@Gmail.com", "I like your site", "Hey this site is great!");
-        assertTrue(website.getTitle().getText().contains("QACinemas"));
+        Thread.sleep(1000);
+        assertTrue(website.getFirstLine().getText().contains("QACinemas"));
     }
     @Test
     public void testSendEmailFail() {

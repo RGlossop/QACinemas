@@ -35,8 +35,9 @@ public class UserFunctionalityTests {
     @Test
     public void testSignUp() throws InterruptedException {
         website.navSignUp();
+        Thread.sleep(2000);
         website.signUp.signUp("Ryan", "Glossop", "06061993", "RyanG123", "ff@fs.com", "password123");
-        assertTrue(website.getTitle().getText().contains("QACinemas"));
+        assertTrue(website.getFirstLine().getText().contains("QACinemas"));
     }
     @Test
     public void testLogin() throws InterruptedException {
@@ -60,6 +61,7 @@ public class UserFunctionalityTests {
         Thread.sleep(2000);
         website.film.goToBookings();
         website.bookingPage.bookTicket("2", "1", "2");
+        Thread.sleep(2000);
         website.payment.acceptOrder();
         WebElement payPal = driver.findElement(By.xpath("//*[@id=\"headerText\"]"));
         assertTrue(payPal.getText().contains("PayPal"));
