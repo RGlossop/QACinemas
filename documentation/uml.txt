@@ -1,0 +1,417 @@
+@startuml
+
+package "app"{
+
+	Module ..> Startup
+
+	class Module{
+		+configure(): Unit
+	}
+
+	package app.controllers{
+
+        EmailUtils ..> ContactController
+
+		class AboutUsController{
+			+index(): Action[AnyContent]
+		}
+
+		class AsyncController{
+            +message(): Action[AnyContent]
+            -getFutureMessage(delayTime: FiniteDuration): Future[String]
+		}
+
+        class BookingController{
+            +screenDAO: ScreeningDAO
+            +bookingDAO: bookingDAO
+            +toBookings(): Action[AnyContent]
+            +toPayment(): Action[AnyContent]
+		}
+
+        class ClassificationController{
+            +index(): Action[AnyContent]
+		}
+
+        class CommentController{
+            +filmDAO: FilmDAO
+            +commentDAO: CommentDAO
+            +index(): Action[AnyContent]
+            +thread(filmid: Int): Action[AnyContent]
+            +createComment(filmid: Int): Action[AnyContent]
+            +create(comment: Comment): Action[AnyContent]
+            +checkComment(comment: String): Boolean
+		}
+
+        class ContactController{
+            -testEmail: String
+            +contact(): Action[AnyContent]
+            +sendEmail(): Action[AnyContent]
+            -send(email: Email): Unit
+		}
+
+        class CountController{
+            +count(): Action[AnyContent]
+		}
+
+        class HomeController{
+            +index(): Action[AnyContent]
+            +openingTimes(): Action[AnyContent]
+            +gettingThere(): Action[AnyContent]
+            +placesToGo(): Action[AnyContent]
+		}
+
+        class ListingsGalleryController{
+            +filmDAO: FilmDAO
+            +toListings(): Action[AnyContent]
+            +showFilm(id: Long): Action[AnyContent]
+            +bookingsRedirect(filmid: Long): Action[AnyContent]
+		}
+
+        class LoginController{
+            +userDAO: userDAO
+            +toLogin(): Action[AnyContent]
+            +toLoginFromDiscussion(): Action[AnyContent]
+            +toLoginFromBooking(): Action[AnyContent]
+            +loginSuccess(): Action[AnyContent]
+		}
+
+        class MainController{
+            +homeRedirect(): Action[AnyContent]
+            +logout(): Action[AnyContent]
+		}
+
+        class NewReleasesController{
+            +filmDAO: FilmDAO
+            +newReleases(): Action[AnyContent]
+		}
+
+        class PaymentController{
+            +bookingDAO: bookingDAO
+            +getAccessToken(): String
+            +createBooking(ticketCost: Double): (String, String)
+            +checkPayment(order: String): Action[AnyContent]
+            +checkPaymentStatus(respo: String): Boolean
+		}
+
+        class ScreenController{
+            +num: Int
+            +toScreens(): Action[AnyContent]
+            +changeNum(): Action[AnyContent]
+            +toScreens2(): Action[AnyContent]
+		}
+
+        class SearchController{
+            +filmDAO: filmDAO
+            +search(searchTerm: String): Action[AnyContent]
+            -getFilms(): Seq[Film]
+            -extractSearchTerms(films: Seq[Film]): Map[Long, (String, Array[String])]
+            -sortBySearchTerms(map: Map[Long, (String, Array[String])], searchTerm: String): Array[(Long, String)]
+            -splitWords(string: String): Array[String]
+            -checkNumberOfTermsMatching(film: (Long, (String, Array[String])), searchTerms: Set[String]): Int
+            -checkTotalNumberOfMatches(film: (Long, (String, Array[String])), searchTerms: Set[String]): Int
+            -orderByMatches(resultMap: ArrayBuffer[(Long, String, Int, Int)]): Array[(Long, String)]
+		}
+
+        class SignUpController{
+            +userDAO: userDAO
+            +signUpPage(): Action[AnyContent]
+            +userSignUp(): Action[AnyContent]
+            -signUp(user: User): Unit
+            -sendConfirmationEmail(name: String, username: String, email: String): Unit
+		}
+
+        class Startup{
+            +DB: Database
+            +filmTable: TableQuery[Films]
+            +commentTable: TableQuery[Comments]
+            +usersTable: TableQuery[DbUsers]
+            +bookingTable: TableQuery[Bookings]
+            +screeningsTable: TableQuery[Screenings]
+            +initSchema: DBIOAction[Unit, NoStream, Effect.Schema]
+            +dropSchema: DBIOAction[Unit, NoStream, Effect.Schema]
+            +allFilms: Seq[Film]
+            +allScreenings: Seq[Screening]
+		}
+	}
+
+    package app.dao{
+
+        Startup ..> UserDAO
+        BookingController ..> BookingDAO
+        BookingController ..> ScreenDAO
+        CommentController ..> CommentDAO
+        CommentController ..> FilmDAO
+        ListingsGalleryController ..> FilmDAO
+        LoginController ..> UserDAO
+        NewReleasesController ..> FilmDAO
+        PaymentController ..> BookingDAO
+        SearchController ..> FilmDAO
+        SignUpController ..> UserDAO
+
+        class BookingDAO{
+            +DB: Database
+            +bookingTable: TableQuery[Bookings]
+            +addBooking(booking: Booking): Future[Int]
+            +readBooking(order_id: Int): Future[Option[Booking]]
+            +updateBooking(order_id: Int): Future[Future[Int]]
+        }
+
+        class CommentDAO{
+            +DB: Database
+            +table: TableQuery[Comments]
+            +readAll(): Future[Seq[Comment]]
+            +createComment(comment: Comment): Future[Int]
+        }
+
+        class FilmDAO{
+            +DB: Database
+            +filmTable: TableQuery[Films]
+            +readAll(): Future[Seq[Film]]
+            +readFilm(id: Long): Future[Option[Film]]
+        }
+
+        class ScreeningDAO{
+            +DB: Database
+            +table: TableQuery[Screenings]
+            +readAll(): Future[Seq[Screening]]
+        }
+
+        class UserDAO{
+            +DB: Database
+            +table: TableQuery[DbUsers]
+            +createUser(user: User): Future[String]
+            +deleteUser(user_id: Long): Future[Int]
+            +readAllUsers(): Future[Seq[DbUser]]
+            +readUserByUserName(username: String): Future[Option[DbUser]]
+            +readUserById(id: Long): Future[Option[DbUser]]
+        }
+    }
+
+	package app.models{
+
+        Startup ..> Film
+        Startup ..> Comment
+        Startup ..> User
+        Startup ..> Booking
+        Startup ..> Screening
+
+        Booking -- "Booking-obj"
+        BookingForm -- "BookingForm-obj"
+        Comment -- Comments
+        Comment -- CommentForm
+        CommentForm -- "CommentForm-obj"
+        Email -- EmailForm
+        EmailForm -- "EmailForm-obj"
+        Film -- Films
+        LoginForm -- "LoginForm-obj"
+        Screening -- Screenings
+        Screening -- ScreeningUtil
+        SignUpForm -- "SignUpForm-obj"
+        User -- UserMethods
+        DbUser -- DbUsers
+        DbUser -- UserMethods
+
+		class Booking << (C, SandyBrown) >> {
+            +booking_id: Long
+            +status: String
+            +order_id: String
+            +user_id: Long
+            +screening_id: Long
+            +adult_tickets: Int
+            +children_tickets: Int
+            +concession_tickets: Int
+            +total: Double
+        }
+
+		class Booking-obj << (O, LightCoral) >> {
+            +booking_id: Rep[Long]
+            +status: Rep[String]
+            +order_id: Rep[String]
+            +user_id: Rep[Long]
+            +screening_id: Rep[Long]
+            +adult_tickets: Rep[Int]
+            +children_tickets: Rep[Int]
+            +concession_tickets: Rep[Int]
+            +total: Rep[Double]
+        }
+
+		class BookingForm << (C, SandyBrown) >> {
+            +booking_id: Long
+            +user_id: Long
+            +screening_id: Long
+            +adult_tickets: Int
+            +children_tickets: Int
+            +concession_tickets: Int
+        }
+
+        class BookingForm-obj << (O, LightCoral) >> {
+            +bookingForm: Form
+        }
+
+		class Comment << (C, SandyBrown) >> {
+            +comment_id: Long
+            +film_id: Long
+            +rating: Int
+            +username: String
+            +comment_body: String
+        }
+
+        class Comments << (C, SandyBrown) >> {
+            +comment_id: Rep[Long]
+            +film_id: Rep[Long]
+            +rating: Rep[Int]
+            +username: Rep[String]
+            +comment_body: Rep[String]
+        }
+
+		class CommentForm << (C, SandyBrown) >> {
+            +comment_id: Long
+            +film_id: Long
+            +rating: Int
+            +username: String
+            +comment_body: String
+        }
+
+        class CommentForm-obj << (O, LightCoral) >> {
+            commentForm: Form
+        }
+
+		class Email << (C, SandyBrown) >> {
+            +sender: String
+            +subject: String
+            +body: String
+        }
+
+        class EmailForm << (C, SandyBrown) >> {
+            +sender: String
+            +subject: String
+            +body: String
+        }
+
+        class EmailForm-obj << (O, LightCoral) >> {
+            emailForm: Form
+        }
+
+		class Film << (C, SandyBrown) >> {
+            +film_id: Long
+            +film_name: String
+            +age_rating: String
+            +description: String
+            +opening_date: String
+            +closing_date: String
+            +picture: String
+            +case: String
+            +director: String
+            +runtime: Int
+            +trailer: Int
+            +searchIterator(): (String, String, String, String)
+        }
+
+        class Films << (C, SandyBrown) >> {
+            +film_id: Rep[Long]
+            +film_name: Rep[String]
+            +age_rating: Rep[String]
+            +description: Rep[String]
+            +opening_date: Rep[String]
+            +closing_date: Rep[String]
+            +picture: Rep[String]
+            +case: Rep[String]
+            +director: Rep[String]
+            +runtime: Rep[Int]
+            +trailer: Rep[Int]
+        }
+
+		class LoginForm << (C, SandyBrown) >> {
+            +username: String
+            +password: String
+        }
+
+        class LoginForm-obj << (O, LightCoral) >> {
+            +userDAO: UserDAO
+            +createLoginForm: Form
+            +check(log: LoginForm): Boolean
+        }
+
+        class Screening << (C, SandyBrown) >> {
+            +screening_id: Long
+            +film_id: Long
+            +screen: Int
+            +date: String
+            +time: String
+        }
+
+        class Screenings << (C, SandyBrown) >> {
+            +screening_id: Rep[Long]
+            +film_id: Rep[Long]
+            +screen: Rep[Int]
+            +date: Rep[String]
+            +time: Rep[String]
+        }
+
+		class ScreeningUtil << (O, LightCoral) >> {
+            +formatScreening(screening: Screening): String
+        }
+
+		class SignUpForm << (C, SandyBrown) >> {
+            +first_name: String
+            +last_name: String
+            +date_of_birth: Date
+            +username: String
+            +email: String
+            +password: String
+        }
+
+        class SignUpForm-obj << (O, LightCoral) >> {
+            +signUpForm: Form
+            -formToUser: User
+            -userToForm: Option[(String, String, Date, String, String, String)]
+        }
+
+		class User << (C, SandyBrown) >> {
+            +user_id: Long
+            +first_name: String
+            +last_name: String
+            +date_of_birth: LocalDate
+            +username: String
+            +email: String
+            +password: String
+        }
+
+        class DbUser << (C, SandyBrown) >> {
+            +user_id: Long
+            +first_name: String
+            +last_name: String
+            +date_of_birth: String
+            +username: String
+            +email: String
+            +password: Array[Byte]
+        }
+
+        class DbUsers << (C, SandyBrown) >> {
+            +user_id: Rep[Long]
+            +first_name: Rep[String]
+            +last_name: Rep[String]
+            +date_of_birth: Rep[String]
+            +username: Rep[String]
+            +email: Rep[String]
+            +password: Rep[Array[Byte]]
+        }
+
+        class UserMethods << (O, LightCoral) >> {
+            +toUser(dbUser: DbUser): User
+            +fromUser(user: User): DbUser
+            +stringToDate(dateString: String): LocalDate
+            +encryptPass(pass: String): Array[Byte]
+        }
+	}
+
+	package app.utils{
+
+		class EmailUtils << (O, LightCoral) >>{
+			-sendAddress: String
+            -sendPassword: String
+            +sendEmail(subject: String, body: String, replyTo: String, address: String): Unit
+		}
+	}
+    
+@enduml
