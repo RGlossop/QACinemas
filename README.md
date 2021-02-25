@@ -38,7 +38,7 @@
    ```
    
 ## ⛏️ Selenium Testing
-    1. To run all the tests esnure the chrome driver in test/resources matches your version of chrome, then right click selenium/tests/ folder and run all tests in tests
+    1. To run all the tests ensure the chrome driver in test/resources matches your version of chrome, then right click selenium/tests/ folder and run all tests in tests
 ## ⛏️ Built Using
 - [HTML](https://html.spec.whatwg.org/) - Front end
 - [CSS](https://www.w3.org/TR/CSS/#css) - Styling
