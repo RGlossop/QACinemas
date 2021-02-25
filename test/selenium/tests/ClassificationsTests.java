@@ -21,7 +21,7 @@ public class ClassificationsTests {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Ryan/Desktop/QACinemas/test/resources/drivers/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "test/resources/drivers/chrome/chromedriver.exe");
     }
     @Before
     public void setup() {
