@@ -16,6 +16,7 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
     Ok(views.html.contact(EmailForm.emailForm))
   }
 
+  // $COVERAGE-OFF$
   def sendEmail = Action { implicit request =>
     EmailForm.emailForm.bindFromRequest().fold({ formWithErrors =>
       BadRequest(views.html.contact(formWithErrors))
@@ -28,4 +29,5 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
   def send(email: Email) = {
     EmailUtils.sendEmail(email.getSubject(), email.getBody())(replyTo = email.getSender(), address = testEmail)
   }
+  // $COVERAGE-ON$
 }

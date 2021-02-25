@@ -19,6 +19,7 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
     Ok(views.html.signup(SignUpForm.signUpForm))
   }
 
+  // $COVERAGE-OFF$
   def userSignUp() = Action { implicit request =>
     SignUpForm.signUpForm.bindFromRequest().fold({ formWithErrors =>
       BadRequest(views.html.signup(formWithErrors))
@@ -44,4 +45,5 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
     val body = s"Hi $name!\n\nThanks for signing up with QA Cinemas. Your username is $username.\n\nRegards\n\nThe QA Cinemas team"
     EmailUtils.sendEmail(subject, body)(address = email)
   }
+  // $COVERAGE-ON$
 }
