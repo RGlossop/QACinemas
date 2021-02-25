@@ -2,12 +2,9 @@
 
 ---
 
-<p align="center">TODO DESC
+<p align="center">A custom made website created for QACinema. Including frontend and backend connections.
     <br> 
 </p>
-
-## 🧐 About
-TODO ABOUT
 
 ## 🎈 Usage
 
@@ -20,7 +17,7 @@ TODO ABOUT
     
 1.  Run the following command to compile the project
    ```sh
-   COMMAND
+   sbt assembly
    ```
     
 ## ⛏️ Testing
