@@ -8,7 +8,7 @@ import scala.util.{Failure, Success}
 
 object EmailUtils {
 
-  val sendAddress = "example@gmail.com"
+  val sendAddress = "example@googlemail.com"
   val sendPassword = "password"
 
   // To send email with gmail, if you have two-factor authentication enabled, you need to set up an app password in

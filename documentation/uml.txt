@@ -1,16 +1,15 @@
 @startuml
+left to right direction
 
 package "app"{
 
-	Module ..> Startup
+	Module <.. Startup
 
 	class Module{
 		+configure(): Unit
 	}
 
 	package app.controllers{
-
-        EmailUtils ..> ContactController
 
 		class AboutUsController{
 			+index(): Action[AnyContent]
@@ -136,17 +135,17 @@ package "app"{
 
     package app.dao{
 
-        Startup ..> UserDAO
-        BookingController ..> BookingDAO
-        BookingController ..> ScreenDAO
-        CommentController ..> CommentDAO
-        CommentController ..> FilmDAO
-        ListingsGalleryController ..> FilmDAO
-        LoginController ..> UserDAO
-        NewReleasesController ..> FilmDAO
-        PaymentController ..> BookingDAO
-        SearchController ..> FilmDAO
-        SignUpController ..> UserDAO
+        Startup <.. UserDAO
+        BookingController <.. BookingDAO
+        BookingController <.. ScreenDAO
+        CommentController <.. CommentDAO
+        CommentController <.. FilmDAO
+        ListingsGalleryController <.. FilmDAO
+        LoginController <.. UserDAO
+        NewReleasesController <.. FilmDAO
+        PaymentController <.. BookingDAO
+        SearchController <.. FilmDAO
+        SignUpController <.. UserDAO
 
         class BookingDAO{
             +DB: Database
@@ -189,11 +188,25 @@ package "app"{
 
 	package app.models{
 
-        Startup ..> Film
-        Startup ..> Comment
-        Startup ..> User
-        Startup ..> Booking
-        Startup ..> Screening
+        Startup <.. Film
+        Startup <.. Comment
+        Startup <.. User
+        Startup <.. Booking
+        Startup <.. Screening
+
+        BookingController <.. Booking
+        BookingController <.. BookingForm
+
+        CommentController <.. Comment
+        CommentController <.. CommentForm
+
+        ContactController <.. Email
+        ContactController <.. EmailForm
+
+        SearchController <.. Film
+
+        SignUpController <.. User
+        SignUpController <.. SignUpForm
 
         Booking -- "Booking-obj"
         BookingForm -- "BookingForm-obj"
@@ -405,7 +418,30 @@ package "app"{
         }
 	}
 
-	package app.utils{
+    package app.services {
+
+        CountController <.. Counter
+        AtomicCounter <-- Counter
+
+        class ApplicationTimer {
+            -logger: Logger
+            -start: Instant
+        }
+
+        class Counter << (T, LightSkyBlue) >> {
+            +nextCount(): Int
+        }
+
+        class AtomicCounter {
+            -atomicCounter: AtomicInteger
+            +nextCount(): Int
+        }
+    }
+
+	package app.utils {
+
+        EmailUtils <.. ContactController
+        EmailUtils <.. SignUpController
 
 		class EmailUtils << (O, LightCoral) >>{
 			-sendAddress: String
