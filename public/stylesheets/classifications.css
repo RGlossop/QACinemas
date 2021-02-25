@@ -28,16 +28,29 @@
 }
 
 .card-img-top {
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     align-self: center;
 }
 
-.card-title {
-    font-weight: bolder;
-    color:#1A659E;
+.card-text {
+
+	font-weight: bold;
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+.list-group-item {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 #contact-title{
     color:#1A659E;
 }
+
+.card {
+	width: 25pc;
+    background-color: white;
+}
+

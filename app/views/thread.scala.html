@@ -1,0 +1,45 @@
+@(comments: Seq[Comment], form: Form[Comment], filmid: Int, filmname: String)(implicit messagesProvider: MessagesProvider, session: Session)
+
+@main(filmname + " Thread") {
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/thread.css")"><title>@filmname
+        Thread</title>
+    </head>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Username</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(comment <- comments) {
+                <tr>
+                    <th scope="row">@comment.username</th>
+                    <td>@comment.comment_body</td>
+                    <td>@{
+                        "★" * comment.rating
+                    }</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <br/>
+        <hr/>
+        <br/>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-3 justify-content-center">
+                @helper.form(routes.CommentController.createComment(filmid)) {
+                    @helper.textarea(form("comment_body"), Symbol("_label") -> "Comment", Symbol("_showConstraints") -> false, Symbol("cols") -> 35, Symbol("rows") -> 5)
+                    @helper.select(form("rating"), (1 to 5).map(f => s"$f" -> "★" * f), Symbol("_label") -> "Rating", Symbol("_showConstraints") -> false)
+                    <button class="btn btn-dark" type="submit">Send</button>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+}

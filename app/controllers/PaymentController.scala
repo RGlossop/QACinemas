@@ -1,5 +1,6 @@
 package controllers
 
+import dao.BookingDAO
 import play.api.libs.json.{JsValue, Json}
 import play.api.libs.ws.WSClient
 import play.api.mvc.{AbstractController, ControllerComponents}
@@ -13,20 +14,17 @@ import scala.sys.process._
 @Singleton
 class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
-  def paymentPage = Action { implicit req =>
-    val booking = createBooking(100)
-    val v2 = booking._2
-    Ok(views.html.payment(v2))
-  }
+  // $COVERAGE-OFF$
+  val bookingDAO = new BookingDAO
 
   def getAccessToken(): String = {
-    val res: String = "curl -v https://api-m.sandbox.paypal.com/v1/oauth2/token -H \"Accept: application/json\" -H \"Accept-Language: en_US\" -u \"#:#\" -d \"grant_type=client_credentials\"" !!
+    val res: String = "curl -v https://api-m.sandbox.paypal.com/v1/oauth2/token -H \"Accept: application/json\" -H \"Accept-Language: en_US\" -u \"UwU\" -d \"grant_type=client_credentials\"" !!
     val json: JsValue = Json.parse(res)
     val access: String = (json \ "access_token").as[String]
     access
   }
 
-  def createBooking(ticketCost: Float): (String, String) = {
+  def createBooking(ticketCost: Double): (String, String) = {
     val postData: JsValue = Json.obj(
       "intent" -> "CAPTURE",
       "purchase_units" -> Json.arr(
@@ -39,8 +37,8 @@ class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extend
         )
       ),
       "application_context" -> Json.obj(
-        "return_url" -> "http://localhost:9000/paymentcheck",
-        "cancel_url" -> "http://localhost:9000/#"
+        "return_url" -> "http://localhost:9000/bookingstatus",
+        "cancel_url" -> "http://localhost:9000/bookingstatus"
       )
     )
     val token: String = "Bearer " + getAccessToken()
@@ -53,12 +51,13 @@ class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extend
 
   def checkPayment(order: String) = Action { implicit req =>
     val token: String = getAccessToken()
-    val res: String = ("curl -v -X POST https://api-m.sandbox.paypal.com/v2/checkout/orders/" + order + "/capture -H \"Content-Type: application/json\" -H \"Authorization: Bearer " + token + "\"" !!)
-    if (checkPaymentStatus(res)) {
-      Ok("Order has been Successfully Completed!")
+    val res: JsValue = Await.result(ws.url("https://api-m.sandbox.paypal.com/v2/checkout/orders/" + order + "/capture").addHttpHeaders("Content-Type" -> "application/json").addHttpHeaders("Authorization" -> ("Bearer " + token)).post(""), Duration(5, "seconds")).json
+    if (checkPaymentStatus(res.toString())) {
+      bookingDAO.updateBooking(order, "COMPLETED")
+      Ok(views.html.bookingstatus("Booking has been Successfully Processed"))
     }
     else {
-      Ok("Order has not been completed! Oops.")
+      Ok(views.html.bookingstatus("Invalid Entry"))
     }
   }
 
@@ -69,4 +68,5 @@ class PaymentController @Inject()(cc: ControllerComponents, ws: WSClient) extend
       case exception: Exception => false
     }
   }
+  // $COVERAGE-ON$
 }

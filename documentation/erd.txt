@@ -2,70 +2,72 @@
 
 skinparam linetype ortho
 
-entity "Films" as films {
-	* **film_id : bigint <<generated>>**
+entity "films" as films {
+	* **film_id : bigint(20) <<generated>>**
 	--
-	* title : varchar(255)
-    * description: varchar(1000)
-    * opening: char(10)
-    * closing: char(10)
+	film_name : text
+    age_rating: text
+    description: text
+    opening: text
+    closing: text
+    picture: text
+    cast: text
+    director: text
+    runtime: int(11)
+    trailer: text
+    rating: text
 }
 
-entity "Users" as users {
-	* **user_id : bigint <<generated>>**
+entity "users" as users {
+	* **user_id : bigint(20) <<generated>>**
 	--
-	* first_name : varchar(255)
-    * last_name : varchar(255)
-	* dob : char(10)
-    * username: varchar(255)
-    * email: varchar(255)
-    * password: binary(256)
+	* first_name :text
+    * last_name : text
+	* dob : text
+    * username: text
+    * email: text
+    * password: blob
 }
 
-entity "Screenings" as screenings {
-    * **screening_id: bigint <<generated>>**
+entity "screening" as screenings {
+    * **screening_id: bigint(20) <<generated>>**
     * **film_id: bigint <<FK>>**
     --
-    * screen : int
-    * date : char(10)
-    * time : char(5)
+    * screen : int(11)
+    * date : text
+    * time : text
 }
 
-entity "Bookings" as bookings {
-    * **user_id: bigint <<FK>>**
-    * **screening_id: bigint <<FK>>**
+entity "bookings" as bookings {
+    * **booking_id: bigint(20) <<generated>>
+    * **user_id: bigint(20) <<FK>>**
+    * **screening_id: bigint(20) <<FK>>**
+    * **order_id: bigint(20)
+    status: text
+    adult_tickets: int(11)
+    children_tickets: int(11)
+    concession_tickets: int(11)
+    total: double
 }
 
-entity "Comments" as comments {
-    * **comment_id: bigint <<generated>>**
-    * **user_id: bigint <<FK>>**
+entity "forum" as forum {
+    * **comment_id: bigint(20) <<generated>>**
+    * **film_id: bigint(20) <<FK>>**
     --
-    * comment_body: varchar(10000)
+    * rating: int(11)
+    * username: text
+    comment_body: text
 }
 
-entity "Payments" as payments {
-    * **payment_id: bigint <<generated>>**
-    * **user_id: bigint <<FK>>**
-    --
-    * cardholder_name: varchar(510)
-    * card_number: bigint
-    * expiry_date: char(10)
-    * cvc: smallint
-}
-
-entity "Places" as places {
-    * **place_id: bigint <<generated>>**
-    --
-    * description: varchar(1000)
-    offers: varchar(1000)
-    image_link: varchar(255)
-    address: varchar(255)
-    telephone: varchar(20)
+entity "comments" as comments {
+    * **comment_id: bigint(20) <<generated>>**
+    * username: text
+    * comment_body: text
 }
 
 films ||--o{ screenings
 bookings }o--o| screenings
-users ||--o{ comments
+films ||--|| forum
+forum ||--o{ comments
 users ||--o{ bookings
-users ||--o{ payments
 @enduml

@@ -4,7 +4,7 @@
 }
 
 .team h1{
-    color:#004E89;
+    color:black;
     margin: 1em;
 }
 
@@ -32,9 +32,27 @@
 
 .aboutus-titles{
     font-weight: bold;
-    color: #004E89;
+    color: black;
 }
 
 .scrum-subtitle {
-    color: #004E89;
+    color: black;
+}
+
+#contact-title{
+    color : white;
+    text-decoration: none;
+
+}
+
+#scrumlink{
+    color : black;
+    text-decoration: none;
+}
+
+#img-scrum{
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    height: 50%;
 }

@@ -1,37 +1,57 @@
-@(form : Form[(String,String)])(implicit messages : Messages, session:Session)
+@()(implicit session: Session)
 
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/login.css")">
-    </head>
 
-@main("Login"){
-    <br />
-    <br />
-    <div id="logincont" class="logincontainer">
-        <div class="container" style="align-content: center">
-            <div id="logincol" class="col">
-                <div class="class-body">
-                    <br />
-                    @helper.form(routes.LoginController.loginSuccess()){
 
-                        @helper.inputText(form("username"), Symbol("_label") -> "Username")
-                        @helper.inputPassword(form("password"), Symbol("_label") -> "Password")
-                        <button type = "submit" class="btn btn-dark" id="login">Login</button>
-                        <button type = "button" onclick="setRoute();" class="btn btn-dark" id="registerRe">Register</button>
-                    }
+    @main("Login") {
+        <head>
+            <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/login.css")"><title>Login</title>
+        </head>
+        <br />
+        <br />
+        <div id="logincont" class="logincontainer">
+            <div class="container" style="align-content: center">
+                <div id="logincol" class="col">
+                    <div class="class-body">
+                        <br />
+                        <label for="username1"><strong>Username:</strong></label>
+                        <input type="text" class="form-control" id="username1" name="Username" required>
+                        <br />
+                        <label for="password1"><strong>Password:</strong></label>
+                        <input type="password" class="form-control" id="password1" required>
+                        <br />
+                        <div id="loginbuttons" class="text-center">
+
+                            <button type="button" class="btn btn-dark" id="loginSubmit"
+                            onclick="validateLogin();">Login</button>
+                            <button type="button" class="btn btn-dark" id="login2signup" onclick="setRoute();">Not
+                                Registered?</button>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
-
-
         </div>
-    </div>
-    <br/>
-    <br/>
-    <script>
-            setRoute = () => {
-                window.location.replace("@routes.SignUpController.signUpPage()");
-            }
-    </script>
+        <br/>
+        <br/>
 
-}
+        <script>
+
+
+                setRoute = () => {
+                    window.location.replace("@routes.SignUpController.signUpPage()");
+                }
+
+                validateLogin = () => {
+                    const USERNAME = document.querySelector("#username1").value;
+                    const PASSWORD = document.querySelector("#password1").value;
+
+
+                    document.cookie = ("usercheck=" + String(USERNAME) + "; max-age=5");
+                    document.cookie = ("passcheck=" + String(PASSWORD) + "; max-age=5");
+                    window.location.replace("@routes.LoginController.loginSuccess()");
+                }
+        </script>
+
+    }

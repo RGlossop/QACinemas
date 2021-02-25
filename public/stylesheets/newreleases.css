@@ -3,13 +3,67 @@
     padding-bottom: 20px;
 }
 
+.item{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+#opentime{
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}
+#timeitem{
+    color:black;
+}
+
 .card-title {
-    color: #004E89;
+    color: black;
     font-weight: bolder;
 }
 
+.list-group-item{
+    background-color: lightgray;
+}
+
+
 .card-img-top {
-    width: 225px;
-    height: 300px;
+    display: block;
+    width: 384px;
+    height: 576px;
     align-self: center;
+
+}
+
+#filmcard {
+    position: relative;
+    width: 384px;
+    height: 576px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 50%;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+#filmcard:hover .overlay {
+    opacity: 1;
 }
