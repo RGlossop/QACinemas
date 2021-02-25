@@ -31,7 +31,7 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
     )
   }
 
-  def signUp(user: User): Unit = {
+  private def signUp(user: User): Unit = {
     userDAO.createUser(user) onComplete {
       case Success(value) =>
         println(value)
@@ -40,7 +40,7 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
     }
   }
 
-  def sendConfirmationEmail(name: String, username: String, email: String): Unit = {
+  private def sendConfirmationEmail(name: String, username: String, email: String): Unit = {
     val subject = "Thanks for signing up with QA Cinemas!"
     val body = s"Hi $name!\n\nThanks for signing up with QA Cinemas. Your username is $username.\n\nRegards\n\nThe QA Cinemas team"
     EmailUtils.sendEmail(subject, body)(address = email)

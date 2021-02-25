@@ -36,9 +36,9 @@ class Startup extends AbstractModule {
   val dateString = "1993-06-06"
   val ymd = dateString.split('-')
   val dob = LocalDate.of(Integer.parseInt(ymd(0)), Integer.parseInt(ymd(1)), Integer.parseInt(ymd(2)))
+  val userDAO = new UserDAO
+  Await.ready(userDAO.createUser(User(0L, "John", "Smith", dob, "Admin123", "Admin@gmail.com", "Password123")), Duration.Inf)
 
-  val dao = new UserDAO
-  Await.ready(dao.createUser(User(0L, "John", "Smith", dob, "Admin123", "Admin@gmail.com", "Password123")), Duration.Inf)
 
   println("startup")
 

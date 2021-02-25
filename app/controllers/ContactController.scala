@@ -10,7 +10,7 @@ import javax.inject.{Inject, Singleton}
 @Singleton
 class ContactController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
-  val testEmail = "example@academytrainee.com"
+  private val testEmail = "khanahoe@academytrainee.com"
 
   def contact = Action { implicit request =>
     Ok(views.html.contact(EmailForm.emailForm))
@@ -26,7 +26,7 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
     })
   }
 
-  def send(email: Email) = {
+  private def send(email: Email) = {
     EmailUtils.sendEmail(email.getSubject(), email.getBody())(replyTo = email.getSender(), address = testEmail)
   }
   // $COVERAGE-ON$
