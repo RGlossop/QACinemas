@@ -16,9 +16,9 @@
 ## 🚀 Deployment
     
 1.  Run the following command to compile the project
-   ```sh
-   sbt assembly
-   ```
+    ```sh
+    sbt assembly
+    ```
     
 ## ⛏️ Testing
 
