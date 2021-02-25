@@ -15,6 +15,8 @@ import scala.language.postfixOps
 @Singleton
 class SearchController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
+  val filmDAO = new FilmDAO
+
   def search(searchTerm: String) = Action { implicit request =>
     val films = getFilms
     val filmsTerms = extractSearchTerms(films)
@@ -31,7 +33,7 @@ class SearchController @Inject()(cc: ControllerComponents) extends AbstractContr
   // Reads all films from database
   def getFilms: Seq[Film] = {
     var futureResult = Seq.empty[Film]
-    val films = FilmDAO.readAll()
+    val films = filmDAO.readAll()
     val result = Await.result(films, 10 seconds)
     result
   }
