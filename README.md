@@ -15,10 +15,18 @@
 
 ## 🚀 Deployment
     
-1.  Run the following command to compile the project
+1.  Setup a PayPal developer account to get a personal authentication key 
+2.  Insert key into PaymentController, line 21, replaveing "UwU"
+3.  Setup a MySql Server
+4.  Add the server url link, username and password to the fields provided in application.conf
+5.  Run the following command to compile the project
     ```sh
-    sbt assembly
+    sbt dist
     ```
+6.  Navigate to /target/universal
+7.  Extract the zip file
+8.  Navigate to /"zipfilename"/bin
+9.  Run the .bat file
     
 ## ⛏️ Testing
 
